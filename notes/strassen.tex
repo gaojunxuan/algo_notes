@@ -1,0 +1,107 @@
+\section{Matrix Multiplication}
+
+The standard method to multiply two $n \times n$ matrices requires $O(n^3)$ scalar operations (multiplication and addition). The standard algorithm follows from the definition of matrix multiplication that the $i,j$ entry of $C=A \cdot B$ is given by
+$$
+c_{ij} = \sum_{k=1}^n a_{ik} \cdot b_{kj}
+$$
+\begin{codebox}
+    \Procname{$\proc{Square-Matrix-Multiply}(A,B)$}
+    \li $n = \attrib{A}{rows}$
+    \li $C = \text{$n \times n$ matrix}$
+    \li \For $i=1$ to $n$ \Do
+        \li \For $j=1$ to $n$ \Do
+            \li $c_{ij} = 0$
+            \li \For $k=1$ to $n$ \Do
+                \li $c_{ij} = c_{ij} + a_{ij}b_{ij}$
+            \End
+        \End
+    \End
+    \li \Return $C$ 
+\end{codebox}
+Clearly, this algorithm runs in $\Theta(n^3)$. 
+
+\section{A Recursive Approach}
+
+Without loss of generality, let $n=2^k$ for some $k$. Then, we can divide any $n \times n$ matrix into four $n/2 \times n/2$ matrices.
+$$
+\begin{bmatrix} C_{11} & C_{12} \\ C_{21} & C_{22} \end{bmatrix} = \begin{bmatrix} A_{11} & A_{12} \\ A_{21} & A_{22} \end{bmatrix}  \cdot \begin{bmatrix} B_{11} & B_{12} \\ B_{21} & B_{22} \end{bmatrix} 
+$$
+Since matrices are a non-commutative ring, $n \times n$ matrix multiplication can be realized in $7 n/2 \times n/2$ matrix multiplications and 18 matrix additions. Matrix addition only takes $O(n^2)$ scalar operations. Then, we have the following recurrence
+$$
+T(n) =
+\begin{cases}
+    1 & \text{if $n = 1$} \\
+    7 T(n/2) + O(n^2) & \text{otherwise}
+\end{cases}
+$$
+which implies that $T(n) \in O(n^{\log_2 7})$.
+
+An implementation of this recursive approach is presented in pseudocode below
+\begin{codebox}
+    \Procname{$\proc{Square-Matrix-Multiply}(A,B)$}
+    \li $n = \attrib{A}{rows}$
+    \li $C = \text{$n\times n$ matrix}$ 
+    \li \If $n \isequal 1$ \Then
+        \li $c_{11} = a_{11} \cdot b_{11}$
+    \Else
+        \li partition $A$, $B$, and $C$ each into four sub-matrices
+        \li $C_{11} = \proc{Square-Matrix-Multiply}(A_{11},B_{11}) + $
+        \zi \> $\phantom{=}\proc{Square-Matrix-Multiply}(A_{12},B_{21})$
+        \li $C_{12} = \proc{Square-Matrix-Multiply}(A_{11},B_{12}) + $
+        \zi \> $\phantom{=}\proc{Square-Matrix-Multiply}(A_{12},B_{22})$
+        \li $C_{21} = \proc{Square-Matrix-Multiply}(A_{21},B_{11}) + $
+        \zi \> $\phantom{=}\proc{Square-Matrix-Multiply}(A_{22},B_{21})$
+        \li $C_{22} = \proc{Square-Matrix-Multiply}(A_{21},B_{12}) + $
+        \zi \> $\phantom{=}\proc{Square-Matrix-Multiply}(A_{22},B_{22})$
+    \End
+    \li \Return $C$ 
+\end{codebox}
+However, this particular implementation of the recursive approach still has a $O(n^3)$ running time, as demonstrated by solving the recurrence by Masters Theorem.
+
+\section{Strassen's Algorithm}
+
+Strassen's algorithm is a rather peculiar algorithm that multiplies two square matrices using $O(n^{\log_2 7}) = O(n^{2.81})$ scalar operations. It is debatable how practical asymptotically faster matrix multiplication algorithms (including Strassen's algorithm and Coppersmith-Winograd algorithm) are given that their crossover point (the threshold on input size beyond which such algorithms become actually faster) is often quite large for them to be useful in practical applications.
+
+Strassen's algorithm as described in CLRS works as follows:
+\begin{enumerate}
+    \item Divide the input matrices $A$ and $B$ and output matrix $C$ into $n/2 \times n/2$ submatrices. This takes $\Theta(1)$ operations.
+    \item Create 10 submatrices $S_1,S_2,\ldots,S_{10}$, each of which is $n/2 \times n/2$ and is the sum or difference of two matrices created in Step 1. This can be done in $\Theta(n^2)$.
+    \item Using the submatrices in Step 1 and the 10 matrices in Step 2, recursively compute seven matrix products $P_1,P_2,\ldots,P_7$. Each matrix $P_i$ is $n/2 \times n/2$.
+    \item Compute the desired $C_{11},C_{12},C_{21},C_{22}$ of the result matrix $C$ by adding and subtracting various combinations of the $P_i$ matrices. This can also be done in $\Theta(n^2)$ time.
+\end{enumerate}
+More specifically, in Step 2,
+$$
+\begin{aligned}
+    S_1 &= B_{12} - B_{22} \\
+    S_2 &= A_{11} + A_{12} \\
+    S_3 &= A_{21} + A_{22} \\
+    S_4 &= B_{21} - B_{11} \\
+    S_5 &= A_{11} + A_{22} \\
+    S_6 &= B_{11} + B_{22} \\
+    S_7 &= A_{12} - A_{22} \\
+    S_8 &= B_{21} + B_{22} \\
+    S_9 &= A_{11} - B_{21} \\
+    S_{10} &= B_{11} + B_{12},
+\end{aligned}
+$$
+and in Step 3,
+$$
+\begin{aligned}
+    P_1 &= A_{11} \cdot S_1 &=& A_{11} \cdot B_{12} - A_{11} \cdot B_{22} \\
+    P_2 &= S_2 \cdot B_{22} &=& A_{11} \cdot B_{22} + A_{12} \cdot B_{22} \\
+    P_3 &= S_3 \cdot B_{11} &=& A_{21} \cdot B_{11} + A_{22} \cdot B_{11} \\
+    P_4 &= A_{22} \cdot S_4 &=& A_{22} \cdot B_{21} - A_{22} \cdot B_{11} \\
+    P_5 &= S_5 \cdot S_6 &=& A_{11} \cdot B_{11} + A_{11} \cdot B_{22} + A_{22} \cdot B_{11} + A_{22} \cdot B_{22} \\
+    P_6 &= S_7 \cdot S_8 &=& A_{12} \cdot B_{21} + A_{12} \cdot B_{22} - A_{22} \cdot B_{21} - A_{22} \cdot B_{22} \\
+    P_7 &= S_9 \cdot S_{10} &=& A_{11} \cdot B_{11} + A_{11} \cdot B_{12} - A_{21} \cdot B_{11} - A_{21} \cdot B_{12}.
+\end{aligned}
+$$
+In Step 4,
+$$
+\begin{aligned}
+    C_{11} &= P_5 + P_4 - P_2 + P_6 \\
+    C_{12} &= P_1 + P_2 \\
+    C_{21} &= P_3 + P_4 \\
+    C_{22} &= P_5 + P_1 - P_3 - P_7
+\end{aligned}
+$$

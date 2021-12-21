@@ -1,0 +1,199 @@
+\section{Divide and Conquer Paradigm}
+
+Most divide and conquer algorithms follow this paradigm.
+
+\begin{itemize}
+    \item Divide up problem into several subproblems. Note that in some cases, we have to generalize the given problem.
+    \item Recursively solving these subproblems.
+    \item Combining the results from subproblems.
+\end{itemize}
+
+In this chapter and the following chapter, we will examine a few examples of divide-and-conquer algorithms, including but not limited to: maximum subarray, Strassen's matrix multiplication algorithm, quicksort, mergesort, median and selection in sorted array, fast Fourier transform (FTT), inversion counting, etc.
+
+\section{The Master Theorem}
+
+We have used the Master Theorem many times in both the introduction to theory of computation and data structure courses. We will once again present the theorem as it appears in CLRS here. For a careful proof of the theorem, see Section 4.6 of CLRS or Tutorial 7 note for CSC240 (Enriched Introduction to Theory of Computation).
+
+\begin{theorem}[The Master Theorem]
+    Let $a\geq 1$ and $b>1$ be constants, and let $f(n)$ be a function. Let $T(n)$ on the nonnegative integers by the recurrence
+    $$
+    T(n) = aT\left( \frac{n}{b} \right) + f(n)
+    $$
+    where $\frac{n}{b}$ is interchangeable with $\left\lfloor n/b \right\rfloor$ and $\left\lceil n/b \right\rceil $. Then, $T(n)$ has the following asymptotic bounds:
+    \begin{itemize}
+        \item If $f(n) \in O(n^{\log_b a - \epsilon})$ for some constant $\epsilon > 0$, then $T(n) \in \Theta(n^{\log_b a})$.
+        \item If $f(n) \in \Theta(n^{\log_b a})$, then $T(n) \in \Theta(n^{\log_b a} \lg n)$.
+        \item If $f(n) \in \Omega(n^{\log_b a+\epsilon})$ for some constant $\epsilon > 0$, and if $af(n/b) \leq cf(n)$ for some constant $c < 1$ and all sufficiently large $n$, then $T(n) \in \Theta(f(n))$. 
+    \end{itemize}
+\end{theorem}
+
+An equivalent formulation of the theorem is as follows.
+
+\begin{theorem}[The Master Theorem]
+    Suppose that for $n \in \Z^+$.
+    \begin{equation*}
+        T(n) =
+        \begin{cases}
+        c & \text{if $n<B$} \\
+        a_1 T(\lceil n/b \rceil) + a_2 T(\lfloor n/b \rfloor) + dn^i & \text{if $n\geq B$}
+        \end{cases}
+    \end{equation*}
+    where $a_1, a_2, B, b \in \N$.
+    
+    Let $a = a_1+a_2 \geq 1$, $b>1$, and $c,d,i \in \R \cup \{0\}$. Then,
+    \begin{equation*}
+        T(n) \in
+        \begin{cases}
+        O(n^i \log n) & \text{if $a=b^i$} \\
+        O(n^i) & \text{if $a < b^i$} \\
+        O(n^{\log_b a}) & \text{if $a > b^i$}
+        \end{cases}
+    \end{equation*}
+\end{theorem}
+
+\section{Counting Inversions}
+
+The objective of array inversion problems is to find the number inversions in an unsorted array compared to a sorted array. That is, given an array $A$, how many pairs $(i,j)$ are there such that $i < j$ and $A[i] > A[j]$. In other words, it counts the number of element-wise swaps needed in order to sort the given array.
+
+For example, given the array $[8,4,2,1]$, the algorithm should answer 6 since the array has these six inversions: $(8,4)$, $(4,2)$, $(8,2)$, $(8,1)$, $(4,1)$, and $(2,1)$. If we follow these inversions, we will get a sorted array.
+
+An naive algorithm for this problem is naturally to examine every pair of elements in the given array, which will take $O(n^2)$ comparisons. However, due to its resemblance to sorting, it is not hard to come up with a divide-and-conquer algorithm similar to mergesort that solves this problem in $O(n\log n)$ time.
+
+At a high level, the algorithm should follow the aforementioned paradigm:
+\begin{itemize}
+    \item Divide: split list into two halves $A$ and $B$ 
+    \item Conquer: recursively count inversions in each list
+    \item Combine: count inversions $(a,b)$ with $a \in A$ and $b \in B$ 
+    \item Return the sum of the tree counts
+\end{itemize}
+
+For the combine step, we assume that the two subarrays $A$ and $B$ are sorted. Then, we can scan $A$ and $B$ from left to right in parallel and compare $A[i]$ and $B[j]$. If $A[i] < B[j]$, then $A[i]$ is not inverted with any element in $B$. If $A[i] > B[j]$ then $B[j]$ is inverted with every element in left in $A$.
+
+A pseudocode for the algorithm is shown below. Equivalently, instead of explicitly splitting the array, we can perform this in place by passing around the indices $p$ and $q$, as shown in Section 2.3.1 of CLRS.
+
+\begin{codebox}
+    \Procname{$\proc{Sort-And-Count}(L)$}
+    \li \If $\attrib{L}{length} \isequal 0$ \Then
+        \li \Return $(0,L)$ 
+        \End
+    \li $\id{mid} = \lfloor (1 + \attrib{L}{length})/2  \rfloor$
+    \li $(\id{count-a}, A) = \proc{Sort-And-Count}(A[1\ldots \id{mid}])$
+    \li $(\id{count-b}, B) = \proc{Sort-And-Count}(A[\id{mid}+1 \ldots \attrib{A}{length}])$ 
+    \li $(\id{count-ab}, L') = \proc{Merge-And-Count}(A,B)$
+    \li \Return $(\id{count-a}+\id{count-b}+\id{count-ab}, \, L')$ 
+\end{codebox}
+
+\begin{codebox}
+    \Procname{$\proc{Merge-And-Count}(A,B)$}
+    \li $\id{count} = 0$
+    \li $i,j,k = 1$ 
+    \li $L = []$ 
+    \li \While $i \leq \attrib{A}{length}$ and $j \leq \attrib{B}{length}$ \Do
+        \li \If $A[i] \leq B[j]$ \Then
+            \li $L[k] = A[i]$
+            \li $i = i + 1$
+        \li \Else
+            \li $\id{count} = \id{count} + 1$
+            \li $L[k] = B[j]$
+            \li $j = j + 1$
+            \End
+        \li $k = k + 1$
+        \End
+    \li \While $i \leq \attrib{A}{length}$ \Do
+        \li $L[k] = A[i]$
+        \li $k = k + 1$
+        \End
+    \li \While $j \leq \attrib{B}{length}$ \Do
+        \li $L[k] = B[j]$
+        \li $k = k + 1$
+        \End
+    \li \Return $(\id{count}, L)$ 
+\end{codebox}
+
+The number of comparisons made by the algorithm is given by this recurrence
+$$
+T(n) =
+\begin{cases}
+    \Theta(1) & \text{if $n = 1$} \\
+    T(\lceil n/2 \rceil) + T(\lfloor n/2 \rfloor) + \Theta(n) & \text{otherwise}
+\end{cases}
+$$
+By Masters Theorem, $T(n) \in O(n \log n)$.
+
+\section{Closest Pair}
+
+\vspace{\parskip}
+
+\begin{lemma}
+    Let $p$ be a point in the $2\delta$ strip within $\delta$ distance horizontally. There are at most 7 points $p$ such that $|y_p-y_q| \leq \delta$.
+\end{lemma}
+
+\begin{proof}
+    $p$ must lie either in the left or right $\delta \times \delta$ square. Within each square, each point have distance at least $k$ from each other. So, we can pack at most 4 such points into one square, and since we have a left square and right square, we have 8 points in total. Other than $p$, there are at most 7 points.
+\end{proof}
+
+\begin{codebox}
+    \Procname{$\proc{Closest-Pair}(P=p_1,p_2,\ldots,p_n)$}
+    \li compute a vertical line $L$ such that half the points 
+    \zi are on each side \RComment{$O(n \log n)$}
+    \zi \Comment{consider sorting based on $x$-axis}
+    \li $\delta_1 = \proc{Closest-Pair}(P_L)$
+    \li $\delta_2 = \proc{Closest-Pair}(P_R)$
+    \li $\delta = \min \{ \delta_1,\delta_2 \}$
+    \li \For $p$ in $p_1,p_2,\ldots,p_n$ \Do \RComment{$O(n)$}
+        \li \If $\proc{Y-Distance}(p,L)$ \Then
+            \li \textbf{delete} $p$
+        \End
+    \End
+    \li sort remaining points by $y$-coordinate \RComment{$O(n\log n)$}
+    \li \For $p$ in $p_1,p_2,\ldots,p_n$ \Do \RComment{$O(n)$}
+        \li \For $i$ \textbf{from} 1 \textbf{to} 7 \Do
+            \li $p_i = \text{$i$th neighbor of $p$}$
+            \li \If $\proc{Distance}(p,p_i) < \delta$ \Then
+                \li $\delta = \proc{Distance}(p,p_i)$
+            \End
+        \End
+    \End
+    \li \Return $\delta$ 
+\end{codebox}
+
+The number of operations performed by this algorithm is
+$$
+T(n) =
+\begin{cases}
+    \Theta(1) & \text{if $n = 1$} \\
+    T(\lceil n/2 \rceil) + T(\lfloor n/2 \rfloor) + O(n\log n) & \text{otherwise}
+\end{cases}
+$$
+By Masters Theorem, $T(n) \in O(n \log^2 n)$.
+
+\begin{theorem}[Lower Bound for Closest Pair]
+    In a quadradic decision tree model, the closest pair problem requires at least $\Omega(n \log n)$ quadratic tests.
+\end{theorem}
+
+A quadradic decision tree is a comparison tree whose internal nodes are labeled with quadradic comparisons in the form of $x_i < x_j$ or $(x_i - x_k)^2 - (x_j - x_k)^2 < 0$. More generally, each internal node contains a comparison between a polynomial of degree at most 2 and 0 (2nd-order algebraic decision tree).
+
+A hand-wavy proof of this lower bound follows by reduction from the result that the element uniqueness problem has a $\Omega(n \log n)$ lower bound, first shown by Ben-Or in \textit{Lower Bounds For Algebraic Computation Trees}. Element distinctness reduces to 2D closest pair problem.
+
+\section{Karatsuba's Integer Multiplication Algorithm}
+
+To multiply two $n$-bit integers $a$ and $b$, we can follow this recursive procedure:
+\begin{itemize}
+    \item add two $\frac{1}{2}n$ bit integers
+    \item multiply three $\frac{1}{2}n$-bit integers recursively
+    \item add, subtract, and shift to obtain the result
+\end{itemize}
+
+$$
+\begin{aligned}
+    a &= 2^{n/2} a_1 + a_0 \\
+    b &= 2^{n/2} b_1 + b_0 \\
+    ab &= 2^n a_1b_1 + 2^{n/2} (a_1b_0 + a_0b_1) + a_0b_0 \\
+    &= 2^n \underbrace{a_1b_1} + 2^{n/2} (\underbrace{(a_1+a_0)(b_1+b_0)} - \underbrace{a_1b_1} - \underbrace{a_0b_0}) + \underbrace{a_0b_0}
+\end{aligned}
+$$
+The recursive steps are labeled with underbrace. By Masters Theorem, Karatsuba's algorithm performs
+$$
+T(n)=3T(\lceil n/2\rceil )+cn+d \in \Theta(n^{\log_2 3})
+$$
+bit-wise operations.
