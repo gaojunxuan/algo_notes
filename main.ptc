@@ -80,47 +80,57 @@
 \ttl@stoptoc {default@1}
 \ttl@starttoc {default@2}
 \defcounter {refsection}{0}\relax 
-\contentsline {part}{\@mypartnumtocformat {III}{Dynamic Programming}}{31}{part.3}%
+\contentsline {chapter}{\numberline {4}Greedy Strategy}{31}{chapter.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.1}Interval Scheduling}{31}{section.4.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.2}Proving Optimality}{33}{section.4.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.3}Interval Coloring}{35}{section.4.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.4}Greedy Strategy}{35}{section.4.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {part}{\@mypartnumtocformat {III}{Dynamic Programming}}{37}{part.3}%
 \ttl@stoptoc {default@2}
 \ttl@starttoc {default@3}
 \defcounter {refsection}{0}\relax 
-\contentsline {part}{\@mypartnumtocformat {IV}{Network Flow}}{33}{part.4}%
+\contentsline {part}{\@mypartnumtocformat {IV}{Network Flow}}{39}{part.4}%
 \ttl@stoptoc {default@3}
 \ttl@starttoc {default@4}
 \defcounter {refsection}{0}\relax 
-\contentsline {part}{\@mypartnumtocformat {V}{Complexity}}{35}{part.5}%
+\contentsline {part}{\@mypartnumtocformat {V}{Complexity}}{41}{part.5}%
 \ttl@stoptoc {default@4}
 \ttl@starttoc {default@5}
 \defcounter {refsection}{0}\relax 
-\contentsline {part}{\@mypartnumtocformat {VI}{Linear Programming}}{37}{part.6}%
+\contentsline {part}{\@mypartnumtocformat {VI}{Linear Programming}}{43}{part.6}%
 \ttl@stoptoc {default@5}
 \ttl@starttoc {default@6}
 \defcounter {refsection}{0}\relax 
-\contentsline {part}{\@mypartnumtocformat {VII}{Approximation Algorithms}}{39}{part.7}%
+\contentsline {part}{\@mypartnumtocformat {VII}{Approximation Algorithms}}{45}{part.7}%
 \ttl@stoptoc {default@6}
 \ttl@starttoc {default@7}
 \defcounter {refsection}{0}\relax 
-\contentsline {part}{\@mypartnumtocformat {VIII}{Randomized Algorithms}}{41}{part.8}%
+\contentsline {part}{\@mypartnumtocformat {VIII}{Randomized Algorithms}}{47}{part.8}%
 \ttl@stoptoc {default@7}
 \ttl@starttoc {default@8}
 \ttl@stoptoc {default@8}
 \ttl@starttoc {default@9}
 \defcounter {refsection}{0}\relax 
-\contentsline {part}{\setlength \fboxsep {0pt}\noindent \colorbox {ocre!40}{\strut \parbox [c][.7cm]{\linewidth }{\Large \sffamily \centering Appendix\hskip 1em\relax \mbox {}}}}{43}{section*.14}%
+\contentsline {part}{\setlength \fboxsep {0pt}\noindent \colorbox {ocre!40}{\strut \parbox [c][.7cm]{\linewidth }{\Large \sffamily \centering Appendix\hskip 1em\relax \mbox {}}}}{49}{section*.15}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\leavevmode {\color {ocre}Axioms \& Theorems}}{45}{appendix*.15}%
+\contentsline {chapter}{\leavevmode {\color {ocre}Axioms \& Theorems}}{51}{appendix*.16}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\leavevmode {\color {ocre}Basic Prerequisite Mathematics}}{49}{appendix*.20}%
+\contentsline {chapter}{\leavevmode {\color {ocre}Basic Prerequisite Mathematics}}{55}{appendix*.21}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\leavevmode {\color {ocre}Proof Templates}}{55}{appendix*.21}%
+\contentsline {chapter}{\leavevmode {\color {ocre}Proof Templates}}{61}{appendix*.22}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\leavevmode {\color {ocre}Index}}{65}{appendix*.22}%
+\contentsline {chapter}{\leavevmode {\color {ocre}Index}}{71}{appendix*.23}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\leavevmode {\color {ocre}Bibliography}}{67}{appendix*.23}%
+\contentsline {chapter}{\leavevmode {\color {ocre}Bibliography}}{73}{appendix*.24}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Courses}{67}{section*.24}%
+\contentsline {section}{Courses}{73}{section*.25}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Books}{67}{section*.25}%
+\contentsline {section}{Books}{73}{section*.26}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Journal Articles}{67}{section*.26}%
+\contentsline {section}{Journal Articles}{74}{section*.27}%
 \contentsfinish 

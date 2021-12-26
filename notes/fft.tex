@@ -223,7 +223,7 @@ T(n,|X|) = 2T\left( \frac{n}{2},|X| \right) + O(n + |X|) \in O(n^2).
 $$
 This is no better than the naive approach. The main issue is that we are not halving the size of $X$. Ideally, we want $X$ to be recursively collapsing.
 
-\subsection{Complex Roots of Unity}
+\subsection{Complex Roots of Unity} \index{complex roots of unity}
 
 We can construct a collapsing set of $x$'s via square roots. If we only look at real numbers, taking the square root or squaring a number won't give you fewer or more numbers, but if we broaden our view to complex numbers, we notice that starting from 1, every time we take the square root, the size of the set doubles. The $n$th root of 1 is called the \textbf{complex $n$th root of unity}. The observation implies that if we start from the $n$th root of unity and square the elements in the set, the set will collapse every time we square it.
 
@@ -249,7 +249,7 @@ Let us formalize this idea and prove that it works.
     Furthermore, $\left(e^{\frac{2\pi i}{n}}\right)^{2(k+n/2)} = \left(e^{\frac{2\pi i}{n}}\right)^{k}$. This implies that for every pair of $k$ and $k+n/2$ share the same square, and that if take the square of every element in the set of $n$th roots of unity, we get the $n/2$ elements and it follows from algebra that the resulting set contains the $(n/2)$th roots of unity.
 \end{proof}
 
-\subsection{The FFT Algorithm}
+\subsection{The FFT Algorithm} \index{fast Fourier transform (FFT)}
 
 By choosing the $x$'s in the Vandermonde matrix to be the $n$th roots of unity, we can make $X$ collapsing along with $n$. The rest of the algorithm is the same as the divide-and-conquer approach described earlier.
 
@@ -275,7 +275,7 @@ By choosing the $x$'s in the Vandermonde matrix to be the $n$th roots of unity, 
 
 This algorithm takes $T(n) = 2T\left( \frac{n}{2} \right) + O(n) \in O(n \log n)$ operations.
 
-\section{Inverse Fast Fourier Transform}
+\section{Inverse Fast Fourier Transform} \index{inverse fast Fourier transform (IFFT)}
 
 The inverse discrete fourier transform is an algorithm used to find the coefficients fo a polynomial given a set of samples. The transformation is of the form $\mathbf{a}^* \to \mathbf{V}^{-1}\mathbf{a}^* = \mathbf{a}$. To evaluate this, we need $\mathbf{V}^{-1}$. In fact, this matrix has a very useful property that allows to find it without actually inverting $\mathbf{V}$ (again, don't invert the matrix).
 

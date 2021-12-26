@@ -58,7 +58,7 @@ An implementation of this recursive approach is presented in pseudocode below
 \end{codebox}
 However, this particular implementation of the recursive approach still has a $O(n^3)$ running time, as demonstrated by solving the recurrence by Masters Theorem.
 
-\section{Strassen's Algorithm}
+\section{Strassen's Algorithm} \index{Strassen's algorithm}
 
 Strassen's algorithm is a rather peculiar algorithm that multiplies two square matrices using $O(n^{\log_2 7}) = O(n^{2.81})$ scalar operations. It is debatable how practical asymptotically faster matrix multiplication algorithms (including Strassen's algorithm and Coppersmith-Winograd algorithm) are given that their crossover point (the threshold on input size beyond which such algorithms become actually faster) is often quite large for them to be useful in practical applications.
 
