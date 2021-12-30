@@ -90,7 +90,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {4.4}Greedy Strategy}{36}{section.4.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}Graph Algorithms}{39}{chapter.5}%
+\contentsline {chapter}{\numberline {5}Graph Algorithms Using Greedy}{39}{chapter.5}%
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {5.1}Interval Scheduling as Graph Problems}{39}{section.5.1}%
 \defcounter {refsection}{0}\relax 
@@ -116,47 +116,91 @@
 \ttl@stoptoc {default@2}
 \ttl@starttoc {default@3}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {8}Introduction to Dynamic Programming}{49}{chapter.8}%
+\contentsline {chapter}{\numberline {8}Weighted Interval Selection}{49}{chapter.8}%
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {8.1}Dynamic Programming}{49}{section.8.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {part}{\@mypartnumtocformat {IV}{Network Flow}}{51}{part.4}%
+\contentsline {section}{\numberline {8.2}Weighted Interval Selection}{49}{section.8.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {8.3}Computing the Optimal Weight}{49}{section.8.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {8.3.1}The Dynamic Programming Approach}{49}{subsection.8.3.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {8.3.2}Top-Down DP}{51}{subsection.8.3.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {8.3.3}Bottom-Up DP}{51}{subsection.8.3.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {8.3.4}Comparison of Two Approaches}{52}{subsection.8.3.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {8.4}Computing the Optimal Solution}{52}{section.8.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {9}Knapsack Problem}{53}{chapter.9}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {9.1}Knapsack}{53}{section.9.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {9.2}DP Algorithm for 0-1 Knapsack}{53}{section.9.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {9.3}A Different DP Algorithm}{54}{section.9.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {9.4}FPTAS Approximation for Knapsack}{54}{section.9.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {10}Graph Algorithms Using DP}{57}{chapter.10}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {10.1}Single-Source Shortest Path}{57}{section.10.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {10.1.1}Bellman-Ford}{57}{subsection.10.1.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {10.2}Maximum Length Path Fails}{57}{section.10.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {10.3}All-Pairs Shortest Paths}{57}{section.10.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {10.3.1}Matrix Multiplication}{57}{subsection.10.3.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {10.3.2}Floyd-Warshall}{57}{subsection.10.3.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {10.3.3}Johnson's Algorithm}{57}{subsection.10.3.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {10.4}Traveling Salesman Problem}{57}{section.10.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {11}Bioinformatics}{59}{chapter.11}%
+\defcounter {refsection}{0}\relax 
+\contentsline {part}{\@mypartnumtocformat {IV}{Network Flow}}{61}{part.4}%
 \ttl@stoptoc {default@3}
 \ttl@starttoc {default@4}
 \defcounter {refsection}{0}\relax 
-\contentsline {part}{\@mypartnumtocformat {V}{Complexity}}{53}{part.5}%
+\contentsline {part}{\@mypartnumtocformat {V}{Complexity}}{63}{part.5}%
 \ttl@stoptoc {default@4}
 \ttl@starttoc {default@5}
 \defcounter {refsection}{0}\relax 
-\contentsline {part}{\@mypartnumtocformat {VI}{Linear Programming}}{55}{part.6}%
+\contentsline {part}{\@mypartnumtocformat {VI}{Linear Programming}}{65}{part.6}%
 \ttl@stoptoc {default@5}
 \ttl@starttoc {default@6}
 \defcounter {refsection}{0}\relax 
-\contentsline {part}{\@mypartnumtocformat {VII}{Approximation Algorithms}}{57}{part.7}%
+\contentsline {part}{\@mypartnumtocformat {VII}{Approximation Algorithms}}{67}{part.7}%
 \ttl@stoptoc {default@6}
 \ttl@starttoc {default@7}
 \defcounter {refsection}{0}\relax 
-\contentsline {part}{\@mypartnumtocformat {VIII}{Randomized Algorithms}}{59}{part.8}%
+\contentsline {part}{\@mypartnumtocformat {VIII}{Randomized Algorithms}}{69}{part.8}%
 \ttl@stoptoc {default@7}
 \ttl@starttoc {default@8}
 \ttl@stoptoc {default@8}
 \ttl@starttoc {default@9}
 \defcounter {refsection}{0}\relax 
-\contentsline {part}{\setlength \fboxsep {0pt}\noindent \colorbox {ocre!40}{\strut \parbox [c][.7cm]{\linewidth }{\Large \sffamily \centering Appendix\hskip 1em\relax \mbox {}}}}{61}{section*.15}%
+\contentsline {part}{\setlength \fboxsep {0pt}\noindent \colorbox {ocre!40}{\strut \parbox [c][.7cm]{\linewidth }{\Large \sffamily \centering Appendix\hskip 1em\relax \mbox {}}}}{71}{section*.15}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\leavevmode {\color {ocre}Axioms \& Theorems}}{63}{appendix*.16}%
+\contentsline {chapter}{\leavevmode {\color {ocre}Axioms \& Theorems}}{73}{appendix*.16}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\leavevmode {\color {ocre}Basic Prerequisite Mathematics}}{67}{appendix*.21}%
+\contentsline {chapter}{\leavevmode {\color {ocre}Basic Prerequisite Mathematics}}{77}{appendix*.21}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\leavevmode {\color {ocre}Proof Templates}}{73}{appendix*.22}%
+\contentsline {chapter}{\leavevmode {\color {ocre}Proof Templates}}{83}{appendix*.22}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\leavevmode {\color {ocre}Index}}{83}{appendix*.23}%
+\contentsline {chapter}{\leavevmode {\color {ocre}Index}}{93}{appendix*.23}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\leavevmode {\color {ocre}Bibliography}}{85}{appendix*.24}%
+\contentsline {chapter}{\leavevmode {\color {ocre}Bibliography}}{95}{appendix*.24}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Courses}{85}{section*.25}%
+\contentsline {section}{Courses}{95}{section*.25}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Books}{85}{section*.26}%
+\contentsline {section}{Books}{95}{section*.26}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Journal Articles}{86}{section*.27}%
+\contentsline {section}{Journal Articles}{96}{section*.27}%
 \contentsfinish 

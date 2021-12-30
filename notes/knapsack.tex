@@ -1,0 +1,103 @@
+\section{Knapsack}
+
+In the knapsack problem, we are given a set of $n$ items $I_1,\ldots,I_n$ and a size bound $B$ where each item $I_j=(w_j,v_j)$ with $w_j$ being the weight of the item and $v_j$ the value of the item.
+
+A subset of items $S$ is feasible if the sum of the weights of items in $S$ is at most $B$. The goal of the knapsack problem is to find a feasible set $S$ that maximizes the sum of the values of items in $S$.
+
+\section{DP Algorithm for 0-1 Knapsack}
+
+We define the semantic array
+$$
+V(i,b) = \text{max profit possible using the first $i$ items within weight $b$}
+$$
+with corresponding Bellman equation
+$$
+V(i,b) = \begin{cases}
+    0 & \text{if $i=0$ or $b=0$} \\
+    \max\{C,D\} & \text{if $w_i \leq b$}
+\end{cases}
+$$
+where $C = V(i-1,b)$ and $D = V(i-1,b-w_i) + v_i$.
+
+$C$ corresponds to the decision to not include the $i$th item in the knapsack, and $D$ correspond to the decision to include the $i$th item, in which case we deduce $w_i$ from the remaining weight of the knapsack and add $v_i$ to the total profit. Like all DP problems, we need to prove that the semantic array is equivalent to the Bellman equation.
+
+\begin{codebox}
+    \Procname{$\proc{Knapsack}(S,B)$}
+    \li $n = \attrib{S}{length}$ 
+    \li \For $b=0$ to $B$ \Do
+        \li $M[0,b] = 0$
+    \End
+    \li \For $i=1$ to $n$ \Do
+        \li \For $b = 0$ to $B$ \Do
+            \li \If $S[i].w > b$ \Then
+                \li $M[i,b] = M[i-1,b]$
+            \li \Else
+                \li $M[i,b] = \max\{M[i-1,b],\, S[i].v + M[i-1,b-1]\}$
+            \End
+        \End
+    \End
+    \li $M[n,B]$ 
+\end{codebox}
+
+The input to the algorithm: $S$ is the set of all items to be considered, and $B$ is the weight bound of the knapsack. This approach makes an important assumption that the weights are integer.
+
+\index{pseudopolynomial}
+This DP algorithm solving the 0-1 knapsack problem with $n$ items and weight bound $B$ runs in $\Theta(nB)$ time and uses $\Theta(nB)$ space. As we can see, the running of this algorithm is, unfortunately, not polynomial in the input size. It is \textbf{pseudo-polynomial}. It is polynomial in $\log B + \sum_{i=1}^n (\log v_i + \log w_i)$.
+
+If $B$ is small (a polynomial in $n$), then the algorithm runs in polynomial time. No known exact algorithm runs in polynomial time. The 0-1 knapsack problem is NP-complete.
+
+\section{A Different DP Algorithm}
+
+Consider version of the knapsack problem with a different restriction that the values $v_i$ are integer and small ($V=\sum_{i=1}^n v_i \ll B$). In this case, it makes more sense to derive an algorithm in terms of $v$ instead of $B$.
+
+The semantic array is defined as follows
+$$
+W(i,v) = \begin{cases}
+    \substack{\text{minimum weight required to obtain at least} \\ \text{profit $v$ using a subset of $\{I_1,\ldots,I_i\}$}} & \text{if possible} \\
+    \infty & \text{otherwise}
+\end{cases}
+$$
+The goal is to compute $\max\{v \mid W(n,v) \leq B\}$.
+
+The corresponding Bellman equation is
+$$
+W(i,v) = \begin{cases}
+    \infty & \text{if $i=0$ and $v>0$} \\
+    0 & \text{if $i\leq 0$ or $b\leq 0$} \\
+    \max\{C,D\} & \text{otherwise}
+\end{cases}
+$$
+where $C = W(i-1,v)$ and $D=W(i-1,v-v_i) + w_i$.
+
+This algorithm is still pseudo-polynomial but the complexity is now $O(nV)$ where $V = v_1 + \cdots + v_n$. This is more efficient when $V \ll B$.
+
+\section{FPTAS Approximation for Knapsack}
+
+Because 0-1 knapsack is NP-complete, it is also of theoretical interest to find an efficient approximation algorithm. In the case of the knapsack problem, it is possible to find an algorithm that approximates the result within a specific degree on all possible inputs.
+
+The idea behind the algorithm is as follows: The high order bits/digits of the value $v$ can be used to determine an approximate solution. The fewer high order bits we use, the faster the algorithm runs, but also the worse the approximation.
+
+The goal is to scale the values $v$ using a parameter (rounding factor) $\epsilon$ so that a $(1+\epsilon)$ approximation is obtained with time complexity polynomial in $n$ and $1/\epsilon$.
+
+More precisely, let $\tilde{v} = \lceil v_i/b \rceil b$. This ensures that the constraint that $v$ must be integer for the second algorithm is satisfied. By rounding the values, we get an approximation $\tilde{v}$ of $v$ that is divisible by $b$. This means we can divide all values of $v$ by $\epsilon$ and get an equivalent problem. Let $\hat{v} = \tilde{v}/b$. This allows us to reduce the size of $v$ so that it becomes smaller than $n$ (or at least bounded by a polynomial in $n$).
+
+\begin{codebox}
+    \Procname{$\proc{Knapsack-Approx}(\epsilon,S)$}
+    \li $b = (\frac{\epsilon}{2n}) \cdot \max_i v_i$
+    \li \For $i$ in $S$ \Do 
+        \li $\tilde{v} = \lceil v_i/b \rceil b$
+        \li $\hat{v} = \tilde{v}/b$
+        \li $i.v = \hat{v}$
+    \End
+    \li $\proc{Knapsack-V}(S,\max_i\{v_i\})$ 
+\end{codebox}
+where $\proc{Knapsack-V}$ is the second DP algorithm discussed above.
+
+\proc{Knapsack-Approx} is a \textbf{FPTAS} (fully polynomial time approximation scheme) algorithm for the 0-1 knapsack problem.
+
+\begin{definition}[FPTAS and PTAS] \index{FPTAS} \index{PTAS}
+    \hfill \\
+    An \textbf{FPTAS} (Fully Polynomial Time Approximation Scheme) algorithm is one that is polynomial in the encoding of the input and $1/\epsilon$.
+
+    A \textbf{PTAS} (Polynomial Time Approximation Scheme) algorithm is one that is polynomial to the encoding of the algorithm but can have any complexity in terms of $1/\epsilon$ ($1/\epsilon$ term may not be polynomial).
+\end{definition}
