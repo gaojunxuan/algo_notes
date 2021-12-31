@@ -1,8 +1,159 @@
 \section{Single-Source Shortest Path}
 
-\subsection{Bellman-Ford}
+We have discussed single-source shortest path when we talked about greedy algorithms.
 
-\section{Maximum Length Path Fails}
+Previously, we have restricted our discussion to graphs without negative weights/cycles. In this chapter, we will talk about algorithms that can be used to general graphs (even one with negative cycles). 
+
+Recall that we store the weight of the path from the source $s$ to each node $u$ at $u.d$. Consider a shortest path $p$ from $s$ to a vertex $v$. If there is a vertex $u$ immediately preceding $v$ on such path, then the path from $s$ to $u$ must also be a shortest path.
+
+One caveat we must consider is that if there is a negative cycle in the graph, one can keep traversing through that negative cycle and yield a path with lower weight. If this happens, the algorithm can get stuck in a negative cycle and $d$ values may never converge. Hence, we need to put one additional constraint: only consider path within certain path length. Let $\delta_k(s,v)$ denote the shortest path from $s$ to $v$ using at most $k$ edges. Similarly, for a vertex $v$, let $v.d_k$ be the weight of the path from $s$ to $v$ using at most $k$ edges.
+
+In addition, we will define some notations to aid our discussion. If $v$ is immediately reachable from $u$ via one edge, we write $u \to v$. If $v$ is reachable from $u$ via multiple edges, we write $u \leadsto v$.
+
+\subsection{Bellman-Ford} \index{Bellman-Ford algorithm}
+
+An obvious dynamic programming solution follows from this Bellman equation
+$$
+v.d_k = \begin{cases}
+    0 & \text{if $k=0$ and $v=s$} \\
+    \infty & \text{if $k=0$ and $v \neq s$} \\
+    \min\{A,B\} & \text{otherwise}
+\end{cases}
+$$
+where $A = v.d_{k-1}$ and $B = \min\{u.d_{k-1} + w(u,v) \mid (u,v) \in E \}$.
+To prove the correctness of this equation, we can use induction on the length of the path $k$.
+
+For a simple shortest path, there are at most $|V|-1$ edges. There will be $O((|V|-1)|V|) \in O(|V|^2)$ because we may need to update the $d$ field of all $|V|$ vertices. Each call takes $O(|E|)$ time in order to evaluate $B = \min\{u.d_{k-1} + w(u,v) \mid (u,v) \in E \}$. Therefore, the overall running time of the algorithm is in $O(|V|^2|E|)$.
+
+The dynamic programming algorithm is a somewhat worse version of the Bellman-Ford algorithm, which runs in $O(|V|\cdot|E|)$ time with space complexity $O(|V| + |E|)$.
+
+This rather unfortunate $O(|V|^2|E|)$ running time partly originates from the fact that we are updating the $d$ field of each $v$ for all $v \in |V|$. But if for every $v$, we are taking $O(|E|)$ time to examine all the edges to update $v.d$ anyway, we might as well just update all the $d$ fields whenever we run a pass through $E$. This gives us an algorithm with running time $O(|V|\cdot |E|)$. The $|V|$ comes from the $|V|-1$ iterations to optimize (``relax'') each edge on the simple shortest path of at most $|V|-1$ edges, and the $|E|$ comes from the pass through $E$ during each of the $|V|-1$ iterations to update the $d$ fields.
+
+Using the following set of lemmas, we will show that it is safe to do so.
+
+\begin{lemma}[Triangle Inequality] \index{triangle inequality (shortest path)}
+    For any edge $(u,v) \in E$, we have $\delta(s,v) \leq \delta(s,u) + w(u,v)$.
+\end{lemma}
+\begin{proof}
+    By contradiction.
+
+    Suppose the claim does not hold. In particular, let $\delta(s,v) > \delta(s,u) + w(u,v)$. This implies that the shortest path from $s$ to $v$ has a higher weight than the path $s \leadsto u \to v$. But this contradicts the fact that $\delta(s,v)$ is the shortest path.
+\end{proof}
+
+\begin{lemma}[Upper-bound Property] \index{upper-bound property}
+    We always have $v.d \geq \delta(s,v)$ for all verticies $v \in V$, and once $v.d$ is equal to $\delta(s,v)$, it never changes.
+\end{lemma}
+\begin{proof}
+    By induction on the number of relaxations.
+
+    Base case: $v.d \geq \delta(s,v)$ after initialization since $v.d = \infty$ for all $v \in V - \{s,v\}$, and for $s.d = 0 = \delta(s,s)$.
+
+    Inductive step: Consider the relaxation of an arbitrary edge $(u,v)$. Assume that $x.d \geq \delta(s,x)$ for all $x \in V$ prior to relaxation. The relaxation of $(u,v)$ can only affect $v.d$. If $v.d$ is updated, then
+    $$
+    \begin{aligned}
+        v.d &= u.d + w(u,v) \\
+        &\geq \delta(s,u) + w(u,v) & \text{inductive hypothesis} \\
+        &\geq \delta(s,v) & \text{triangle inequality}
+    \end{aligned}
+    $$
+    The invariant is maintained after relaxing $(u,v)$.
+
+    Once $v.d = \delta(s,v)$, $v.d$ cannot decrease because $v.d \geq \delta(s,v)$ always holds and relaxation cannot increase $v.d$.
+\end{proof}
+
+\begin{lemma}[No-path Property] \index{no-path property}
+    If there is no path from $s$ to $v$, then we always have $v.d = \delta(s,v) = \infty$.
+\end{lemma}
+\begin{proof}
+    Follows immediately from the upper-bound property.
+\end{proof}
+
+\begin{lemma}[Convergence Property] \index{convergence property}
+    If $s \leadsto u \to v$ is a shortest path in $G$ for some $u,v \in V$, and if $u.d = \delta(s,u)$ at any time prior to relaxing edge $(u,v)$, then $v.d = \delta(s,v)$ at all times afterward.
+\end{lemma}
+\begin{proof}
+    By upper bound property, once $u.d = \delta(s,u)$, it no longer changes. In particular, after relaxing $(u,v)$, we have
+    $$
+    \begin{aligned}
+        v.d &\leq u.d + w(u,v) & \text{Lemma 24.13, CLRS} \\
+        &= \delta(s,u) + w(u,v) \\
+        &= \delta(s,v) & \text{Lemma 24.1, CLRS}
+    \end{aligned}
+    $$
+    (Note that Lemma 24.1 was proved in the chapter covering Dijkstra's algorithm in my \href{https://github.com/gaojunxuan/data_struct_notes}{\color{ocre}notes on data structures}, CSC265 Notes)
+    
+    By the upper bound property, $v.d \geq \delta(s,v)$. It follows that $v.d = \delta(s,v)$.
+\end{proof}
+
+\begin{lemma}[Path-relaxation Property] \index{path-relaxation property} \index{path relaxation}
+    If $p = v_0,v_1,\ldots,v_k$ is a shortest path from $s = v_0$ to $v_k$, and we relax the edges of $p$ in the order $(v_0,v_1),(v_1,v_2),\ldots,(v_{k-1},v_k)$, then $v_k.d = \delta(s,v_k)$. This property holds regardless of other relaxations that occur, including those intermixed with relaxations of edges in $p$.
+\end{lemma}
+
+\begin{proof}
+    Proof by induction on the $i$th edge of $p$ that is relaxed.
+
+    Base case: $i=0$. This is before any edge of $p$ have been relaxed. From initialization, $v_0.d=\delta(s,s)=0$. By upper bound property, $v_0.d$ does not change once it converges to $\delta(s,v_0)$ 
+    
+    Inductive step: Assume that $v_{i-1}.d = \delta(s,v_{i-1})$. We relax edge $(v_{i-1},v_i)$. By convergence property, after relaxation of this edge, $v_i.d = \delta(s,v_i)$, and by upper bound property, this equality is maintained thereafter.
+\end{proof}
+
+From the path-relaxation property, we can prove the correctness of Bellman-Ford on a graph without negative-weight cycles.
+
+\begin{theorem}[Correctness of Bellman-Ford (without negative cycle)]
+    Let \proc{Bellman-Ford} be run on a weighted directed graph $G=(V,E)$ without negative cycles, with source $s$ and weight function $w:\; E \to \R$. Then, the algorithm terminates and when it does, $v.d = \delta(s,v)$ for all vertices $v \in V$, from which we can construct a predecessor subgraph $G_\pi$ that is a shortest path tree.
+\end{theorem}
+
+\begin{proof}
+    We first prove that at termination, $v.d = \delta(s,v)$ for all vertices $v \in V$. If $v$ is not reachable from $s$, the claim follows from the no-path property. If $v$ is reachable from $s$, then consider a shortest path $p = v_0,v_1,\ldots,v_k$ where $v_0=s$ and $v_k = v$. Because the shortest path is simple in a graph without negative cycle, so $k \leq |V|-1$. Each of the $|V|-1$ iterations of the outer loop of the algorithm relaxes all $|E|$ edges. Among the edges relaxed in the $i$th iteration in the $|V|-1$ total iterations, is $(v_{i-1},v_i)$. By path-relaxation property, $v.d = v_k.d = \delta(s,v_k) = \delta(s,v)$ even if other relaxation steps are intermixed within the sequence of relaxations of edges $(v_0,v_1),\ldots,(v_{k-1},v_k)$. Hence, the claim holds when $v$ is reachable from $s$.
+
+    By the predecessor-subgraph property (Lemma 24.17, CLRS), $G_\pi$ is a shortest-path tree.
+
+    Termination of the algorithm follows from the fact that the loop-counters of both loops are strictly increasing.
+\end{proof}
+
+Let us finalliy examine how Bellman-Ford detects negative cycle.
+
+\begin{theorem}[Correctness of Bellman-Ford (negative cycles)]
+    If $v.d$ for some vertex $v$ fails to converge after $|V|-1$ passes, then there exists a negative-weight cycle reachable from $s$.
+\end{theorem}
+
+\begin{proof}
+    After $|V|-1$ passes, if we find an edge that can be relaxed, it means that the current path from $s$ to some vertex is not simple and vertices are repeated on that path. Since this cyclic path has less weight than any simple path, the cycle must be a negative-weight cycle.
+\end{proof}
+
+The proofs give a clear picture of how the algorithm should look like.
+
+\begin{codebox}
+    \Procname{$\proc{Bellman-Ford}(G=(V,E),w,s)$}
+    \li \For $v \in V - \{s\}$ \Do
+        \li $v.d = \infty$
+        \li $\attrib{v}{parent} = \const{nil}$
+    \End
+    \li $s.d = 0$
+    \li \For $i = 0$ \To $|V|-1$ \Do
+        \li \For each edge $(u,v) \in E$ \Do
+            \li \If $v.d > u.d + w(u,v)$ \Then
+                \li $v.d = u.d + w(u,v)$
+                \li $\attrib{v}{parent} = u$
+            \End
+        \End
+    \End
+    \li \For each edge $(u,v) \in E$ \Do
+        \li \If $v.d > u.d + w(u,v)$ \Then
+            \li \Return negative cycle
+        \End
+    \End
+    \li \Return no negative cycle, $G_\pi$ 
+\end{codebox}
+Note that $G_\pi$ is constructed by following the parent pointer (if exists) of each vertex to $s$.
+
+As we alluded to earlier, this improved version of the Bellman-Ford algorithm runs in $O(|V|\cdot |E|)$ time.
+
+\section{Maximum Length Path Fails} \index{longest simple path} \index{traveling salesman problem}
+
+Bellman-Ford solves the single-source shortest path problem on a general graph efficiently. It is natual to ask if it is possible to find a \textbf{longest simple path} on scuh general graph. It might be tempting to simply modify the $\min$ dynamic programming function used Bellman-Ford to $\max$. Although this approach works find on a DAG, the algorithm does not guarantee that the resulting path is a simple path when run on a graph with cycles and the algorithm may get stuck in a positive cycle.
+
+This problem is NP-hard, for which no known polynomial-time algorithm exists. A special case of this problem is the Hamiltonian path problem: does a graph $G=(V,E)$ has a simple path of length $|V|-1$. The Hamiltonian path problem is a variant of the NP-hard \textbf{traveling salesman problem} (TSP).
 
 \section{All-Pairs Shortest Paths}
 

@@ -150,57 +150,59 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {10.1.1}Bellman-Ford}{57}{subsection.10.1.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {10.2}Maximum Length Path Fails}{57}{section.10.2}%
+\contentsline {section}{\numberline {10.2}Maximum Length Path Fails}{60}{section.10.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {10.3}All-Pairs Shortest Paths}{57}{section.10.3}%
+\contentsline {section}{\numberline {10.3}All-Pairs Shortest Paths}{61}{section.10.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {10.3.1}Matrix Multiplication}{57}{subsection.10.3.1}%
+\contentsline {subsection}{\numberline {10.3.1}Matrix Multiplication}{61}{subsection.10.3.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {10.3.2}Floyd-Warshall}{57}{subsection.10.3.2}%
+\contentsline {subsection}{\numberline {10.3.2}Floyd-Warshall}{61}{subsection.10.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {10.3.3}Johnson's Algorithm}{57}{subsection.10.3.3}%
+\contentsline {subsection}{\numberline {10.3.3}Johnson's Algorithm}{61}{subsection.10.3.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {10.4}Traveling Salesman Problem}{57}{section.10.4}%
+\contentsline {section}{\numberline {10.4}Traveling Salesman Problem}{61}{section.10.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {11}Bioinformatics}{59}{chapter.11}%
+\contentsline {chapter}{\numberline {11}Bioinformatics}{63}{chapter.11}%
 \defcounter {refsection}{0}\relax 
-\contentsline {part}{\@mypartnumtocformat {IV}{Network Flow}}{61}{part.4}%
+\contentsline {section}{\numberline {11.1}Edit Distance}{63}{section.11.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {part}{\@mypartnumtocformat {IV}{Network Flow}}{65}{part.4}%
 \ttl@stoptoc {default@3}
 \ttl@starttoc {default@4}
 \defcounter {refsection}{0}\relax 
-\contentsline {part}{\@mypartnumtocformat {V}{Complexity}}{63}{part.5}%
+\contentsline {part}{\@mypartnumtocformat {V}{Complexity}}{67}{part.5}%
 \ttl@stoptoc {default@4}
 \ttl@starttoc {default@5}
 \defcounter {refsection}{0}\relax 
-\contentsline {part}{\@mypartnumtocformat {VI}{Linear Programming}}{65}{part.6}%
+\contentsline {part}{\@mypartnumtocformat {VI}{Linear Programming}}{69}{part.6}%
 \ttl@stoptoc {default@5}
 \ttl@starttoc {default@6}
 \defcounter {refsection}{0}\relax 
-\contentsline {part}{\@mypartnumtocformat {VII}{Approximation Algorithms}}{67}{part.7}%
+\contentsline {part}{\@mypartnumtocformat {VII}{Approximation Algorithms}}{71}{part.7}%
 \ttl@stoptoc {default@6}
 \ttl@starttoc {default@7}
 \defcounter {refsection}{0}\relax 
-\contentsline {part}{\@mypartnumtocformat {VIII}{Randomized Algorithms}}{69}{part.8}%
+\contentsline {part}{\@mypartnumtocformat {VIII}{Randomized Algorithms}}{73}{part.8}%
 \ttl@stoptoc {default@7}
 \ttl@starttoc {default@8}
 \ttl@stoptoc {default@8}
 \ttl@starttoc {default@9}
 \defcounter {refsection}{0}\relax 
-\contentsline {part}{\setlength \fboxsep {0pt}\noindent \colorbox {ocre!40}{\strut \parbox [c][.7cm]{\linewidth }{\Large \sffamily \centering Appendix\hskip 1em\relax \mbox {}}}}{71}{section*.15}%
+\contentsline {part}{\setlength \fboxsep {0pt}\noindent \colorbox {ocre!40}{\strut \parbox [c][.7cm]{\linewidth }{\Large \sffamily \centering Appendix\hskip 1em\relax \mbox {}}}}{75}{section*.15}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\leavevmode {\color {ocre}Axioms \& Theorems}}{73}{appendix*.16}%
+\contentsline {chapter}{\leavevmode {\color {ocre}Axioms \& Theorems}}{77}{appendix*.16}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\leavevmode {\color {ocre}Basic Prerequisite Mathematics}}{77}{appendix*.21}%
+\contentsline {chapter}{\leavevmode {\color {ocre}Basic Prerequisite Mathematics}}{81}{appendix*.21}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\leavevmode {\color {ocre}Proof Templates}}{83}{appendix*.22}%
+\contentsline {chapter}{\leavevmode {\color {ocre}Proof Templates}}{87}{appendix*.22}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\leavevmode {\color {ocre}Index}}{93}{appendix*.23}%
+\contentsline {chapter}{\leavevmode {\color {ocre}Index}}{97}{appendix*.23}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\leavevmode {\color {ocre}Bibliography}}{95}{appendix*.24}%
+\contentsline {chapter}{\leavevmode {\color {ocre}Bibliography}}{99}{appendix*.24}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Courses}{95}{section*.25}%
+\contentsline {section}{Courses}{99}{section*.25}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Books}{95}{section*.26}%
+\contentsline {section}{Books}{99}{section*.26}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Journal Articles}{96}{section*.27}%
+\contentsline {section}{Journal Articles}{100}{section*.27}%
 \contentsfinish 
