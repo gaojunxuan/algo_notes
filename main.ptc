@@ -164,7 +164,11 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {11}Bioinformatics}{63}{chapter.11}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {11.1}Edit Distance}{63}{section.11.1}%
+\contentsline {section}{\numberline {11.1}Dynamic Programming in Computational Biology}{63}{section.11.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {11.2}Longest Common Subsequence}{63}{section.11.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {11.3}Edit Distance}{63}{section.11.3}%
 \defcounter {refsection}{0}\relax 
 \contentsline {part}{\@mypartnumtocformat {IV}{Network Flow}}{65}{part.4}%
 \ttl@stoptoc {default@3}
