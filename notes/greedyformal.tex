@@ -4,7 +4,7 @@ For a given problem, we assume that the input items belong to some set $\mathcal
 
 Let $f:\,\mathcal{J} \to \R$ be a function. We do not place restriction on the complexity or computability of such function. For an input set $\mathcal{I} = \{I_1,\ldots,I_n\}$, the function induces a total ordering $\preceq$ on $\mathcal{I}$, breaking ties using certain rules (for example, by input ID).
 
-For a fixed order priority algorithm, $f$ and $\preceq$ are set initially before the algorithm observes the input set. For adaptive order, the algorithm computes $f$ and $\preceq$ dynamically. More formally, there is a different function $f_i$ and ordering $\preceq_i$ associated with each iteration $i$ where $f_i$ and $\preceq$ depends on the items $\{I_1,\ldots,I_{j}\}$ considered in prior iterations $j < i$.
+For a fixed order priority algorithm, $f$ and $\preceq$ are set initially before the algorithm observes the input set. For adaptive order, the algorithm computes $f$ and $\preceq$ dynamically. More formally, there is a different function $f_i$ and ordering $\preceq_i$ associated with each iteration $i$ where $f_i$ and $\preceq$ depends on the items $\{I_1,\ldots,I_{j}\}$ considered in prior iterations $j < i$. 
 
 Let us first consider fixed order algorithm under this priority model. In each iteration $k$ for $1 \leq k \leq n$, the algorithm observes input element $I_k \in \mathcal{I}$ and based on this input and all previous inputs and decisions, the algorithm makes an irrevocable decision $D_k$ about this input item (this typically involves whether to include or discard the current item).
 
