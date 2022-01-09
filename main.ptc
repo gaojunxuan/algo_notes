@@ -1,236 +1,262 @@
 \boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
 \babel@toc {english}{}\relax 
 \defcounter {refsection}{0}\relax 
-\contentsline {part}{\@mypartnumtocformat {I}{Divide and Conquer}}{7}{part.1}%
+\contentsline {part}{\@mypartnumtocformat {I}{Divide and Conquer}}{9}{part.1}%
 \ttl@starttoc {default@1}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {1}Divide and Conquer Primer}{9}{chapter.1}%
+\contentsline {chapter}{\numberline {1}Divide and Conquer Primer}{11}{chapter.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1.1}Divide and Conquer Paradigm}{9}{section.1.1}%
+\contentsline {section}{\numberline {1.1}Divide and Conquer Paradigm}{11}{section.1.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1.2}The Master Theorem}{9}{section.1.2}%
+\contentsline {section}{\numberline {1.2}The Master Theorem}{11}{section.1.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1.3}Counting Inversions}{10}{section.1.3}%
+\contentsline {section}{\numberline {1.3}Counting Inversions}{12}{section.1.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1.4}Closest Pair}{11}{section.1.4}%
+\contentsline {section}{\numberline {1.4}Closest Pair}{13}{section.1.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1.5}Karatsuba's Integer Multiplication Algorithm}{12}{section.1.5}%
+\contentsline {section}{\numberline {1.5}Karatsuba's Integer Multiplication Algorithm}{14}{section.1.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {2}Strassen's Algorithm}{15}{chapter.2}%
+\contentsline {chapter}{\numberline {2}Strassen's Algorithm}{17}{chapter.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.1}Matrix Multiplication}{15}{section.2.1}%
+\contentsline {section}{\numberline {2.1}Matrix Multiplication}{17}{section.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.2}A Recursive Approach}{15}{section.2.2}%
+\contentsline {section}{\numberline {2.2}A Recursive Approach}{17}{section.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.3}Strassen's Algorithm}{16}{section.2.3}%
+\contentsline {section}{\numberline {2.3}Strassen's Algorithm}{18}{section.2.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {3}Fast Fourier Transform}{19}{chapter.3}%
+\contentsline {chapter}{\numberline {3}Fast Fourier Transform}{21}{chapter.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.1}Motivation}{19}{section.3.1}%
+\contentsline {section}{\numberline {3.1}Motivation}{21}{section.3.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.1.1}Coefficient Vector}{19}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.1}Coefficient Vector}{21}{subsection.3.1.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.1.2}Roots}{19}{subsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.1.2}Roots}{21}{subsection.3.1.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.1.3}Samples}{19}{subsection.3.1.3}%
+\contentsline {subsection}{\numberline {3.1.3}Samples}{21}{subsection.3.1.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.2}Operations on Polynomials}{20}{section.3.2}%
+\contentsline {section}{\numberline {3.2}Operations on Polynomials}{22}{section.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2.1}Coefficient Representation}{20}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.1}Coefficient Representation}{22}{subsection.3.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Evaluation}{20}{section*.2}%
+\contentsline {subsubsection}{Evaluation}{22}{section*.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Addition}{20}{section*.3}%
+\contentsline {subsubsection}{Addition}{22}{section*.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Multiplication}{21}{section*.4}%
+\contentsline {subsubsection}{Multiplication}{23}{section*.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2.2}Samples}{21}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.2}Samples}{23}{subsection.3.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Evaluation}{21}{section*.5}%
+\contentsline {subsubsection}{Evaluation}{23}{section*.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Addition}{21}{section*.6}%
+\contentsline {subsubsection}{Addition}{23}{section*.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Multiplication}{21}{section*.7}%
+\contentsline {subsubsection}{Multiplication}{23}{section*.7}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2.3}Roots}{22}{subsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.2.3}Roots}{24}{subsection.3.2.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Evaluation}{22}{section*.8}%
+\contentsline {subsubsection}{Evaluation}{24}{section*.8}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Addition}{22}{section*.9}%
+\contentsline {subsubsection}{Addition}{24}{section*.9}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Multiplication}{22}{section*.10}%
+\contentsline {subsubsection}{Multiplication}{24}{section*.10}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2.4}Summary}{22}{subsection.3.2.4}%
+\contentsline {subsection}{\numberline {3.2.4}Summary}{24}{subsection.3.2.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.3}Fast Fourier Transform}{23}{section.3.3}%
+\contentsline {section}{\numberline {3.3}Fast Fourier Transform}{25}{section.3.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3.1}Coefficient to Samples (and back)}{23}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.1}Coefficient to Samples (and back)}{25}{subsection.3.3.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3.2}Divide and Conquer}{23}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.2}Divide and Conquer}{25}{subsection.3.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3.3}Complex Roots of Unity}{24}{subsection.3.3.3}%
+\contentsline {subsection}{\numberline {3.3.3}Complex Roots of Unity}{26}{subsection.3.3.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3.4}The FFT Algorithm}{25}{subsection.3.3.4}%
+\contentsline {subsection}{\numberline {3.3.4}The FFT Algorithm}{27}{subsection.3.3.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.4}Inverse Fast Fourier Transform}{26}{section.3.4}%
+\contentsline {section}{\numberline {3.4}Inverse Fast Fourier Transform}{28}{section.3.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.5}Fast Polynomial Multiplication}{27}{section.3.5}%
+\contentsline {section}{\numberline {3.5}Fast Polynomial Multiplication}{29}{section.3.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {part}{\@mypartnumtocformat {II}{Greedy Algorithms}}{29}{part.2}%
+\contentsline {part}{\@mypartnumtocformat {II}{Greedy Algorithms}}{31}{part.2}%
 \ttl@stoptoc {default@1}
 \ttl@starttoc {default@2}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {4}Interval Scheduling}{31}{chapter.4}%
+\contentsline {chapter}{\numberline {4}Interval Scheduling}{33}{chapter.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.1}Interval Scheduling}{31}{section.4.1}%
+\contentsline {section}{\numberline {4.1}Interval Scheduling}{33}{section.4.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.2}Proving Optimality}{33}{section.4.2}%
+\contentsline {section}{\numberline {4.2}Proving Optimality}{35}{section.4.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.3}Interval Coloring (Interval Partition)}{35}{section.4.3}%
+\contentsline {section}{\numberline {4.3}Interval Coloring (Interval Partition)}{37}{section.4.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.4}Greedy Strategy}{36}{section.4.4}%
+\contentsline {section}{\numberline {4.4}Greedy Strategy}{38}{section.4.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}Graph Algorithms Using Greedy}{39}{chapter.5}%
+\contentsline {chapter}{\numberline {5}Graph Algorithms Using Greedy}{41}{chapter.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.1}Interval Scheduling as Graph Problems}{39}{section.5.1}%
+\contentsline {section}{\numberline {5.1}Interval Scheduling as Graph Problems}{41}{section.5.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.2}Minimum Spanning Tree}{39}{section.5.2}%
+\contentsline {section}{\numberline {5.2}Minimum Spanning Tree}{41}{section.5.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.2.1}Kruskal's Algorithm}{39}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.1}Kruskal's Algorithm}{41}{subsection.5.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.2.2}Prim's Algorithm}{39}{subsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.2.2}Prim's Algorithm}{41}{subsection.5.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.3}Single-Source Shortest Path}{39}{section.5.3}%
+\contentsline {section}{\numberline {5.3}Single-Source Shortest Path}{41}{section.5.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.3.1}Dijkstra's Algorithm}{39}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.1}Dijkstra's Algorithm}{41}{subsection.5.3.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {6}Huffman Encoding}{41}{chapter.6}%
+\contentsline {chapter}{\numberline {6}Huffman Encoding}{43}{chapter.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {7}Generalizing and Formalizing Greedy Algorithms}{43}{chapter.7}%
+\contentsline {chapter}{\numberline {7}Generalizing and Formalizing Greedy Algorithms}{45}{chapter.7}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7.1}Priority Model}{43}{section.7.1}%
+\contentsline {section}{\numberline {7.1}Priority Model}{45}{section.7.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7.2}Global Optimality of Greedy Algorithms}{44}{section.7.2}%
+\contentsline {section}{\numberline {7.2}Global Optimality of Greedy Algorithms}{46}{section.7.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {part}{\@mypartnumtocformat {III}{Dynamic Programming}}{47}{part.3}%
+\contentsline {part}{\@mypartnumtocformat {III}{Dynamic Programming}}{49}{part.3}%
 \ttl@stoptoc {default@2}
 \ttl@starttoc {default@3}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {8}Weighted Interval Selection}{49}{chapter.8}%
+\contentsline {chapter}{\numberline {8}Weighted Interval Selection}{51}{chapter.8}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {8.1}Dynamic Programming}{49}{section.8.1}%
+\contentsline {section}{\numberline {8.1}Dynamic Programming}{51}{section.8.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {8.2}Weighted Interval Selection}{49}{section.8.2}%
+\contentsline {section}{\numberline {8.2}Weighted Interval Selection}{51}{section.8.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {8.3}Computing the Optimal Weight}{49}{section.8.3}%
+\contentsline {section}{\numberline {8.3}Computing the Optimal Weight}{51}{section.8.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {8.3.1}The Dynamic Programming Approach}{49}{subsection.8.3.1}%
+\contentsline {subsection}{\numberline {8.3.1}The Dynamic Programming Approach}{51}{subsection.8.3.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {8.3.2}Top-Down DP}{51}{subsection.8.3.2}%
+\contentsline {subsection}{\numberline {8.3.2}Top-Down DP}{53}{subsection.8.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {8.3.3}Bottom-Up DP}{51}{subsection.8.3.3}%
+\contentsline {subsection}{\numberline {8.3.3}Bottom-Up DP}{53}{subsection.8.3.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {8.3.4}Comparison of Two Approaches}{52}{subsection.8.3.4}%
+\contentsline {subsection}{\numberline {8.3.4}Comparison of Two Approaches}{54}{subsection.8.3.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {8.4}Computing the Optimal Solution}{52}{section.8.4}%
+\contentsline {section}{\numberline {8.4}Computing the Optimal Solution}{54}{section.8.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {9}Knapsack Problem}{53}{chapter.9}%
+\contentsline {chapter}{\numberline {9}Knapsack Problem}{55}{chapter.9}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {9.1}Knapsack}{53}{section.9.1}%
+\contentsline {section}{\numberline {9.1}Knapsack}{55}{section.9.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {9.2}DP Algorithm for 0-1 Knapsack}{53}{section.9.2}%
+\contentsline {section}{\numberline {9.2}DP Algorithm for 0-1 Knapsack}{55}{section.9.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {9.3}A Different DP Algorithm}{54}{section.9.3}%
+\contentsline {section}{\numberline {9.3}A Different DP Algorithm}{56}{section.9.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {9.4}FPTAS Approximation for Knapsack}{54}{section.9.4}%
+\contentsline {section}{\numberline {9.4}FPTAS Approximation for Knapsack}{56}{section.9.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {10}Graph Algorithms Using DP}{57}{chapter.10}%
+\contentsline {chapter}{\numberline {10}Graph Algorithms Using DP}{59}{chapter.10}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {10.1}Single-Source Shortest Path}{57}{section.10.1}%
+\contentsline {section}{\numberline {10.1}Single-Source Shortest Path}{59}{section.10.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {10.1.1}Bellman-Ford}{57}{subsection.10.1.1}%
+\contentsline {subsection}{\numberline {10.1.1}Bellman-Ford}{59}{subsection.10.1.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {10.2}Maximum Length Path Fails}{60}{section.10.2}%
+\contentsline {section}{\numberline {10.2}Maximum Length Path Fails}{62}{section.10.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {10.3}All-Pairs Shortest Paths}{61}{section.10.3}%
+\contentsline {section}{\numberline {10.3}All-Pairs Shortest Paths}{63}{section.10.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {10.3.1}Matrix Multiplication}{61}{subsection.10.3.1}%
+\contentsline {subsection}{\numberline {10.3.1}Matrix Multiplication}{63}{subsection.10.3.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {10.3.2}Floyd-Warshall}{61}{subsection.10.3.2}%
+\contentsline {subsection}{\numberline {10.3.2}Floyd-Warshall}{63}{subsection.10.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {10.3.3}Johnson's Algorithm}{61}{subsection.10.3.3}%
+\contentsline {subsection}{\numberline {10.3.3}Johnson's Algorithm}{63}{subsection.10.3.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {10.4}Traveling Salesman Problem}{61}{section.10.4}%
+\contentsline {section}{\numberline {10.4}Traveling Salesman Problem}{63}{section.10.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {11}Bioinformatics}{63}{chapter.11}%
+\contentsline {chapter}{\numberline {11}Bioinformatics}{65}{chapter.11}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {11.1}Dynamic Programming in Computational Biology}{63}{section.11.1}%
+\contentsline {section}{\numberline {11.1}Dynamic Programming in Computational Biology}{65}{section.11.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {11.2}Longest Common Subsequence}{63}{section.11.2}%
+\contentsline {section}{\numberline {11.2}Longest Common Subsequence}{65}{section.11.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {11.3}Edit Distance}{63}{section.11.3}%
+\contentsline {section}{\numberline {11.3}Edit Distance}{65}{section.11.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {part}{\@mypartnumtocformat {IV}{Network Flow}}{65}{part.4}%
+\contentsline {part}{\@mypartnumtocformat {IV}{Network Flow}}{67}{part.4}%
 \ttl@stoptoc {default@3}
 \ttl@starttoc {default@4}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {12}Ford-Fulkerson}{67}{chapter.12}%
+\contentsline {chapter}{\numberline {12}Ford-Fulkerson}{69}{chapter.12}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {12.1}Flow Network}{67}{section.12.1}%
+\contentsline {section}{\numberline {12.1}Flow Network}{69}{section.12.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {12.1.1}Definitions}{67}{subsection.12.1.1}%
+\contentsline {subsection}{\numberline {12.1.1}Definitions}{69}{subsection.12.1.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {12.1.2}Antiparallel Edges and Multiple Sources/Sinks}{68}{subsection.12.1.2}%
+\contentsline {subsection}{\numberline {12.1.2}Antiparallel Edges and Multiple Sources/Sinks}{70}{subsection.12.1.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {12.2}Ford-Fulkerson Method}{68}{section.12.2}%
+\contentsline {section}{\numberline {12.2}Ford-Fulkerson Method}{70}{section.12.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {12.2.1}Idea Behind Ford-Fulkerson}{69}{subsection.12.2.1}%
+\contentsline {subsection}{\numberline {12.2.1}Idea Behind Ford-Fulkerson}{71}{subsection.12.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {12.3}Correctness of Ford-Fulkerson}{69}{section.12.3}%
+\contentsline {section}{\numberline {12.3}Correctness of Ford-Fulkerson}{71}{section.12.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {12.3.1}Residue Network and Augmentation}{69}{subsection.12.3.1}%
+\contentsline {subsection}{\numberline {12.3.1}Residue Network and Augmentation}{71}{subsection.12.3.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {12.3.2}Augmenting Paths}{71}{subsection.12.3.2}%
+\contentsline {subsection}{\numberline {12.3.2}Augmenting Paths}{73}{subsection.12.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {12.3.3}Max-Flow Min-Cut Theorem}{72}{subsection.12.3.3}%
+\contentsline {subsection}{\numberline {12.3.3}Max-Flow Min-Cut Theorem}{74}{subsection.12.3.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {13}Edmonds-Karp Algorithm}{77}{chapter.13}%
+\contentsline {chapter}{\numberline {13}Edmonds-Karp Algorithm}{79}{chapter.13}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {14}Maximum Bipartite Matching}{79}{chapter.14}%
+\contentsline {chapter}{\numberline {14}Maximum Bipartite Matching}{81}{chapter.14}%
 \defcounter {refsection}{0}\relax 
-\contentsline {part}{\@mypartnumtocformat {V}{Complexity}}{81}{part.5}%
+\contentsline {part}{\@mypartnumtocformat {V}{Complexity}}{83}{part.5}%
 \ttl@stoptoc {default@4}
 \ttl@starttoc {default@5}
 \defcounter {refsection}{0}\relax 
-\contentsline {part}{\@mypartnumtocformat {VI}{Linear Programming}}{83}{part.6}%
+\contentsline {part}{\@mypartnumtocformat {VI}{Linear Programming}}{85}{part.6}%
 \ttl@stoptoc {default@5}
 \ttl@starttoc {default@6}
 \defcounter {refsection}{0}\relax 
-\contentsline {part}{\@mypartnumtocformat {VII}{Approximation Algorithms}}{85}{part.7}%
+\contentsline {chapter}{\numberline {15}Linear Programming}{87}{chapter.15}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {15.1}Linear Programming Optimization}{87}{section.15.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {15.2}Standard and Slack Forms}{88}{section.15.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {15.2.1}Standard Form}{88}{subsection.15.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {15.2.2}Conversion From Non-standard Form to Standard Form}{89}{subsection.15.2.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {15.2.3}Slack Form}{89}{subsection.15.2.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {16}Simplex Algorithm for LP}{91}{chapter.16}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {16.1}Geometric Intuition}{91}{section.16.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {16.2}Pivoting}{91}{section.16.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {16.3}Simplex Algorithm}{91}{section.16.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {16.4}Duality and Certificate of Optimality}{91}{section.16.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {17}Linear Programming Problems}{93}{chapter.17}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {18}Integer Programming}{95}{chapter.18}%
+\defcounter {refsection}{0}\relax 
+\contentsline {part}{\@mypartnumtocformat {VII}{Approximation Algorithms}}{97}{part.7}%
 \ttl@stoptoc {default@6}
 \ttl@starttoc {default@7}
 \defcounter {refsection}{0}\relax 
-\contentsline {part}{\@mypartnumtocformat {VIII}{Randomized Algorithms}}{87}{part.8}%
+\contentsline {part}{\@mypartnumtocformat {VIII}{Randomized Algorithms}}{99}{part.8}%
 \ttl@stoptoc {default@7}
 \ttl@starttoc {default@8}
 \ttl@stoptoc {default@8}
 \ttl@starttoc {default@9}
 \defcounter {refsection}{0}\relax 
-\contentsline {part}{\setlength \fboxsep {0pt}\noindent \colorbox {ocre!40}{\strut \parbox [c][.7cm]{\linewidth }{\Large \sffamily \centering Appendix\hskip 1em\relax \mbox {}}}}{89}{section*.17}%
+\contentsline {part}{\setlength \fboxsep {0pt}\noindent \colorbox {ocre!40}{\strut \parbox [c][.7cm]{\linewidth }{\Large \sffamily \centering Appendix\hskip 1em\relax \mbox {}}}}{101}{section*.18}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\leavevmode {\color {ocre}Axioms \& Theorems}}{91}{appendix*.18}%
+\contentsline {chapter}{\leavevmode {\color {ocre}Axioms \& Theorems}}{103}{appendix*.19}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\leavevmode {\color {ocre}Basic Prerequisite Mathematics}}{95}{appendix*.23}%
+\contentsline {chapter}{\leavevmode {\color {ocre}Basic Prerequisite Mathematics}}{107}{appendix*.24}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\leavevmode {\color {ocre}Proof Templates}}{101}{appendix*.24}%
+\contentsline {chapter}{\leavevmode {\color {ocre}Proof Templates}}{113}{appendix*.25}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\leavevmode {\color {ocre}Index}}{111}{appendix*.25}%
+\contentsline {chapter}{\leavevmode {\color {ocre}Index}}{123}{appendix*.26}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\leavevmode {\color {ocre}Bibliography}}{113}{appendix*.26}%
+\contentsline {chapter}{\leavevmode {\color {ocre}Bibliography}}{125}{appendix*.27}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Courses}{113}{section*.27}%
+\contentsline {section}{Courses}{125}{section*.28}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Books}{113}{section*.28}%
+\contentsline {section}{Books}{125}{section*.29}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Journal Articles}{114}{section*.29}%
+\contentsline {section}{Journal Articles}{126}{section*.30}%
 \contentsfinish 

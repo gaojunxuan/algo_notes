@@ -80,7 +80,7 @@ The table below summarizes some of the common implementation of the Ford-Fulkers
 
 The idea behind Ford-Fulkerson is quite simple. For each iteration of the algorithm, we find a path from $s$ to $t$, increase the flow along the path until we hit a bottleneck at one of the edges on the path (the edge with the smallest remaining capacity). This is called augmenting flow, and the path is called augmenting path. When augmenting the flow along the augmenting path, we may also want to decrease the flow along each residue (i.e. reverse) edge so that we can ``undo'' bad augmentation choices. We will show that when the algorithm terminates, it correctly returns the max-flow.
 
-Note that this is more precisely, only the partial correctness. Surprisingly, depending on the implementation and capacities, the algorithm may not terminate. In particular, the Ford-Fulkerson method may fail to terminate if edge capacities are irrational.
+Note that this is more precisely, only the partial correctness. Surprisingly, depending on the implementation and capacities, the algorithm may not terminate. In particular, the Ford-Fulkerson method may fail to terminate if edge capacities are irrational \cite{Zwick-FF-Example}. In his 1993 paper, Zwick showed a minimal example flow network (with 6 vertices and 8 edges) on which Ford-Fulkerson fails to terminate.
 
 \begin{codebox}
     \Procname{$\proc{Ford-Fulkerson}(G,s,t)$}
@@ -276,7 +276,7 @@ A \textbf{minimum cut} is a cut whose capacity is minimum over all cuts of the f
     \end{aligned}
     $$ 
 \end{proof}
-This proof is inspried by the proof presented in the second edition of CLRS. The proof in the third edition employs a more rigorous argument using properties of summation, but I personally find it less intuitive.
+This proof is inspired by the proof presented in the second edition of CLRS. The proof in the third edition employs a more rigorous argument using properties of summation, but I personally find it less intuitive.
 
 A corollary to this lemma shows that cut capacity can be used to bound the value of a flow.
 
@@ -290,8 +290,8 @@ A corollary to this lemma shows that cut capacity can be used to bound the value
     \begin{aligned}
         |f| = f(S,T) &= \sum_{u \in S}\sum_{v \in T}f(u,v) - \sum_{u \in S}\sum_{v \in T}f(v,u) \\
         &\leq \sum_{u \in S}\sum_{v \in T}f(u,v) \\
-        &\leq \sum_{u \in S}\sum_{v \in T} c(u,v) & \text{capacity constraint} & \text{definition} \\
-        &= c(S,T)
+        &\leq \sum_{u \in S}\sum_{v \in T} c(u,v) & \text{capacity constraint} \\
+        &= c(S,T) & \text{definition}
     \end{aligned}
     $$
 \end{proof}
@@ -317,4 +317,22 @@ Now we finally have everything we need to prove the max-flow min-cut theorem. We
     (3) $\Rightarrow$ (1): Assume (3) holds. Then, there exists a cut $(S,T)$ such that $|f| = c(S,T)$. By Corollary \ref{corollary:flow-upper-bound}, $|f| \leq c(S,T)$. This implies that every other flow has value less than $f$, so $f$ is a maximum flow.
 \end{proof}
 
-This theorem shows that if Ford-Fulkerson terminates, then the resulting flow is the maximum flow.
+This theorem shows that if Ford-Fulkerson terminates, then the resulting flow is the maximum flow. The proof of correctness also suggests the following algorithm that elaborates on the Ford-Fulkerson method outline described earlier.
+
+\begin{codebox}
+    \Procname{$\proc{Ford-Fulkerson}(G=(V,E),s,t)$}
+    \li \For each $(u,v) \in E$ \Do
+        \li $(u,v).f = 0$ \RComment{initialize flow to 0}
+    \End
+    \li \While there exists a path $p$ from $s$ to $t$ in the residue network $G_f$ \Do
+        \li $c_f(p) = \min \{c_f(u,v) \mid \text{$(u,v)$ is on $p$} \}$ \RComment{residue capacity of path $p$}
+        \li \For each $(u,v)$ on $p$ \Do \RComment{augment flow}
+            \li \If $(u,v) \in E$ \Then
+                \li $(u,v).f = (u,v).f + c_f(p)$
+            \li \Else $(v,u).f = (v,u).f - c_f(p)$
+            \End
+        \End
+    \End
+\end{codebox}
+
+The runtime of Ford-Fulkerson's algorithm/method depends on the way we implement the procedure for finding augmenting path $p$. In the next chapter, we will look at Edmonds-Karp's algorithm, which implements this operation using BFS.
