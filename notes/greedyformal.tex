@@ -61,3 +61,38 @@ Most greedy algorithms are not opitmal. The method we use to show that a greedy 
 \end{itemize}
 
 For most greedy algorithms, when it ends, it has constructed a solution that cannot be extended to any solution other than itself. Therefore, if we have proven the above, we know that the solution constructed by the greedy algorithm must be optimal.
+
+\section{Greedy v.s. DP}
+
+In the next part, we will examine dynamic programming, which is another powerful algorithm design paradigm for solving many optimization problem. In fact, greedy and dynamic programming shares a lot of similarities, especially in the sense that both approaches exploit the optimal substructure property where the globally optimal solution can be constructed from optimal solutions of its subproblems.
+
+Unlike greedy, which makes the locally optimal choice, dynamic programming solves potentially overlapping subproblems and makes an informed choice.
+
+The major differences can be summarized using this chart
+
+\begin{table}[htbp]
+    \centering\begin{tabular}{p{0.18\textwidth}|p{0.3\textwidth}|p{0.3\textwidth}}
+        & Greedy & DP \\
+        \hline
+        Decision & starts from minimal subproblem, construct solution based on best option for the current step & starts from minimal subproblem, recursively construct solution based on all previously considered subproblems; use memoization for overlapping subproblems \\
+        \hline
+        Optimality & not necessarily & yes \\
+        \hline
+        Space complexity & better & requires an array to store solutions previously considered subproblems \\
+        \hline
+        Time complexity & usually better & usually polynomial \\
+        \hline
+        Examples & Kruskal and Prim; Dijkstra; interval scheduling (selection) and partition (coloring) & Bellman-Ford; 0-1 knapsack; longest common subsequence
+    \end{tabular}
+    \caption{Differences between greedy and dynamic programming}
+    \label{tab:greedy-vs-dp}
+\end{table}
+
+Another way to view greedy and dynamic programming is to consider the problem and the possible solutions as a set and compare how the two approaches reduce the size of problem and narrow down the solution space. This is an illustration that I came up completely by myself. Although it seems to make sense, it is not presented in any research articles or texts. It should only be used as an intuition to understand the similarity and differences of the two approaches and should not in any way be considered a rigorous formulation or analysis.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\linewidth]{dp/dp-vs-greedy.pdf}
+    \caption{Another way to view the differences between greedy and DP. The rectangle represents the overall problem. Shaded region of the rectangle represents the subproblems being considered, and heavily shaded regions of the rectangle represent the subproblems that have already been solved. Note that greedy expands the solution (and reduces the size of the problem remaining) by looking at the locally optimal choice without going back; while DP often involves overlapping subproblems where a subproblem or subproblems can be contained within another subproblem (this is why memoization is important for DP).}
+    \label{fig:greedy-vs-dp-set}
+\end{figure}

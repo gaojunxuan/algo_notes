@@ -336,3 +336,14 @@ This theorem shows that if Ford-Fulkerson terminates, then the resulting flow is
 \end{codebox}
 
 The runtime of Ford-Fulkerson's algorithm/method depends on the way we implement the procedure for finding augmenting path $p$. In the next chapter, we will look at Edmonds-Karp's algorithm, which implements this operation using BFS.
+
+\section{Irrational Capacity}
+
+The Ford-Fulkerson method may fail to terminate on a flow network with irrational capacities. We will present an example of such network, first discovered by Zwick in 1993 \cite{Zwick-FF-Example}.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\linewidth]{maxflow/ff-counterexample.pdf}
+    \caption{3 augmenting paths for the nonterminating example}
+    \label{fig:ff-counterexample-augment-path}
+\end{figure}

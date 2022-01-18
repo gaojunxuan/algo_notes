@@ -93,3 +93,76 @@ We call the variables on the left-hand side of the equality constraints the \tex
 Similarly, a slack from can be concisely defined by a tuple $(N,B,\mathbf{A},\mathbf{b},\mathbf{c},v)$, where $N$ is the set of indices of the non-basic variables, $B$ is the set of indices of the basic variables such that $|N| = n$, $|B|=m$ and $N \cup B = \{1,2,\ldots,n+m\}$.
 
 It is called the slack from because the variable $s_i$ (or in vectorized form $\mathbf{s}$) measures remaining ``slack'' or difference between two sides of the original inequality constraints. This is related to the simplex algorithm where we increase the non-basic variables as much as possible until we hit a bottleneck -- having no more slack for that non-basic variable.
+
+\section{Geometry of Linear Programming}
+
+Consider the following system of inequalities
+$$
+\begin{aligned}
+    x_1 + x_2 + x_3 &\leq 1 \\
+    x_1,x_2,x_3 &\geq 0
+\end{aligned}
+$$
+This is the type of inequalities that we often encounter in linear programming problems. The points that satisfy these inequalities forms a 3D polytope.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.4\linewidth]{lp/3d-polytope.pdf}
+    \caption{A 3D polytope.}
+    \label{fig:3d-polytope}
+\end{figure}
+
+\subsection{Hyperplane and Halfspace} \index{hyperplane} \index{halfspace} \index{supporting hyperplane}
+In general, the set $\{ x \in \R^n \mid a^\top x = b \}$ is called a hyperplane. For all lines in the \textbf{hyperplane} $H = \{ x \in \R^n \mid a^\top = b \}$ that intersects the line $\ell = \{ta \mid t \in \R\}$, the line is also perpendicular to $\ell$. As a simple example, consider the two-dimensional case where $a = [1\;\;-1]^\top$.
+
+The set $\{ \mathbf{x} \in \R^n \mid \mathbf{a}^\top \mathbf{x} \leq b \}$ is called a \textbf{halfspace}, and $\{ \mathbf{x} \in \R^n \mid \mathbf{a}^\top \mathbf{x} = b \}$ is called the \textbf{supporting hyperplane}.
+
+\subsection{Polyhedron and Polytope} \index{polyhedron} \index{polytope} \index{face} \index{facet}
+
+A set that is the intersection of halfspaces is called a \textbf{polyhedron}. A polyhedron can be defined as $\{x \in \R^n \mid \mathbf{A}\mathbf{x} \leq \mathbf{b} \}$ for some matrix $\mathbf{A}$ and vector $\mathbf{b}$.
+
+A polyhedron $P \subseteq \R^n$ is unbounded if there exists a point $\mathbf{x} \in P$ and a direction $\mathbf{v} \in \R^n$ such that for every $t \geq 0$, $\mathbf{x} + t \mathbf{v} \in P$. If a polyhedron is bounded, we call it a \textbf{polytope}.
+
+A \textbf{face} of a polyhedron $P = \{\mathbf{x} \in \R^n \mid \mathbf{A}\mathbf{x} \leq \mathbf{b} \}$ is a set $F = \{ \mathbf{x} \in \R^n \mid \mathbf{A}\mathbf{x} \leq b \} \cap \{ \mathbf{x} \in \R^n \mid \forall i \in S.\, \mathbf{a}_i \mathbf{x} = \mathbf{b}_i \}$ where $\mathbf{a}_i$ is a row vector denoting the $i$th row of matrix $\mathbf{A}$, and $S$ is some subset of the rows of $\mathbf{A}$. Intuitively, a face of a polyhedron is just one of its surface.
+
+Assuming that $F \neq \emptyset$, we define $S_F$ to be the set of all $i \in S$ such that $\mathbf{a}_i \mathbf{x} = \mathbf{b}_i$ for all $\mathbf{x} \in F$ (we can intutively think this as the rows of constraints that created the face $F$). Let $\mathbf{A}_F$ be the submatrix of $\mathbf{A}$ containing rows of $A$ indexed by $S_F$. If the rank of $\mathbf{A}_F$ is $n-j$, we say $F$ is a face of \textbf{dimension} $j$, or a $j$-face. The dimension of a polytope can be defined similarly. Faces of dimension one lower than the dimension of $P$ are called \textbf{facets}, faces of dimension 1 are called \textbf{edges}, faces of dimension 0 are called \textbf{vertices}.
+
+\subsection{Convex Hull}
+
+A polytope can be determined by its vertices.
+
+\begin{definition}[Convex Hull] \index{convex hull}
+    The convex hull of the points $\mathbf{v}_1,\ldots,\mathbf{v}_n \in \R^n$ is defined as the set
+    $$
+    \mathrm{conv} \{\mathbf{v}_1,\ldots,\mathbf{v}_n\} = \{ \lambda_1 \mathbf{v}_1 + \cdots + \lambda_n \mathbf{v}_n \mid \forall i \in \{1,\ldots,n\}.\, \lambda_i \geq 0,\; \lambda_1+\cdots+\lambda_n = 1 \}
+    $$
+\end{definition}
+
+\begin{theorem} \label{thm:convex-hull-polytope}
+    A polytope $P$ with vertices $\mathbf{v}_1 \ldots \mathbf{v}_n$ is equal to the convex hull of the vertices.
+    $$
+    P = \mathrm{conv} \{\mathbf{v}_1,\ldots,\mathbf{v}_n\}
+    $$
+\end{theorem}
+
+\begin{proof}
+    TODO. (by showing $\mathrm{conv} \{\mathbf{v}_1,\ldots,\mathbf{v}_n\} \subseteq P$ and $P \subseteq \mathrm{conv} \{\mathbf{v}_1,\ldots,\mathbf{v}_n\}$)
+\end{proof}
+
+An important implication of Theorem \ref{thm:convex-hull-polytope} is that we can always find an optimal solution to a linear program at a vertex of the feasible region. This will become the basis of the simplex algorithm in the coming chapter.
+
+\begin{theorem}[Foundamental Theorem of Linear Programming]
+    If $\max \{ \mathbf{c}^\top \mathbf{x} \in \R \mid \mathbf{A}\mathbf{x} \leq \mathbf{b},\, \mathbf{x} \geq \textbf{0} \}$ is a linear program whose feasible region $\{ \mathbf{x} \in \R^n \mid \mathbf{A}\mathbf{x} \leq \mathbf{b},\, \mathbf{x} \geq \textbf{0} \}$ is a polytope, then the linear program has an optimal solution at a vertex of $P$.
+\end{theorem}
+
+\begin{proof}
+    Let $\mathbf{x}$ be an optimal solution to the linear program. By Theorem \ref{thm:convex-hull-polytope}, $\mathbf{x}$ can be expressed as a convex combination.
+    $$
+    \lambda_1 \mathbf{v}_1 + \cdots + \lambda_n \mathbf{v}_n \quad \forall i \in \{1,\ldots,n\}.\, \lambda_i \geq 0,\; \lambda_1+\cdots+\lambda_n = 1
+    $$
+    where $\mathbf{v}_1,\ldots,\mathbf{v}_n$ are the vertices of $P$. It follows by substitution that
+    $$
+    \mathbf{c}^\top \mathbf{x} = \mathbf{c}^\top \lambda_1 \mathbf{v}_1 + \cdots + \mathbf{c}^\top \lambda_n \mathbf{v}_n \leq  \lambda_1 \max_{i=1}^n (\mathbf{c}^\top \mathbf{v}_i) + \cdots + \lambda_n \max_{i=1}^n (\mathbf{c}^\top \mathbf{v}_i) = \max_{i=1}^n (\mathbf{c}^\top \mathbf{v}_i)
+    $$
+    Therefore, a maximum of $\mathbf{c}^\top \mathbf{v}_i$ is also a maximum of $\mathbf{c}^\top \mathbf{x}$.
+\end{proof}

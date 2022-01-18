@@ -190,10 +190,114 @@ The proofs in this section are based on the papers \textit{Incidence matrices an
 
 \section{Minimum Spanning Tree}
 
-\subsection{Kruskal's Algorithm}
+A tree $(V,T)$ is a connected graph with no cycles (connected acyclic graph). Every node is reachable from every other node in exactly one way. If $(V,T)$ is connected, then $(V,T)$ is acyclic if and only if $|T| = |V|-1$.
 
-\subsection{Prim's Algorithm}
+\begin{definition}[Spanning Forest and Spanning Tree] \index{spanning forest} \index{spanning tree}
+    Let $G = (V,E)$ be an undirected graph. A spanning forest of $G = (V,E)$ is an acyclic graph $(V,F)$ with $F \subseteq E$. It is a set of tree on disjoint sets of vertices.
+
+    A spanning tree of $G$ is a connected spanning forest of $G$. It contains $|V| - 1$ edges.
+\end{definition}
+
+Kruskal's algorithm for MST proceeds by interatively merging subtrees of the input graph by picking the minimum weighted edge between the two subtrees. Prim's algorithm proceeds by starting from a single vertex and iteratively growing a tree from the vertex, again, by picking the minimum weighted edge as we expand the growing frontier of the current subtree.
+
+\subsection{Kruskal's Algorithm} \index{Kruskal's algorithm}
+
+\begin{codebox}
+    \Procname{$\proc{Kruskal}(V,w)$}
+    \li $A =  \emptyset$
+    \li $Q = \proc{Priority-Queue}(\text{all edges $e$ where priority is $w(e)$})$
+    \li \For $v \in V$ \Do
+        \li $\proc{Make-Set}(v)$
+        \End
+    \li \While $|A| < n-1$ \Do 
+        \li $\{u,v\} = \proc{Extract-Min}(Q)$ 
+        \li $u' = \proc{Find-Set}(u)$
+        \li $v' = \proc{Find-Set}(v)$
+        \li \Comment{if $u$ and $v$ are in different components of $(V,A)$}
+        \li \If $u' \neq v'$  \Then
+            \li add $\{u,v\}$ to $A$ 
+            \li $\proc{Link}(u',v')$
+        \End
+    \End
+    \li \Return $(V,A)$ 
+\end{codebox}
+
+The optimality of Kruskal's algorithm can be proved using an exchange argument similar to the one that we used for the interval selection (job scheduling) problem.
+
+\begin{theorem}[Correctness of Kruskal's Algorithm]
+    If $G=(V,E)$ is a undirected connected graph with weight function $w:\,E \to \R$, when we run $\proc{Kruskal}$ on $G$, the algorithm returns a minimum spanning tree $(V,A)$.
+\end{theorem}
+
+\begin{proof}
+    Let $A_i$ be the set of edges in $A$ after the $i$th iteration of the outer loop at Line 5. We will prove by induction the claim that for all $i \in \{0,\ldots,n-1\}$, there exists a set $T_i \subseteq \{e_{i+1},\ldots,e_n\}$ ordered by the weight of its elements, such that $A_i \cup T_i \subseteq A_{opt} \subseteq A_i \cup \{e_{i+1},\ldots,e_n\}$ where $A_{opt}$ is an optimal solution.
+
+    \textbf{Base case}: When $i = 0$, $A_0 = \emptyset$. Since the graph is connected, there must exists a minimum spanning tree $A_{opt}$ and $A_0 \subseteq A_{opt} \subseteq A_0 \cup \{e_{i+1},\ldots,e_n\}$.
+
+    \textbf{Inductive step}: Let $i \in \N$ be arbitrary. Suppose that the claim holds for $i$. This means $A_i \subseteq A_{opt} \subseteq A_i \cup \{e_{i+1},\ldots, e_n\}$. Let $e_{i+1} = \{u,v\}$ be the edge with $(i+1)$th smallest weight. Consider the following cases:
+
+    (1) Adding $e_{i+1} = \{u,v\}$ forms a cycle. In this case, $e_{i+1}$ is not added to $A$ and $A_{i+1} = A_{i} \subseteq A_{opt} \subseteq A_i \cup \{e_{i+2},\ldots, e_n\}$.
+
+    (2) Adding $e_{i+1} = \{u,v\}$ does not form a cycle and $e_{i+1} \in A_{opt}$. In this case, $e_{i+1}$ is added to $A$. $A_{i+1} = A_i \cup \{e_{i+1}\}$. But since $e_{i+1}$ is already in $A_{opt}$, $A_{i+1} = A_i \cup \{e_{i+1}\} \subseteq A_{opt} \cup \{e_{i+1}\} = A_{opt} \subseteq A_i \cup \{e_{i+2},\ldots,e_n\}$.
+
+    (3) Adding $e_{i+1} = \{u,v\}$ does not form a cycle and $e_{i+1} \not\in A_{opt}$. $e_{i+1}$ is added to $A$. Since $A_{opt}$ is a spanning tree, it covers every vertices in $V$ so adding $e_{i+1}$ to $A_{opt}$ forms a cycle between $u$ and $v$. This implies that there exists an edge $e_j \in A_{opt} - A_{i+1}$ on the cycle since $A_{i+1}$ is acyclic. Removing $e_j$ from $A_{opt} \cup e_{i+1}$ breaks the cycle, and $A_{opt}' = A_{opt} - \{e_j\} \cup \{e_{i+1}\}$ is a spanning tree. Since $A_{opt} \subseteq \{e_{i+1},\ldots,e_n\}$ by inductive hypothesis, and $e_{i+1} \not\in A_{opt}$, we have $j > i+1$. Because $\{e_{i+1},\ldots,e_n\}$ is sorted in nondecreasing order by edge weight, we can conclude that $w(e_{i+1}) \leq e_j$. It follows that $w(A_{opt}') \leq w(A_{opt})$. Since $A_{opt}$ is already optimal, $w(A_{opt}') = w(A_{opt})$ and thus $A_{opt}'$ is also optimal. Furthermore, $A_{opt}' \subseteq A_{i+1} \cup \{e_{i+2},\ldots,e_n\}$.
+
+    By induction, the claim holds for all $\{0,\ldots,n-1\}$. It follows that when the algorithm terminates after the final iteration, $A_{n} \subseteq A_{opt} \subseteq A_n \cup \emptyset = A_n$, so $A_n = A_{opt}$.
+\end{proof}
+
+In fact, this proof also shows the correctness of Prim's algorithm.
+
+\subsection{Prim's Algorithm} \index{Prim's algorithm}
+
+\begin{codebox}
+    \Procname{$\proc{Prim}(V,r)$}
+    \li \For $v \in V - \{r\}$ \Do
+        \li $\attrib{v}{priority} = \infty$
+        \li $\attrib{v}{parent} = \const{nil}$ \End
+    \li $Q = \proc{Priority-Queue}(V-\{r\})$
+    \li $u = r$ 
+    \li \While $Q \neq \emptyset$ \Do
+        \li \For neighbor $v$ of $u$ \Do
+            \li \If $v \in Q$ \textbf{and} $w(\{u,v\}) < \attrib{v}{priority}$ \Then
+                \li $\attrib{v}{priority} = w(\{u,v\})$
+                \li $\proc{Decreae-Priority}(Q,v,\, \id{priority}=w(\{u,v\}))$ 
+                \li $\attrib{v}{parent} = u$ \End
+            \End
+        \li $u = \proc{Extract-Min}(Q)$
+        \li add $\{u,\attrib{u}{parent}\}$ to $A$
+        \End
+    \li \Return $(V,A)$ 
+\end{codebox}
 
 \section{Single-Source Shortest Path}
 
-\subsection{Dijkstra's Algorithm}
+Given a weighted directed graph $G=(V,E)$ with a weight function $w:\; E \to \R$, we define the weight of a path $p = v_0,v_1,\ldots,v_k$ to be the sum of all edges on that path
+$$
+w(p) = \sum_{i=1}^k w(v_{i-1},v_i)
+$$
+Additionally, if there is a path from $u$ to $v$ in a graph $G$, let $\delta(u,v)$ denote the minimum weight of any of such path. Otherwise, define $\delta(u,v) = \infty$, meaning that $v$ is not reachable from $u$. 
+
+A path $p$ from $u$ to $v$ is a shortest path if $w(p) = \delta(u,v)$.
+
+\subsection{Dijkstra's Algorithm} \index{Dijkstra's algorithm}
+
+The idea of \textbf{Dijkstra's algorithm} is to construct a set of vertices $V'$ whose shortest path from $s$ has been determined. Each vertex $v \in V' - \{s\}$ has its predecessor $\attrib{v}{\id{parent}}$ on this path and $v.d$ is the weight of this path. One important limitation of Dijkstra's algorithm is that the graph \textbf{does not contain any edge with negative weight}.
+
+Line 10-13 of the algorithm is known as ``edge relaxation''. Similar to Prim and Kruskal's algorithm, Dijkstra's algorithm is a greedy algorithm.  It orders the nodes based on their distances (or more precisely, the current estimate of distances at a given stage of the algorithm, $d$) from $s$. At each step of the algorithm (the outer while loop), the algorithm looks at the node $u$ with the smallest $d$ and perform edge relaxation between $u$ and its neighbors.
+
+\begin{codebox}
+    \Procname{$\proc{Dijkstra}(G,s)$}
+    \li \For $v \in V - \{s\}$ \Do
+        \li $v.d = \infty$
+        \li $\attrib{v}{parent} = \const{nil}$
+        \End
+    \li $s.d = 0$
+    \li $\attrib{s}{parent} = s$
+    \li $Q = \proc{Priority-Queue}(V,\, \id{key}=d)$
+    \li \While $Q \neq \emptyset$ \Do
+        \li $u = \proc{Extract-Min}(Q)$
+        \li \For neighbor $v$ of $u$ \Do
+            \li \If $v \in Q$ \textbf{and} $v.d > u.d + w(\{u,v\})$ \Then
+                \li $v.d = u.d + w(\{u,v\})$
+                \li $\proc{Decrease-Priority}(Q,v,\, \id{priority}=u.d+w(\{u,v\}))$
+                \li $\attrib{v}{parent} = u$   
+\end{codebox}
