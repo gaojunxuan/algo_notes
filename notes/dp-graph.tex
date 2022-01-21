@@ -151,9 +151,9 @@ As we alluded to earlier, this improved version of the Bellman-Ford algorithm ru
 
 \section{Maximum Length Path Fails} \index{longest simple path} \index{traveling salesman problem}
 
-Bellman-Ford solves the single-source shortest path problem on a general graph efficiently. It is natual to ask if it is possible to find a \textbf{longest simple path} on scuh general graph. It might be tempting to simply modify the $\min$ dynamic programming function used Bellman-Ford to $\max$. Although this approach works find on a DAG, the algorithm does not guarantee that the resulting path is a simple path when run on a graph with cycles and the algorithm may get stuck in a positive cycle.
+Bellman-Ford solves the single-source shortest path problem on a general graph efficiently. It is natual to ask if it is possible to find a \textit{\textbf{longest simple path}} on scuh general graph. It might be tempting to simply modify the $\min$ dynamic programming function used Bellman-Ford to $\max$. Although this approach works find on a DAG, the algorithm does not guarantee that the resulting path is a simple path when run on a graph with cycles and the algorithm may get stuck in a positive cycle.
 
-This problem is NP-hard, for which no known polynomial-time algorithm exists. A special case of this problem is the Hamiltonian path problem: does a graph $G=(V,E)$ has a simple path of length $|V|-1$. The Hamiltonian path problem is a variant of the NP-hard \textbf{traveling salesman problem} (TSP).
+This problem is NP-hard, for which no known polynomial-time algorithm exists. A special case of this problem is the Hamiltonian path problem: does a graph $G=(V,E)$ has a simple path of length $|V|-1$. The Hamiltonian path problem is a variant of the NP-hard \textit{\textbf{traveling salesman problem}} (TSP).
 
 \section{All-Pairs Shortest Paths}
 

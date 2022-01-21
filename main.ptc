@@ -256,45 +256,47 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {17.3.2}Example of Simplex Algorithm}{106}{subsection.17.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {17.3.3}Finding the Tightest Constraint}{108}{subsection.17.3.3}%
+\contentsline {subsection}{\numberline {17.3.3}Implementing the Simplex Algorithm}{108}{subsection.17.3.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {17.3.4}Implementing the Simplex Algorithm}{108}{subsection.17.3.4}%
+\contentsline {subsection}{\numberline {17.3.4}Finding the Tightest Constraint}{108}{subsection.17.3.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {17.4}Time Complexity of the Simplex Algorithm}{108}{section.17.4}%
+\contentsline {section}{\numberline {17.4}Time Complexity of the Simplex Algorithm}{109}{section.17.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {18}Duality}{109}{chapter.18}%
+\contentsline {chapter}{\numberline {18}Duality}{111}{chapter.18}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {19}Linear Programming Problems}{111}{chapter.19}%
+\contentsline {section}{\numberline {18.1}Proving Optimality}{111}{section.18.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {20}Integer Programming}{113}{chapter.20}%
+\contentsline {chapter}{\numberline {19}Linear Programming Problems}{113}{chapter.19}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {21}Ellipsoid Algorithm for LP}{115}{chapter.21}%
+\contentsline {chapter}{\numberline {20}Integer Programming}{115}{chapter.20}%
 \defcounter {refsection}{0}\relax 
-\contentsline {part}{\@mypartnumtocformat {VII}{Approximation Algorithms}}{117}{part.7}%
+\contentsline {chapter}{\numberline {21}Ellipsoid Algorithm for LP}{117}{chapter.21}%
+\defcounter {refsection}{0}\relax 
+\contentsline {part}{\@mypartnumtocformat {VII}{Approximation Algorithms}}{119}{part.7}%
 \ttl@stoptoc {default@6}
 \ttl@starttoc {default@7}
 \defcounter {refsection}{0}\relax 
-\contentsline {part}{\@mypartnumtocformat {VIII}{Randomized Algorithms}}{119}{part.8}%
+\contentsline {part}{\@mypartnumtocformat {VIII}{Randomized Algorithms}}{121}{part.8}%
 \ttl@stoptoc {default@7}
 \ttl@starttoc {default@8}
 \ttl@stoptoc {default@8}
 \ttl@starttoc {default@9}
 \defcounter {refsection}{0}\relax 
-\contentsline {part}{\setlength \fboxsep {0pt}\noindent \colorbox {ocre!40}{\strut \parbox [c][.7cm]{\linewidth }{\Large \sffamily \centering Appendix\hskip 1em\relax \mbox {}}}}{121}{section*.27}%
+\contentsline {part}{\setlength \fboxsep {0pt}\noindent \colorbox {ocre!40}{\strut \parbox [c][.7cm]{\linewidth }{\Large \sffamily \centering Appendix\hskip 1em\relax \mbox {}}}}{123}{section*.27}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\leavevmode {\color {ocre}Axioms \& Theorems}}{123}{appendix*.28}%
+\contentsline {chapter}{\leavevmode {\color {ocre}Axioms \& Theorems}}{125}{appendix*.28}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\leavevmode {\color {ocre}Basic Prerequisite Mathematics}}{127}{appendix*.33}%
+\contentsline {chapter}{\leavevmode {\color {ocre}Basic Prerequisite Mathematics}}{129}{appendix*.33}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\leavevmode {\color {ocre}Proof Templates}}{133}{appendix*.34}%
+\contentsline {chapter}{\leavevmode {\color {ocre}Proof Templates}}{135}{appendix*.34}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\leavevmode {\color {ocre}Index}}{143}{appendix*.35}%
+\contentsline {chapter}{\leavevmode {\color {ocre}Index}}{145}{appendix*.35}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\leavevmode {\color {ocre}Bibliography}}{147}{appendix*.36}%
+\contentsline {chapter}{\leavevmode {\color {ocre}Bibliography}}{149}{appendix*.36}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Courses}{147}{section*.37}%
+\contentsline {section}{Courses}{149}{section*.37}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Books}{147}{section*.38}%
+\contentsline {section}{Books}{149}{section*.38}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Journal Articles}{148}{section*.39}%
+\contentsline {section}{Journal Articles}{150}{section*.39}%
 \contentsfinish 

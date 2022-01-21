@@ -11,9 +11,9 @@ The geometry behind the simplex algorithm is actually quite intuitive, especiall
 
 \section{Pivoting}
 
-The way the simplex algorithm navigates through the polytope and jumps between vertices in through an operation called \textbf{pivoting}.
+The way the simplex algorithm navigates through the polytope and jumps between vertices in through an operation called \textit{\textbf{pivoting}}.
 
-During pivoting, we select a non-basic variable $x_e$ as the \textbf{entering variable}, and a basic variable $x_l$ as the \textbf{leaving variable}. The pivot operation switches the roles of the entering and leaving variable. $x_e$ becomes a new basic variable, and $x_l$ becomes a non-basic variable. Because of this, we also need to update the expression of other basic variables as well as the objective function. Geometrically, this corresponds to following an edge of the feasible to a neighboring vertex.
+During pivoting, we select a non-basic variable $x_e$ as the \textit{\textbf{entering variable}}, and a basic variable $x_l$ as the \textit{\textbf{leaving variable}}. The pivot operation switches the roles of the entering and leaving variable. $x_e$ becomes a new basic variable, and $x_l$ becomes a non-basic variable. Because of this, we also need to update the expression of other basic variables as well as the objective function. Geometrically, this corresponds to following an edge of the feasible to a neighboring vertex.
 
 Pivoting not only affects the entering and leaving variables. Because it changes the roles of the variables, we need to update the entire linear program so that $x_e$ no longer appears as a non-basic variable in any expressions. Similarly, we also want $x_l$ to appear as a non-basic variable in every expressions. Such updates also need to be applied to the objective function.
 
@@ -110,7 +110,7 @@ Recall that $N$ is the set of indices of the non-basic variables, $B$ is the set
 The simplex algorithm follows the intuitive that we have developed throughout the chapter. We start from a vertex (say, the origin) keep moving to a neighboring vertex if such move can increase the value of the objective function. We have seen that this can be done through the pivot operation. To make this idea more concrete, let's define a basic solution and a basic feasible solution.
 
 \begin{definition}[Basic Solution] \index{basic solution}
-    A solution $\mathbf{x}$ of $\mathbf{A}\mathbf{x} = \mathbf{b}$ is a \textbf{basic solution} if the set $\{ \mathbf{a}_i \mid x_i \neq 0 \}$ (the columns of $A$ corresponding to a non-zero variable) is linearly independent. Equivalently, this means that there are $n$ linearly independent constraints.
+    A solution $\mathbf{x}$ of $\mathbf{A}\mathbf{x} = \mathbf{b}$ is a \textit{\textbf{basic solution}} if the set $\{ \mathbf{a}_i \mid x_i \neq 0 \}$ (the columns of $A$ corresponding to a non-zero variable) is linearly independent. Equivalently, this means that there are $n$ linearly independent constraints.
 \end{definition}
 
 \begin{definition}[Basic Feasible Solution] \index{basic feasible solution}
@@ -188,19 +188,51 @@ Going back to our geometric intuition for the simplex algorithm, the algorithm c
     \label{fig:simplex-example}
 \end{figure}
 
-\subsection{Finding the Tightest Constraint}
+\subsection{Implementing the Simplex Algorithm}
 
-The tightest constraint can be easily identified using a method known as the \textbf{minimum ratio test}. Once we have selected a non-basic variable as entering variable, say $x_e$, we iterate over the basic variables, and select the $i$th basic variable that minimizes $b_i/a_{ie}$ if $a_{ie}$ is negative. If $a_{ie}$ is positive, then the constraint does not limit how much we can increase $x_e$. In more concise notation, 
+\begin{codebox}
+    \Procname{$\proc{Simplex}(A,b,c)$}
+    \li $(N,B,A,b,c,v) = \proc{Init-Simplex}(A,b,c)$ \RComment{init and convert to slack form}
+    \li $\Delta = []$ \RComment{vector of length $m$}
+    \li \While $\exists j \in N.\, c_j > 0$ \Do
+        \li \Comment{break ties by choosing variable with smallest index}
+        \li $e = \{e \in N \mid c_e > 0 \}[0]$
+        \li \For $i \in B$ \Do
+            \li \If $a_{ie} > 0$ \Then
+                \li $\Delta_i = b_i/a_{ie}$
+            \li \Else $\Delta_i = \infty$
+            \End
+        \End
+        \li \Comment{find tightest constraint, break ties by choosing variable with smallest index}
+        \li $l = \Argmin_{i \in B} \{ \Delta_i \}$
+        \li \If $\Delta_i \isequal \infty$ \Then
+            \li \Return unbounded
+        \li \Else $(N,B,A,b,c,v) = \proc{Pivot}(N,B,A,b,c,v,l,e)$ \RComment{perform pivot}
+        \End
+    \End
+    \li \For $i = 1$ \To $n$ \Do
+        \li \If $i \in B$ \Then
+            \li $\bar{x}_i = b_i$
+        \li \Else $\bar{x}_i = 0$
+        \End
+    \End
+    \li \Return $(\bar{x}_1,\ldots,\bar{x}_n)$
+\end{codebox}
+
+\subsection{Finding the Tightest Constraint} \index{minimum ratio test}
+
+The tightest constraint can be easily identified using a method known as the \textit{\textbf{minimum ratio test}}. Once we have selected a non-basic variable as entering variable, say $x_e$, we iterate over the basic variables, and select the $i$th basic variable that minimizes $b_i/a_{ie}$ if $a_{ie}$ is negative. If $a_{ie}$ is positive, then the constraint does not limit how much we can increase $x_e$. In more concise notation, 
 $$
 l = \Argmin_{i \in \{b \in B \mid a_{be} > 0\}} \frac{b_i}{a_{ie}}.
 $$
-This should be quite intuitive. Consider the expression of a basic variable with nonnegativity constraint of the form
+If there are multiple variables with the same smallest $b_i/a_{ie}$, we break ties by choosing the one with the smallest index. This rule is known as \textit{\textbf{Bland's rule}}. The overall idea of the minimum ratio test should be quite intuitive. Consider the expression of a basic variable with nonnegativity constraint of the form 
 $$
 x_i = b_i - a_{i1} x_1 - \cdots - a_{ie} x_e \geq 0
 $$
 $x_e$ is bounded by $b_i/a_{ie}$, so to find the tightest constraint on how much we can increase $x_e$, we want to minimize the ratio $b_i/a_{ie}$.
 
-\subsection{Implementing the Simplex Algorithm}
-
 \section{Time Complexity of the Simplex Algorithm}
 
+At any given point during the execution of the simplex algorithm, there are $m$ basic variables. It can be shown that the set $B$ of basic variables uniquely determines a slack form. There are $n+m$ variables. Hence, there are at most ${n+m \choose m}$ unique slack forms. If the algorithm terminates (which can be achieved using Bland's rule to prevent cycling), it terminates within ${n+m \choose m}$ iterations. Otherwise, it does not terminate and we say the algorithm \textit{\textbf{cycles}}. Cycling is usually due to \textit{\textbf{degeneracy}}, in which the simplex algorithm fails to change the objective value. Each iteration of the simplex algorithm takes $O(mn)$ time due to the \proc{Pivot} operation.
+
+In the worst case, the simplex algorithm has a time complexity of $\Theta(2^d)$ where $d$ is the dimension of the feasible region, and Klee \& Minty proved the upper bound on worst-case time complexity and provided an example linear program, now known as the \textit{\textbf{Klee-Mint cube}} on which the algorithm runs in exponential time. However, in practice, the simplex algorithm is surprisingly efficient, and it often runs in polynomial time. It often beats asymptotically more efficient algorithms like the ellipsoid algorithm in practice. This phenomenon is explained by Spielman \& Teng in their paper, \textit{Smoothed Analysis of Algorithms: Why the Simplex Algorithm Usually Takes Polynomial Time}.

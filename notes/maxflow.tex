@@ -2,21 +2,21 @@
 
 \subsection{Definitions}
 
-We can interpret a graph as a ``flow network'' and use it to model the flow of materials such as water through pipes, electricity through wires, or goods through supply chain. Each flow network will have a source where everything originates from and a sink (destination) where everything arrives at. We first formally define a \textbf{flow network}.
+We can interpret a graph as a ``flow network'' and use it to model the flow of materials such as water through pipes, electricity through wires, or goods through supply chain. Each flow network will have a source where everything originates from and a sink (destination) where everything arrives at. We first formally define a \textit{\textbf{flow network}}.
 
 \begin{definition}[Flow Network] \index{flow network} \index{source} \index{sink}
-    A \textbf{flow network} $G=(V,E)$ is a directed network in which each edge $(u,v) \in E$ has a nonnegative capacity $c(u,v) \geq 0$. Additionally, if $(u,v) \in E$, then $(v,u) \not\in E$. If $(u,v) \not\in E$, then $c(u,v) = 0$.
+    A \textit{\textbf{flow network}} $G=(V,E)$ is a directed network in which each edge $(u,v) \in E$ has a nonnegative capacity $c(u,v) \geq 0$. Additionally, if $(u,v) \in E$, then $(v,u) \not\in E$. If $(u,v) \not\in E$, then $c(u,v) = 0$.
 
-    In particular, in a flow network, there is a \textbf{source} $s$ and \textbf{sink} $t$, and every vertex lies on some path from from $s$ to $t$. That is, $\forall v \in V$, there exists a path $p$ such that $p = s \leadsto v \leadsto t$.
+    In particular, in a flow network, there is a \textit{\textbf{source}} $s$ and \textit{\textbf{sink}} $t$, and every vertex lies on some path from from $s$ to $t$. That is, $\forall v \in V$, there exists a path $p$ such that $p = s \leadsto v \leadsto t$.
 \end{definition}
 
 \begin{definition}[Flow] \index{flow}
-    Let $G=(V,E)$ be a flow network with capacity function $c:\, V\times V \to \R$, and let $s$ be the source and $t$ be the sink of the network. A \textbf{flow} in $G$ is a function $f:\, V\times V \to \R$ that satisfies the following properties:
+    Let $G=(V,E)$ be a flow network with capacity function $c:\, V\times V \to \R$, and let $s$ be the source and $t$ be the sink of the network. A \textit{\textbf{flow}} in $G$ is a function $f:\, V\times V \to \R$ that satisfies the following properties:
     \begin{itemize}
         \item Capacity constraint: for all $u,v \in V$, $0 \leq f(u,v) \leq c(u,v)$.
         \item Flow conservation: for all $u \in V - \{s,t\}$, $\sum_{v \in V} f(v,u) = \sum_{v \in V} f(u,v)$. That is, the flow into $u$ must equal the flow out from $u$. When $(u,v) \not\in E$, $f(u,v) = 0$.
     \end{itemize}
-    We define the \textbf{value} of a flow $f$ to be
+    We define the \textit{\textbf{value}} of a flow $f$ to be
     $$
     |f| = \sum_{v\in V} f(s,v) - \sum_{v \in V} f(v,s)
     $$
@@ -100,7 +100,7 @@ Let us make the idea more concrete by formalizing it and proving the correctness
 Given a flow network $G$, the residue network $G_f$ contains edges with capacities that represent how much more flow we can push through each edge. For each edge $(u,v)$, we will also add backward edges $(v,u)$ to the residue network that can at most cancel out the flow through the edge $(u,v)$.
 
 \begin{definition}[Residue Capacity] \index{residue capacity}
-    Let $G=(V,E)$ be a flow network with source $s$ and sink $t$. Let $f$ be a flow in $G$, and consider a pair of vertices $u,v \in V$. The \textbf{residue capacity} $c_f(u,v)$ is defined as
+    Let $G=(V,E)$ be a flow network with source $s$ and sink $t$. Let $f$ be a flow in $G$, and consider a pair of vertices $u,v \in V$. The \textit{\textbf{residue capacity}} $c_f(u,v)$ is defined as
     $$
     c_f(u,v) = \begin{cases}
         c(u,v) - f(u,v) & (u,v) \in E \\
@@ -112,12 +112,12 @@ Given a flow network $G$, the residue network $G_f$ contains edges with capaciti
 \end{definition}
 
 \begin{definition}[Residue Network] \index{residue network}
-    Let $G=(V,E)$ be a flow network and a flow $f$. The \textbf{residue network} of $G$ induced by $f$, denoted $G_f$ is $G_f = (V,E_f)$ where $E_f = \{(u,v) \in V \times V \mid c_f(u,v) > 0 \}$.
+    Let $G=(V,E)$ be a flow network and a flow $f$. The \textit{\textbf{residue network}} of $G$ induced by $f$, denoted $G_f$ is $G_f = (V,E_f)$ where $E_f = \{(u,v) \in V \times V \mid c_f(u,v) > 0 \}$.
 \end{definition}
 A residue network contains at most twice many edges as the original flow network. If an edge does not exist in $G$ (has zero capacity), it does not exist in $G_f$ either.
 
 \begin{definition}[Augmentation] \index{augmentation (max-flow)}
-    Let $G=(V,E)$ be a flow network with flow $f$. $G_f$ is the residue network of $G$ induced by $f$. Suppose that $f'$ is a flow in $G_f$. We define the \textbf{augmentation} of $f$ by $f'$, denoted $f \uparrow f'$, to be a function $(f \uparrow f'):\, V\times V \to \R$ such that
+    Let $G=(V,E)$ be a flow network with flow $f$. $G_f$ is the residue network of $G$ induced by $f$. Suppose that $f'$ is a flow in $G_f$. We define the \textit{\textbf{augmentation}} of $f$ by $f'$, denoted $f \uparrow f'$, to be a function $(f \uparrow f'):\, V\times V \to \R$ such that
     $$
     (f \uparrow f')(u,v) = \begin{cases}
         f(u,v) + f'(u,v) - f'(v,u) & (u,v) \in E \\
@@ -168,11 +168,11 @@ Note that because we allow backward edges in a residue network, we need to subtr
 \vspace{\parskip}
 
 \begin{definition}[Augmenting Path] \index{augmenting path}
-    Given a flow network $G=(V,E)$ with source $s$ and sink $t$ and flow $f$, an \textbf{augmenting path} $p$ is a simple path from $s$ to $t$ in the residue graph $G_f$ of $G$ induced by $f$.
+    Given a flow network $G=(V,E)$ with source $s$ and sink $t$ and flow $f$, an \textit{\textbf{augmenting path}} $p$ is a simple path from $s$ to $t$ in the residue graph $G_f$ of $G$ induced by $f$.
 \end{definition}
 
 \begin{definition}[Residue Capacity of an Augmenting Path]
-    Let $p$ be an augmenting path for the flow network $G$. Then, the \textbf{residue capacity} of $p$ is defined as the maximum amount by which we can increase the flow on each edge in the $p$, or more formally,
+    Let $p$ be an augmenting path for the flow network $G$. Then, the \textit{\textbf{residue capacity}} of $p$ is defined as the maximum amount by which we can increase the flow on each edge in the $p$, or more formally,
     $$
     c_f(p) = \min \{c_f(u,v) \mid \text{$(u,v)$ is on $p$} \}
     $$
@@ -222,16 +222,16 @@ As a result of Corollary \ref{corollary:augmentation-increases-flow}, we know th
 Our analyses so far shows a promising picture of the correctness of the Ford-Fulkerson method. By iteratively augmenting $f$ with an augmenting path $p$, we gradually increases the flow in the flow network, and when the procedure halts, we should expect to see that $f$ is equal to the maximum flow. The proof utilizes the max-flow min-cut theorem and shows that if there is no augmenting path, there exists a cut in the flow network that implies that $f$ is the max-flow.
 
 \begin{definition}[Cut and Net Flow Across a Cut] \index{cut} \index{minimum cut}
-    A \textbf{cut} $(S,T)$ of flow network $G=(V,E)$ is a partition of $V$ into $S$ and $T=V-S$ such that $s \in S$ and $t \in T$. If $f$ is a flow, then the \textbf{net flow} $f(S,T)$ across the cut $(S,T)$ is defined as
+    A \textit{\textbf{cut}} $(S,T)$ of flow network $G=(V,E)$ is a partition of $V$ into $S$ and $T=V-S$ such that $s \in S$ and $t \in T$. If $f$ is a flow, then the \textit{\textbf{net flow}} $f(S,T)$ across the cut $(S,T)$ is defined as
     $$
     f(S,T) = \sum_{u \in S}\sum_{v \in T} f(u,v) - \sum_{u \in S}\sum_{v \in T} f(v,u)
     $$
-    The \textbf{capacity of the cut}, denoted $c(S,T)$ is
+    The \textit{\textbf{capacity of the cut}}, denoted $c(S,T)$ is
     $$
     c(S,T) = \sum_{u \in S}\sum_{v \in T} c(u,v)
     $$
 \end{definition}
-A \textbf{minimum cut} is a cut whose capacity is minimum over all cuts of the flow network. The definition of a cut and minimum cut will help us prove the important max-flow min-cut theorem. The proof roughly follows the outline shown in Figure \ref{fig:maxflow-ford-fulkerson-proof}.
+A \textit{\textbf{minimum cut}} is a cut whose capacity is minimum over all cuts of the flow network. The definition of a cut and minimum cut will help us prove the important max-flow min-cut theorem. The proof roughly follows the outline shown in Figure \ref{fig:maxflow-ford-fulkerson-proof}.
 
 \begin{figure}[htbp]
     \centering

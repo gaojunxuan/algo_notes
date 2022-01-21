@@ -42,7 +42,7 @@ $C$ corresponds to the decision to not include the $i$th item in the knapsack, a
 The input to the algorithm: $S$ is the set of all items to be considered, and $B$ is the weight bound of the knapsack. This approach makes an important assumption that the weights are integer.
 
 \index{pseudopolynomial}
-This DP algorithm solving the 0-1 knapsack problem with $n$ items and weight bound $B$ runs in $\Theta(nB)$ time and uses $\Theta(nB)$ space. As we can see, the running of this algorithm is, unfortunately, not polynomial in the input size. It is \textbf{pseudo-polynomial}. It is polynomial in $\log B + \sum_{i=1}^n (\log v_i + \log w_i)$.
+This DP algorithm solving the 0-1 knapsack problem with $n$ items and weight bound $B$ runs in $\Theta(nB)$ time and uses $\Theta(nB)$ space. As we can see, the running of this algorithm is, unfortunately, not polynomial in the input size. It is \textit{\textbf{pseudo-polynomial}}. It is polynomial in $\log B + \sum_{i=1}^n (\log v_i + \log w_i)$.
 
 If $B$ is small (a polynomial in $n$), then the algorithm runs in polynomial time. No known exact algorithm runs in polynomial time. The 0-1 knapsack problem is NP-complete.
 

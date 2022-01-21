@@ -3,9 +3,9 @@
 There is a natural way to view the interval scheduling and partitioning problems as graph problems.
 
 \index{intersection graph} \index{interval graph}
-Let $I$ be a set of intervals. We can construct the \textbf{intersection graph} $G(I) = (V,E)$ where $V=I$ and $(u,v) \in E$ if and only if the intervals corresponding to $u$ and $v$ intersect.
+Let $I$ be a set of intervals. We can construct the \textit{\textbf{intersection graph}} $G(I) = (V,E)$ where $V=I$ and $(u,v) \in E$ if and only if the intervals corresponding to $u$ and $v$ intersect.
 
-Any graph that is the intersection graph of a set of intervals is called an \textbf{interval graph}. The interval scheduling and interval partition problem can be viewed as the \textbf{maximum independent set problem} for the class of interval graphs.
+Any graph that is the intersection graph of a set of intervals is called an \textit{\textbf{interval graph}}. The interval scheduling and interval partition problem can be viewed as the \textit{\textbf{maximum independent set problem}} for the class of interval graphs.
 
 \begin{definition}[Maximum Independent Set]
     Let $G=(V,E)$ be a graph. A subset $U$ of $V$ is an independent set (stable set) in $G$ if for all $u,v \in U$, $(u,v) \not\in E$.
@@ -47,7 +47,7 @@ To formallly prove that the maximum independent set problem can be efficiently s
 We first show that an interval graph is also a chordal graph (the converse is not true).
 
 \begin{definition}[Chordal Graph] \index{chordal graph} \index{rigid circuit graph} \index{chord}
-    Let $G$ be an undirected graph. $G$ is a \textbf{chordal graph} or \textbf{rigid circuit graph} if for any cycles of 4 or more vertices, there exists a pair of vertices $u,v$ on the cycle such that $\{u,v\} \in E$. The edge $\{u,v\}$ is called a \textbf{chord} of the cycle.
+    Let $G$ be an undirected graph. $G$ is a \textit{\textbf{chordal graph}} or \textit{\textbf{rigid circuit graph}} if for any cycles of 4 or more vertices, there exists a pair of vertices $u,v$ on the cycle such that $\{u,v\} \in E$. The edge $\{u,v\}$ is called a \textit{\textbf{chord}} of the cycle.
 \end{definition}
 
 \vspace{\parskip}
@@ -65,17 +65,17 @@ We first show that an interval graph is also a chordal graph (the converse is no
 The next step is to show that there exists an ordering of the vertices of the interval graph, from which we can derive a greedy algorithm.
 
 \begin{definition}[Simplicial Vertex]
-    In a graph $G=(V,E)$, we say $v \in V$ is \textbf{simplicial} if the subgraph induced by the $\{v\} \cup N(v)$ is a complete graph (forms a clique).
+    In a graph $G=(V,E)$, we say $v \in V$ is \textit{\textbf{simplicial}} if the subgraph induced by the $\{v\} \cup N(v)$ is a complete graph (forms a clique).
 \end{definition}
 
 \begin{definition}[Perfect Elimination Ordering]
-    A graph $G=(V,E)$ has a \textbf{perfect elimination ordering (P.E.O.)} if there is an ordering $(v_1,\ldots,v_n)$ of $V$ such that $v_i$ is simplicial vertex in the subgraph induced by $\{v_i,\ldots,v_n\}$. 
+    A graph $G=(V,E)$ has a \textit{\textbf{perfect elimination ordering (P.E.O.)}} if there is an ordering $(v_1,\ldots,v_n)$ of $V$ such that $v_i$ is simplicial vertex in the subgraph induced by $\{v_i,\ldots,v_n\}$. 
 \end{definition}
 
 \begin{definition}[Separator and Minimal Separator]
-    Given a graph $G=(V,E)$, we define the \textbf{separator} $S$ in $G$ to be the subset of $V$ such that it partitions $V$ into three disjoint sets $A,S,B$ such that $V=A\cup S \cup B$ and for all $a \in A$ and $b \in B$, $(a,b) \not\in E$. Intuitively, this means there is no edge going directly from a vertex in $A$ to a vertex in $B$, so the subgraph induced by $V-S$ has two disjoint connected components (induced by $A$ and $B$).
+    Given a graph $G=(V,E)$, we define the \textit{\textbf{separator}} $S$ in $G$ to be the subset of $V$ such that it partitions $V$ into three disjoint sets $A,S,B$ such that $V=A\cup S \cup B$ and for all $a \in A$ and $b \in B$, $(a,b) \not\in E$. Intuitively, this means there is no edge going directly from a vertex in $A$ to a vertex in $B$, so the subgraph induced by $V-S$ has two disjoint connected components (induced by $A$ and $B$).
 
-    Given two non-adjcent vertices $a,b \in V$ such that $(a,b) \not\in E$, we say $S$ is an $\mathbf{(a,b)}$-\textbf{separator} if $S$ partitions $V$ into disjoint subsets $A,S,B$ such that $a \in A$ and $b \in B$. A \textbf{minimal} $(a,b)$-separator is an $(a,b)$-separator $S$ such that no subset of $S$ is an $(a,b)$-separator.
+    Given two non-adjcent vertices $a,b \in V$ such that $(a,b) \not\in E$, we say $S$ is an $\mathbf{(a,b)}$-\textit{\textbf{separator}} if $S$ partitions $V$ into disjoint subsets $A,S,B$ such that $a \in A$ and $b \in B$. A \textit{\textbf{minimal}} $(a,b)$-separator is an $(a,b)$-separator $S$ such that no subset of $S$ is an $(a,b)$-separator.
 \end{definition}
 
 \begin{figure}[htbp]
@@ -280,7 +280,7 @@ A path $p$ from $u$ to $v$ is a shortest path if $w(p) = \delta(u,v)$.
 
 \subsection{Dijkstra's Algorithm} \index{Dijkstra's algorithm}
 
-The idea of \textbf{Dijkstra's algorithm} is to construct a set of vertices $V'$ whose shortest path from $s$ has been determined. Each vertex $v \in V' - \{s\}$ has its predecessor $\attrib{v}{\id{parent}}$ on this path and $v.d$ is the weight of this path. One important limitation of Dijkstra's algorithm is that the graph \textbf{does not contain any edge with negative weight}.
+The idea of \textit{\textbf{Dijkstra's algorithm}} is to construct a set of vertices $V'$ whose shortest path from $s$ has been determined. Each vertex $v \in V' - \{s\}$ has its predecessor $\attrib{v}{\id{parent}}$ on this path and $v.d$ is the weight of this path. One important limitation of Dijkstra's algorithm is that the graph \textbf{does not contain any edge with negative weight}.
 
 Line 10-13 of the algorithm is known as ``edge relaxation''. Similar to Prim and Kruskal's algorithm, Dijkstra's algorithm is a greedy algorithm.  It orders the nodes based on their distances (or more precisely, the current estimate of distances at a given stage of the algorithm, $d$) from $s$. At each step of the algorithm (the outer while loop), the algorithm looks at the node $u$ with the smallest $d$ and perform edge relaxation between $u$ and its neighbors.
 

@@ -3,14 +3,14 @@
 Linear programming is a commonly used techniques in optimization. In linear programming, we want to optimize (maximize or minimize) a linear function, subject to a set of linear inequalities (called linear constraints). 
 
 \begin{definition}[Linear Constraint] \index{linear function} \index{linear equality} \index{linear inequality} \index{linear constraint}
-    Given a set of real numbers $a_1,a_2,\ldots,a_n$ and a set of variables $x_1,x_2,\ldots,x_n$, a \textbf{linear function} $f$ on those variables is
+    Given a set of real numbers $a_1,a_2,\ldots,a_n$ and a set of variables $x_1,x_2,\ldots,x_n$, a \textit{\textbf{linear function}} $f$ on those variables is
     $$
     f(x_1,\ldots,x_n) = a_1x_1 + a_2x_2 + \cdots + a_nx_n = \sum_{j=1}^n a_jx_j
     $$
-    If $b$ is a real number and $f$ is a linear function, then $f(x_1,\ldots,x_n) = b$ is a linear equality ,and $(x_1,\ldots,x_n) \leq b$ and $(x_1,\ldots,x_n) \geq b$ are linear inequalities. Both linear equalities and linear inequalities are called \textbf{linear constraints}.
+    If $b$ is a real number and $f$ is a linear function, then $f(x_1,\ldots,x_n) = b$ is a linear equality ,and $(x_1,\ldots,x_n) \leq b$ and $(x_1,\ldots,x_n) \geq b$ are linear inequalities. Both linear equalities and linear inequalities are called \textit{\textbf{linear constraints}}.
 \end{definition}
 
-Geometrically, a linear function forms a line in $\R^n$. A linear inequality forms a half-space in $\R^n$. All possible solutions to a linear program lies in a convex region called the \textbf{feasible region}. If no such region exsits (no solution satisfies all the contraints), we say the optimization problem is \textbf{infeasible}. The function we wish to optimize is called the \textbf{objective function}, and the value of the objective function evaluated at a particular point is called the \textbf{objective value} at that point. The goal of the linear programming problem is to find a feasible solution that maximizes/minimizes the objective value.
+Geometrically, a linear function forms a line in $\R^n$. A linear inequality forms a half-space in $\R^n$. All possible solutions to a linear program lies in a convex region called the \textit{\textbf{feasible region}}. If no such region exsits (no solution satisfies all the contraints), we say the optimization problem is \textit{\textbf{infeasible}}. The function we wish to optimize is called the \textit{\textbf{objective function}}, and the value of the objective function evaluated at a particular point is called the \textit{\textbf{objective value}} at that point. The goal of the linear programming problem is to find a feasible solution that maximizes/minimizes the objective value.
 
 \begin{theorem}[Feasible Region for Linear Programming is Convex]
     Let $\mathbf{x}_1,\mathbf{x}_2 \in \R^n$ be two feasible solutions to the linear programming problem, satisfying some particular constraints. Then, for all $\lambda \in [0,1]$, $\lambda\mathbf{x}_1 + (1-\lambda)\mathbf{x}_2$ is also a solution that satisfies the same constraints.
@@ -88,7 +88,7 @@ or, equivalently, in vectorized form
 Maximize $z = v + \mathbf{c}^\top \mathbf{x}$ \\
 Subject to $\mathbf{s} = \mathbf{b} - \mathbf{A}\mathbf{x}$ and $\mathbf{x},\mathbf{s} \geq \boldsymbol{0}$.
 
-We call the variables on the left-hand side of the equality constraints the \textbf{basic variables}, and the ones on the right-hand side the \textbf{non-basic variables}.
+We call the variables on the left-hand side of the equality constraints the \textit{\textbf{basic variables}}, and the ones on the right-hand side the \textit{\textbf{non-basic variables}}.
 
 Similarly, a slack from can be concisely defined by a tuple $(N,B,\mathbf{A},\mathbf{b},\mathbf{c},v)$, where $N$ is the set of indices of the non-basic variables, $B$ is the set of indices of the basic variables such that $|N| = n$, $|B|=m$ and $N \cup B = \{1,2,\ldots,n+m\}$.
 
@@ -113,26 +113,26 @@ This is the type of inequalities that we often encounter in linear programming p
 \end{figure}
 
 \subsection{Hyperplane and Halfspace} \index{hyperplane} \index{halfspace} \index{supporting hyperplane}
-In general, the set $\{ x \in \R^n \mid a^\top x = b \}$ is called a hyperplane. For all lines in the \textbf{hyperplane} $H = \{ x \in \R^n \mid a^\top = b \}$ that intersects the line $\ell = \{ta \mid t \in \R\}$, the line is also perpendicular to $\ell$. As a simple example, consider the two-dimensional case where $a = [1\;\;-1]^\top$.
+In general, the set $\{ x \in \R^n \mid a^\top x = b \}$ is called a hyperplane. For all lines in the \textit{\textbf{hyperplane}} $H = \{ x \in \R^n \mid a^\top = b \}$ that intersects the line $\ell = \{ta \mid t \in \R\}$, the line is also perpendicular to $\ell$. As a simple example, consider the two-dimensional case where $a = [1\;\;-1]^\top$.
 
-The set $\{ \mathbf{x} \in \R^n \mid \mathbf{a}^\top \mathbf{x} \leq b \}$ is called a \textbf{halfspace}, and $\{ \mathbf{x} \in \R^n \mid \mathbf{a}^\top \mathbf{x} = b \}$ is called the \textbf{supporting hyperplane}.
+The set $\{ \mathbf{x} \in \R^n \mid \mathbf{a}^\top \mathbf{x} \leq b \}$ is called a \textit{\textbf{halfspace}}, and $\{ \mathbf{x} \in \R^n \mid \mathbf{a}^\top \mathbf{x} = b \}$ is called the \textit{\textbf{supporting hyperplane}}.
 
 \subsection{Polyhedron and Polytope} \index{polyhedron} \index{polytope} \index{face} \index{facet}
 
-A set that is the intersection of halfspaces is called a \textbf{polyhedron}. A polyhedron can be defined as $\{x \in \R^n \mid \mathbf{A}\mathbf{x} \leq \mathbf{b} \}$ for some matrix $\mathbf{A}$ and vector $\mathbf{b}$.
+A set that is the intersection of halfspaces is called a \textit{\textbf{polyhedron}}. A polyhedron can be defined as $\{x \in \R^n \mid \mathbf{A}\mathbf{x} \leq \mathbf{b} \}$ for some matrix $\mathbf{A}$ and vector $\mathbf{b}$.
 
-A polyhedron $P \subseteq \R^n$ is unbounded if there exists a point $\mathbf{x} \in P$ and a direction $\mathbf{v} \in \R^n$ such that for every $t \geq 0$, $\mathbf{x} + t \mathbf{v} \in P$. If a polyhedron is bounded, we call it a \textbf{polytope}.
+A polyhedron $P \subseteq \R^n$ is unbounded if there exists a point $\mathbf{x} \in P$ and a direction $\mathbf{v} \in \R^n$ such that for every $t \geq 0$, $\mathbf{x} + t \mathbf{v} \in P$. If a polyhedron is bounded, we call it a \textit{\textbf{polytope}}.
 
-A \textbf{face} of a polyhedron $P = \{\mathbf{x} \in \R^n \mid \mathbf{A}\mathbf{x} \leq \mathbf{b} \}$ is a set $F = \{ \mathbf{x} \in \R^n \mid \mathbf{A}\mathbf{x} \leq b \} \cap \{ \mathbf{x} \in \R^n \mid \forall i \in S.\, \mathbf{a}_i \mathbf{x} = \mathbf{b}_i \}$ where $\mathbf{a}_i$ is a row vector denoting the $i$th row of matrix $\mathbf{A}$, and $S$ is some subset of the rows of $\mathbf{A}$. Intuitively, a face of a polyhedron is just one of its surface.
+A \textit{\textbf{face}} of a polyhedron $P = \{\mathbf{x} \in \R^n \mid \mathbf{A}\mathbf{x} \leq \mathbf{b} \}$ is a set $F = \{ \mathbf{x} \in \R^n \mid \mathbf{A}\mathbf{x} \leq b \} \cap \{ \mathbf{x} \in \R^n \mid \forall i \in S.\, \mathbf{a}_i \mathbf{x} = \mathbf{b}_i \}$ where $\mathbf{a}_i$ is a row vector denoting the $i$th row of matrix $\mathbf{A}$, and $S$ is some subset of the rows of $\mathbf{A}$. Intuitively, a face of a polyhedron is just one of its surface.
 
-Assuming that $F \neq \emptyset$, we define $S_F$ to be the set of all $i \in S$ such that $\mathbf{a}_i \mathbf{x} = \mathbf{b}_i$ for all $\mathbf{x} \in F$ (we can intutively think this as the rows of constraints that created the face $F$). Let $\mathbf{A}_F$ be the submatrix of $\mathbf{A}$ containing rows of $A$ indexed by $S_F$. If the rank of $\mathbf{A}_F$ is $n-j$, we say $F$ is a face of \textbf{dimension} $j$, or a $j$-face. The dimension of a polytope can be defined similarly. Faces of dimension one lower than the dimension of $P$ are called \textbf{facets}, faces of dimension 1 are called \textbf{edges}, faces of dimension 0 are called \textbf{vertices}.
+Assuming that $F \neq \emptyset$, we define $S_F$ to be the set of all $i \in S$ such that $\mathbf{a}_i \mathbf{x} = \mathbf{b}_i$ for all $\mathbf{x} \in F$ (we can intutively think this as the rows of constraints that created the face $F$). Let $\mathbf{A}_F$ be the submatrix of $\mathbf{A}$ containing rows of $A$ indexed by $S_F$. If the rank of $\mathbf{A}_F$ is $n-j$, we say $F$ is a face of \textit{\textbf{dimension}} $j$, or a $j$-face. The dimension of a polytope can be defined similarly. Faces of dimension one lower than the dimension of $P$ are called \textit{\textbf{facets}}, faces of dimension 1 are called \textit{\textbf{edges}}, faces of dimension 0 are called \textit{\textbf{vertices}}.
 
 \subsection{Convex Hull}
 
 A polytope can be determined by its vertices.
 
 \begin{definition}[Convex Hull] \index{convex hull}
-    The convex hull of the points $\mathbf{v}_1,\ldots,\mathbf{v}_n \in \R^n$ is defined as the set
+    The \textit{\textbf{convex hull}} of the points $\mathbf{v}_1,\ldots,\mathbf{v}_n \in \R^n$ is defined as the set
     $$
     \mathrm{conv} \{\mathbf{v}_1,\ldots,\mathbf{v}_n\} = \{ \lambda_1 \mathbf{v}_1 + \cdots + \lambda_n \mathbf{v}_n \mid \forall i \in \{1,\ldots,n\}.\, \lambda_i \geq 0,\; \lambda_1+\cdots+\lambda_n = 1 \}
     $$

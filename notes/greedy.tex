@@ -96,7 +96,7 @@ As we have demonstrated earlier in Figure \ref{fig:greedy-interval-scheduling-co
 
 The previous two proofs use the technique known as the exchange argument. They both rely on the argument that if the greedy solution after $j$ iterations can be extended to an optimal solution, then the greedy solution after $j+1$ iterations can also be extended to an optimal solution by exchanging some interval with one chosen based on the greedy strategy. 
 
-The last proof uses what we call an ``\textbf{charging argument}''. In this case, the charging argument charges each interval of an optimal solution (or arbitrary solution) to a unique interval in the greedy solution. Charging arguments are also used in approximation algorithms (for example, to prove that an algorithm is a $k$-approximation).
+The last proof uses what we call an ``\textit{\textbf{charging argument}}''. In this case, the charging argument charges each interval of an optimal solution (or arbitrary solution) to a unique interval in the greedy solution. Charging arguments are also used in approximation algorithms (for example, to prove that an algorithm is a $k$-approximation).
 
 \begin{proof}[Proof (by charging argument)] \index{charging argument}
     Given a set of jobs $S = \{a_1,\ldots,a_n\}$, let $O$ be an optimal solution of the interval scheduling problem. Let $S'$ be the solution given by the greedy algorithm using earliest finish time. We want to find a one-to-one function $h:\, O \to S'$. For any job $j \in O$, define $h(j)$ as the interval $j' \in S'$ that intersects $j$ and has the earliest finish time amongst intervals in $S'$ intersecting $j$.
@@ -197,4 +197,4 @@ The greedy strategy can be generalized as follows:
 \end{enumerate}
 
 \index{greedy property}
-The important property that requires us to prove when implementing a greedy algorithm is the \textbf{greedy property}. It tells us that we can assemble a globally optimal solution from locally optimal choices. The exchange argument for the proof (the first two proofs that we have seen for interval scheduling) argues that we can modify the globally optimal solution to substitute the greedy choice for some other choice, resulting in one similar, but smaller, subproblem.
+The important property that requires us to prove when implementing a greedy algorithm is the \textit{\textbf{greedy property}}. It tells us that we can assemble a globally optimal solution from locally optimal choices. The exchange argument for the proof (the first two proofs that we have seen for interval scheduling) argues that we can modify the globally optimal solution to substitute the greedy choice for some other choice, resulting in one similar, but smaller, subproblem.
