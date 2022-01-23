@@ -303,7 +303,9 @@ The inverse discrete fourier transform is an algorithm used to find the coeffici
     It follows that $\mathbf{V}^{-1} = 1/n \mathbf{V}$.
 \end{proof}
 
-This lemma implies that for the Inverse Fast Fourier Transform algorithm, we can simply replace $e^{ikr/n}$ with its complex conjugate in the FFT algorithm. The rest of the algorithm is analogous to that for FFT, and it is easy to see that the running of IFFT is also in $O(n \log n)$.
+This lemma implies that for the Inverse Fast Fourier Transform algorithm, we can simply replace $e^{ikr/n}$ with its complex conjugate in the FFT algorithm and divide the final result by 2. The rest of the algorithm is analogous to that for FFT, and it is easy to see that the running of IFFT is also in $O(n \log n)$.
+
+Quite surprisingly, many sources online including lecture notes from numerous institutions and prominant YouTube channels appear to have made some mistakes when presenting the pseudocode for IFFT. For a recursive implementation, the division by $n$ is applied only once at the very end when all recursive calls have terminated, not during the recursive call. It is not correct to simply change the twiddle factor to $w_n = e^{-2\pi i/n} / n$ or to divide by $n$ every time we update $a$ like $a_k = (a_{even}[k] + \omega a_{odd}[k])\; / n$. However, it is correct to divide by 2 every time we update $a$, as shown below. It is the same implementation as the one in Jeff Erickson's notes.
 
 \begin{codebox}
     \Procname{$\proc{IFFT-Recursive}(y)$}
@@ -318,8 +320,8 @@ This lemma implies that for the Inverse Fast Fourier Transform algorithm, we can
     \li $a_{even} = \proc{IFFT-Recursive}(y_{even})$
     \li $a_{odd} = \proc{IFFT-Recursive}(y_{odd})$
     \li \For $k = 0$ to $n/2 - 1$ \Do
-        \li $a_k = (a_{even}[k] + \omega a_{odd}[k])\; / \;n$
-        \li $a_{k+\frac{n}{2}} = (a_{even}[k] - \omega a_{odd}[k])\; / \;n$
+        \li $a_k = (a_{even}[k] + \omega a_{odd}[k])\; {\color{red} / \;2}$
+        \li $a_{k+\frac{n}{2}} = (a_{even}[k] - \omega a_{odd}[k])\; {\color{red} / \;2}$
         \li $\omega = \omega \omega_n$
     \End
     \li \Return $a = (a_0,\ldots,a_{n-1})$      
