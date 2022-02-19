@@ -222,101 +222,101 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {15.3.2}Vertex-Disjoint Paths}{97}{subsection.15.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {16}Push-Relabel Algorithm}{99}{chapter.16}%
+\contentsline {chapter}{\numberline {16}Push-Relabel Algorithm}{101}{chapter.16}%
 \defcounter {refsection}{0}\relax 
-\contentsline {part}{\@mypartnumtocformat {V}{Complexity}}{101}{part.5}%
+\contentsline {part}{\@mypartnumtocformat {V}{Complexity}}{103}{part.5}%
 \ttl@stoptoc {default@4}
 \ttl@starttoc {default@5}
 \defcounter {refsection}{0}\relax 
-\contentsline {part}{\@mypartnumtocformat {VI}{Linear Programming}}{103}{part.6}%
+\contentsline {part}{\@mypartnumtocformat {VI}{Linear Programming}}{105}{part.6}%
 \ttl@stoptoc {default@5}
 \ttl@starttoc {default@6}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {17}Linear Programming}{105}{chapter.17}%
+\contentsline {chapter}{\numberline {17}Linear Programming}{107}{chapter.17}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {17.1}Linear Programming Optimization}{105}{section.17.1}%
+\contentsline {section}{\numberline {17.1}Linear Programming Optimization}{107}{section.17.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {17.2}Standard and Slack Forms}{106}{section.17.2}%
+\contentsline {section}{\numberline {17.2}Standard and Slack Forms}{108}{section.17.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {17.2.1}Standard Form}{106}{subsection.17.2.1}%
+\contentsline {subsection}{\numberline {17.2.1}Standard Form}{108}{subsection.17.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {17.2.2}Conversion From Non-standard Form to Standard Form}{107}{subsection.17.2.2}%
+\contentsline {subsection}{\numberline {17.2.2}Conversion From Non-standard Form to Standard Form}{109}{subsection.17.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {17.2.3}Slack Form}{107}{subsection.17.2.3}%
+\contentsline {subsection}{\numberline {17.2.3}Slack Form}{109}{subsection.17.2.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {17.3}Geometry of Linear Programming}{108}{section.17.3}%
+\contentsline {section}{\numberline {17.3}Geometry of Linear Programming}{110}{section.17.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {17.3.1}Hyperplane and Halfspace}{108}{subsection.17.3.1}%
+\contentsline {subsection}{\numberline {17.3.1}Hyperplane and Halfspace}{110}{subsection.17.3.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {17.3.2}Polyhedron and Polytope}{108}{subsection.17.3.2}%
+\contentsline {subsection}{\numberline {17.3.2}Polyhedron and Polytope}{110}{subsection.17.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {17.3.3}Convex Hull}{109}{subsection.17.3.3}%
+\contentsline {subsection}{\numberline {17.3.3}Convex Hull}{111}{subsection.17.3.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {18}Simplex Algorithm for LP}{111}{chapter.18}%
+\contentsline {chapter}{\numberline {18}Simplex Algorithm for LP}{113}{chapter.18}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {18.1}Geometric Intuition}{111}{section.18.1}%
+\contentsline {section}{\numberline {18.1}Geometric Intuition}{113}{section.18.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {18.2}Pivoting}{111}{section.18.2}%
+\contentsline {section}{\numberline {18.2}Pivoting}{113}{section.18.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {18.2.1}Update Coefficient Matrix for the Entering Variable}{112}{subsection.18.2.1}%
+\contentsline {subsection}{\numberline {18.2.1}Update Coefficient Matrix for the Entering Variable}{114}{subsection.18.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {18.2.2}Update Coefficient Matrix for Other Basic Variables}{112}{subsection.18.2.2}%
+\contentsline {subsection}{\numberline {18.2.2}Update Coefficient Matrix for Other Basic Variables}{114}{subsection.18.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {18.2.3}Update Objective Function}{112}{subsection.18.2.3}%
+\contentsline {subsection}{\numberline {18.2.3}Update Objective Function}{114}{subsection.18.2.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {18.2.4}Pivoting Algorithm}{113}{subsection.18.2.4}%
+\contentsline {subsection}{\numberline {18.2.4}Pivoting Algorithm}{115}{subsection.18.2.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {18.3}Simplex Algorithm}{113}{section.18.3}%
+\contentsline {section}{\numberline {18.3}Simplex Algorithm}{115}{section.18.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {18.3.1}Basic Feasible Solution}{113}{subsection.18.3.1}%
+\contentsline {subsection}{\numberline {18.3.1}Basic Feasible Solution}{115}{subsection.18.3.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {18.3.2}Example of Simplex Algorithm}{114}{subsection.18.3.2}%
+\contentsline {subsection}{\numberline {18.3.2}Example of Simplex Algorithm}{116}{subsection.18.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {18.3.3}Implementing the Simplex Algorithm}{116}{subsection.18.3.3}%
+\contentsline {subsection}{\numberline {18.3.3}Implementing the Simplex Algorithm}{118}{subsection.18.3.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {18.3.4}Finding the Tightest Constraint}{116}{subsection.18.3.4}%
+\contentsline {subsection}{\numberline {18.3.4}Finding the Tightest Constraint}{118}{subsection.18.3.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {18.4}Time Complexity of the Simplex Algorithm}{117}{section.18.4}%
+\contentsline {section}{\numberline {18.4}Time Complexity of the Simplex Algorithm}{119}{section.18.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {19}Duality}{119}{chapter.19}%
+\contentsline {chapter}{\numberline {19}Duality}{121}{chapter.19}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {19.1}Proving Optimality}{119}{section.19.1}%
+\contentsline {section}{\numberline {19.1}Proving Optimality}{121}{section.19.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {20}Linear Programming Problems}{121}{chapter.20}%
+\contentsline {chapter}{\numberline {20}Linear Programming Problems}{123}{chapter.20}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {21}Integer Programming}{123}{chapter.21}%
+\contentsline {chapter}{\numberline {21}Integer Programming}{125}{chapter.21}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {22}Ellipsoid Algorithm for LP}{125}{chapter.22}%
+\contentsline {chapter}{\numberline {22}Ellipsoid Algorithm for LP}{127}{chapter.22}%
 \defcounter {refsection}{0}\relax 
-\contentsline {part}{\@mypartnumtocformat {VII}{Approximation Algorithms}}{127}{part.7}%
+\contentsline {part}{\@mypartnumtocformat {VII}{Approximation Algorithms}}{129}{part.7}%
 \ttl@stoptoc {default@6}
 \ttl@starttoc {default@7}
 \defcounter {refsection}{0}\relax 
-\contentsline {part}{\@mypartnumtocformat {VIII}{Randomized Algorithms}}{129}{part.8}%
+\contentsline {part}{\@mypartnumtocformat {VIII}{Randomized Algorithms}}{131}{part.8}%
 \ttl@stoptoc {default@7}
 \ttl@starttoc {default@8}
 \defcounter {refsection}{0}\relax 
-\contentsline {part}{\@mypartnumtocformat {IX}{Algorithms on Strings}}{131}{part.9}%
+\contentsline {part}{\@mypartnumtocformat {IX}{Algorithms on Strings}}{133}{part.9}%
 \ttl@stoptoc {default@8}
 \ttl@starttoc {default@9}
 \ttl@stoptoc {default@9}
 \ttl@starttoc {default@10}
 \defcounter {refsection}{0}\relax 
-\contentsline {part}{\setlength \fboxsep {0pt}\noindent \colorbox {ocre!40}{\strut \parbox [c][.7cm]{\linewidth }{\Large \sffamily \centering Appendix\hskip 1em\relax \mbox {}}}}{133}{section*.33}%
+\contentsline {part}{\setlength \fboxsep {0pt}\noindent \colorbox {ocre!40}{\strut \parbox [c][.7cm]{\linewidth }{\Large \sffamily \centering Appendix\hskip 1em\relax \mbox {}}}}{135}{section*.33}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\leavevmode {\color {ocre}Axioms \& Theorems}}{135}{appendix*.34}%
+\contentsline {chapter}{\leavevmode {\color {ocre}Axioms \& Theorems}}{137}{appendix*.34}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\leavevmode {\color {ocre}Basic Prerequisite Mathematics}}{139}{appendix*.39}%
+\contentsline {chapter}{\leavevmode {\color {ocre}Basic Prerequisite Mathematics}}{141}{appendix*.39}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\leavevmode {\color {ocre}Proof Templates}}{145}{appendix*.40}%
+\contentsline {chapter}{\leavevmode {\color {ocre}Proof Templates}}{147}{appendix*.40}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\leavevmode {\color {ocre}Index}}{155}{appendix*.41}%
+\contentsline {chapter}{\leavevmode {\color {ocre}Index}}{157}{appendix*.41}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\leavevmode {\color {ocre}Bibliography}}{159}{appendix*.42}%
+\contentsline {chapter}{\leavevmode {\color {ocre}Bibliography}}{161}{appendix*.42}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Courses}{159}{section*.43}%
+\contentsline {section}{Courses}{161}{section*.43}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Books}{160}{section*.44}%
+\contentsline {section}{Books}{162}{section*.44}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Journal Articles}{160}{section*.45}%
+\contentsline {section}{Journal Articles}{162}{section*.45}%
 \contentsfinish 
