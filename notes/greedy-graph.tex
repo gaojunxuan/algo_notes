@@ -47,7 +47,7 @@ To formallly prove that the maximum independent set problem can be efficiently s
 We first show that an interval graph is also a chordal graph (the converse is not true).
 
 \begin{definition}[Chordal Graph] \index{chordal graph} \index{rigid circuit graph} \index{chord}
-    Let $G$ be an undirected graph. $G$ is a \textit{\textbf{chordal graph}} or \textit{\textbf{rigid circuit graph}} if for any cycles of 4 or more vertices, there exists a pair of vertices $u,v$ on the cycle such that $\{u,v\} \in E$. The edge $\{u,v\}$ is called a \textit{\textbf{chord}} of the cycle.
+    Let $G$ be an undirected graph. $G$ is a \textit{\textbf{chordal graph}} or \textit{\textbf{rigid circuit graph}} if for any cycles of 4 or more vertices, there exists a pair of vertices $u,v$ on the cycle such that $\{u,v\} \in E$ but $\{u,v\}$ is not part of the cycle. The edge $\{u,v\}$ is called a \textit{\textbf{chord}} of the cycle.
 \end{definition}
 
 \vspace{\parskip}
@@ -118,7 +118,7 @@ The next step is to show that there exists an ordering of the vertices of the in
 
     Otherwise, there exists $a,b \in V$ such that $\{a,b\} \not\in E$. Let $S$ be a minimal $(a,b)$-separator in $G$. $S$ separates $V$ into disjoint subsets $A,S,B$. By assumption, $S$ induces a clique. Since the size of $A$ is strictly smaller than $V$, by induction hypothesis, we know that $A$ has a perfect elimination ordering. This implies that there exists $u \in A$ such that $\{u\} \cup N(u)$ induces a clique on the subgraph induced by $A$.
 
-    Since $S$ separates $A$ and $B$, there is no edge going directly from vertices in $A$ to vertices in $B$. There is an edge connecting every pair of vertices in $S$, so if there are edges going between $u$ to vertices in $S$, the resulting subgraph is also a clique. Hence, $\{u\} \cup N(u)$ also induces a clique in $G$ because $S$ induces a clique.
+    Since $S$ separates $A$ and $B$, there is no edge going directly from vertices in $A$ to vertices in $B$. There is an edge connecting every pair of vertices in $S$, so if there are edges going between $u$ and vertices in $S$, the resulting subgraph is also a clique. Hence, $\{u\} \cup N(u)$ also induces a clique in $G$ because $S$ induces a clique.
 
     Consider the graph $G'$ obtained by removing vertex $u$ from $G$. $|V-\{u\}| < |V| = n$. By induction hypothesis, $G'$ has a perfect elimination ordering. Suppose the ordering is $(v_1,\ldots,v_{n-1})$. We can let $v_n = u$. By adding $v_n$ to the ordering, we get a new valid perfect elimination ordering because $v_{n}$ and its neighbors induces a clique in $G$.
     

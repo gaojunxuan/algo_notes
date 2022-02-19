@@ -6,5 +6,13 @@ Bioinformatics is a subject as much about biology as it is about strings. String
 
 \section{Longest Common Subsequence}
 
+Formally, given a sequence $X = x_1,x_2,\ldots, x_m$, the sequence $Z = z_1,z_2,\ldots,z_k$ is a subsequence of $X$ if there exists a strictly increasing sequence $i_1,i_2,\ldots,i_k$ of indicies such that for all $j = 1,2,\ldots,k$, we have $x_{i_j} = z_{j}$.
+
 \section{Edit Distance}
 
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.4\linewidth]{dp/edit-distance.pdf}
+    \caption{The dynamic programming matrix when computing the edit distance. Going diagonally corresponds to a match or substitution; going horizontally and vertically corresponds to insertion and/or deletion.}
+    \label{fig:dp-editdistance-mat}
+\end{figure}

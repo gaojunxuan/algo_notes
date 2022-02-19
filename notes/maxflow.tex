@@ -312,7 +312,7 @@ Now we finally have everything we need to prove the max-flow min-cut theorem. We
 
     (1) $\Rightarrow$ (2): Suppose, for contradiction, that $f$ is a maximum flow in $G$, but $G_f$ has a new augmenting path $p$. Then, by Corollary \ref{corollary:augmentation-increases-flow}, the flow obtained by augmenting $f$ and $f_p$ has a strictly greater value and $f \uparrow f_p$ is a flow in $G$. This contradicts the assumption that $f$ is a maximum flow. 
 
-    (2) $\Rightarrow$ (3): Assume (2) holds. Then, there is no path from $s$ to $t$ in the residue network $G_f$. Let $S = \{ v \in V \mid \text{there exists a path from $s$ to $v$ in $G_f$} \}$, and let $T = V-S$. Clearly, $(S,T)$ is a cut (this can be trivially proved by showing $s \in S$ and $t \not\in S$ because there is no path from $s$ to $t$). We claim that for each $u\in S$ and $v \in T$, $(u,v) \in E$, $f(u,v) = c(u,v)$. To see why this is true, we use proof by contradiction. Suppose the claim is false. By capacity constraint $f(u,v) \leq c(u,v)$. If $f(u,v) \neq c(u,v)$, $f(u,v) < c(u,v)$ and $(u,v) \in E_f$ because it would have positive residue capacity. But then, this means there would be a path from $u$ to $v$ and $v \in S$, contradicting the assumption that $v \in T$. The other case where $(v,u) \in E$ follows from the same argument with $u$ and $v$ swapped.
+    (2) $\Rightarrow$ (3): Assume (2) holds. Then, there is no path from $s$ to $t$ in the residue network $G_f$. Let $S = \{ u \in V \mid \text{there exists a path from $s$ to $u$ in $G_f$} \}$, and let $T = V-S$. Clearly, $(S,T)$ is a cut (this can be trivially proved by showing $s \in S$ and $t \not\in S$ because there is no path from $s$ to $t$). We claim that for each $u\in S$ and $v \in T$, $(u,v) \in E$, $f(u,v) = c(u,v)$. To see why this is true, we use proof by contradiction. Suppose the claim is false. By capacity constraint $f(u,v) \leq c(u,v)$. If $f(u,v) \neq c(u,v)$, $f(u,v) < c(u,v)$ and $(u,v) \in E_f$ because it would have positive residue capacity. But then, this means there would be a path from $u$ to $v$ and $v \in S$, contradicting the assumption that $v \in T$. The other case where $(v,u) \in E$ follows from the same argument with $u$ and $v$ swapped.
 
     (3) $\Rightarrow$ (1): Assume (3) holds. Then, there exists a cut $(S,T)$ such that $|f| = c(S,T)$. By Corollary \ref{corollary:flow-upper-bound}, $|f| \leq c(S,T)$. This implies that every other flow has value less than $f$, so $f$ is a maximum flow.
 \end{proof}
@@ -335,7 +335,9 @@ This theorem shows that if Ford-Fulkerson terminates, then the resulting flow is
     \End
 \end{codebox}
 
-The runtime of Ford-Fulkerson's algorithm/method depends on the way we implement the procedure for finding augmenting path $p$. In the next chapter, we will look at Edmonds-Karp's algorithm, which implements this operation using BFS.
+This gives us an upper bound on the running time of the Ford-Fulkerson method. Without loss of generality, we can assume that the capacities are integral (otherwise we can rescale them to integers). Then, we know that each iteration of the while loop increases the flow value by at least one unit. Hence, the while loop of Line 3-8 runs at most $|f^*|$ iterations where $f^*$ is the maximum flow. We can find the augmenting path $p$ using either BFS or DFS, which can be done in $O(|E|)$ time. Since we need to find an augmenting path for every iteration of the while loop and the while loop runs at most $|f^*|$ iterations, we can conclude that the running time of the Ford-Fulkerson method is upper bounded by $O(|f^*||E|)$. 
+
+A better upper bound on the running time of Ford-Fulkerson's algorithm/method depends on the way we implement the procedure for finding augmenting path $p$. In the next chapter, we will look at Edmonds-Karp's algorithm, which implements this operation using BFS.
 
 \section{Irrational Capacity}
 

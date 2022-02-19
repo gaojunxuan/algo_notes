@@ -1,0 +1,88 @@
+\section{Edmonds-Karp}
+
+In the last chapter, we saw the Ford-Fulkerson method for finding the maximum flow. We have left out one important aspect of the implementation -- how to find the augmenting path. The \textit{\textbf{Edmonds-Karp algorithm}} finds augmenting paths using breadth-first search (BFS). We will first take a look at the pseudocode for Edmonds-Karp. It follows the same structure as Ford-Fulkerson.
+
+\begin{codebox}
+    \Procname{$\proc{Edmonds-Karp}(G=(V,E),s,t)$}
+    \li \For each $(u,v) \in E$ \Do
+        \li $(u,v).f = 0$ \RComment{initialize flow to 0}
+    \End
+    \li $p = \proc{BFS}(G_f, s, t)$ \RComment{find shortest path from $s$ to $t$ on residue network}
+    \li \While $p \neq \const{nil}$ \Do
+        \li $c_f(p) = \min \{c_f(u,v) \mid \text{$(u,v)$ is on $p$} \}$ \RComment{residue capacity of path $p$}
+        \li \For each $(u,v)$ on $p$ \Do \RComment{augment flow}
+            \li \If $(u,v) \in E$ \Then
+                \li $(u,v).f = (u,v).f + c_f(p)$
+            \li \Else $(v,u).f = (v,u).f - c_f(p)$
+            \End
+        \End
+        \li $p = \proc{BFS}(G_f,s,t)$ 
+    \End
+\end{codebox}
+
+The correctness of the Edmonds-Karp algorithm follows immediately from the correctness of Ford-Fulkerson.
+
+\section{Running Time of Edmonds-Karp Algorithm}
+
+We will show that the Edmonds-Karp algorithm runs in $O(|V||E|^2)$ time. It is a rather subtle proof involving properties of shortest paths and how augmenting a path on the residue network affects the shortest path from $s$ to $t$.
+
+\begin{lemma} \label{lem:edmondskarp-runtime-1}
+    Let $\delta_f(s,v)$ be the shortest-path distance from $s$ to $v$ in the residue network $G_f$. After each flow augmentation, $\delta_f(s,v)$ does not decrease for all $v \in V - \{s,t\}$.
+\end{lemma}
+
+\begin{proof}
+    Suppose for contradiction, that there exists some vertex $v \in V-\{s,t\}$ such that $\delta_f(s,v)$ is decreased after certain flow augmentation. Let $f$ be the flow before the augmentation, and $f'$ be the flow immediately after the augmentation. Let $v$ be the vertex with \textbf{minimum} $\delta_{f'}(s,v)$ whose distance was decreased by flow augmentation. Further, let $u$ be the vertex immediately before $v$ on the shortest path from $s$ to $v$ in $G_{f'}$. By our assumption, $\delta_{f'}(s,v) < \delta_f (s,v)$.
+
+    Since we have chosen $v$ to be the vertex with minimum $\delta_{f'}(s,v)$ whose flow was decreased, we know that the distance from $s$ to $u$ (the vertex immediately before $v$ on the shortest path from $s$ to $v$ in $G_{f'}$) did not decrease. Hence,
+    $$
+    \delta_{f}(s,u) \leq \delta_{f'}(s,u)
+    $$
+
+    \textit{Claim}. $(u,v) \not\in G_f$.
+
+    We can prove this claim by contradiction. Suppose not. Then, since $\delta_{f}(s,v)$ is the shortest-path distance from $s$ to $v$ in $G_f$, by the triangle inequality,
+    $$
+    \delta_f (s,v) \leq \delta_f (s,u) + 1 \leq \delta_{f'}(s,u) + 1 = \delta_{f'}(s,v)
+    $$
+    which is a contradiction to our assumption that $\delta_{f'}(s,v) < \delta_f (s,v)$. 
+
+    The only way $(u,v) \not\in G_f$ and $(u,v) \in G_{f'}$ after one augmentation step is if the flow through $(v,u)$ is increased during the augmentation (creating the reverse edge $(u,v)$). Since Edmonds-Karp algorithm uses BFS to select augmenting paths, this implies that $(v,u)$ is on the shortest path selected by the algorithm. But then, 
+    $$
+    \delta_f(s,v) = \delta_f(s,u) - 1 \leq \delta_{f'}(s,u) - 1 = \delta_{f'}(s,v) - 1 - 1
+    $$
+    which implies that $\delta_f(s,v) < \delta_{f'}(s,v)$, contradicting our assumption that $\delta_{f'}(s,v) < \delta_f(s,v)$.
+\end{proof}
+
+We say an edge is \textit{\textbf{critical}} on an augmenting path $p$ if $c_f(p) = c_f(u,v)$ (i.e. $(u,v)$ is the bottleneck). Based on our algorithm, during an augmentation of the path $p$, $(u,v)$ is removed and $(v,u)$ is added to the residue network.
+
+\begin{lemma} \label{lem:edmondskarp-runtime-2}
+    Between any two steps in which $(u,v)$ is critical, $\delta(s,u)$ increases by at least 2.
+\end{lemma}
+
+\begin{proof}
+    Suppose $(u,v)$ was cirtical in $G_f$. So, $(u,v)$ is removed after augmentation. Further, since $(u,v)$ is selected by the algorithm, it must be on the shortest path from $s$ to $t$, so
+    $$
+    \delta_f(s,v) = \delta_f(s,u) + 1
+    $$
+    Once $(u,v)$ is removed, it can only reappear in a residue network if the flow from $u$ to $v$ is decreased, which is only possible when $(v,u)$ is in the network. Let $f'$ be the flow immediately before the augmentation that added $(u,v)$ back. Then, the algorithm must have selected an augmenting path containing $(v,u)$. By Lemma \ref{lem:edmondskarp-runtime-1} on $v$, $\delta_{f}(s,v) \leq \delta_{f'}(s,v)$. It follows that
+    $$
+    \delta_{f'}(s,u) = \delta_{f'}(s,v) + 1 \geq \delta_{f}(s,v) + 1 = \delta_{f}(s,u) + 2
+    $$
+    Hence, between the two steps in which $(u,v)$ is critical, the distance from $s$ to $u$ increases by at least 2.
+\end{proof}
+
+\begin{corollary} \label{lem:edmondskarp-runtime-3}
+    Every edge can become critical at most $|V|/2$ times.
+\end{corollary}
+
+\begin{proof}
+    Immediate from \ref{lem:edmondskarp-runtime-2}. After the first time an edge $(u,v)$ became critical, the distance of the vertex from $s$ to $u$ increases by at least 2 every time, and there are $|V|-2$ vertices that can show up on the shortest path from $s$ to $u$. This can happen at most $(|V|-2)/2$ times. Along with the first time $(u,v)$ becmoes critical, we have in total at most $|V|/2$ times.
+\end{proof}
+
+\begin{theorem}
+    \proc{Edmonds-Karp} runs in $O(|V||E|^2)$ time.
+\end{theorem}
+
+\begin{proof}
+    As shown by Corollary \ref{lem:edmondskarp-runtime-3}, there can be at most $O(|V||E|)$ augmentations steps because there are $|E|$ edges, and every edge can be critical for at most $|V|/2 \in O(|V|)$ times. Each augmentation step takes $O(|E|)$ using breadth-first search and hence the running time $O(|V||E|^2)$.
+\end{proof}
