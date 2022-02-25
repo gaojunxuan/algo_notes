@@ -117,7 +117,7 @@ For the vertex-based version, however, things are a little bit more complicated.
 We first consider the problem of finding the maximum number of edge-disjoint paths on a directed graph. The construction is really simple. We simply take every edge in the graph and assign a capacity of 1. After this, we run compute the max flow on the graph, and the value of the final flow is the maximum number of edge-disjoint paths. This simple construction allows us to prove Menger's theorem for edge-disjoint paths.
 
 \begin{theorem}[Menger's Theorem (edge)]
-    Let $G=(V,E)$ be a graph and let $a,b \in V$ be two distinct vertices. The minimum number of \textbf{edges} in a $a,b$ separating cut equals the maximum number of \textbf{pairwise edge disjoint} $a \leadsto b$ paths in $G$.
+    Let $G=(V,E)$ be a graph and let $s,t \in V$ be two distinct vertices. The minimum number of \textbf{edges} in a $s,t$ separating cut equals the maximum number of \textbf{pairwise edge disjoint} $s \leadsto t$ paths in $G$.
 \end{theorem}
 
 \begin{proof}
@@ -164,7 +164,7 @@ Notice that every negative ($-$) vertex has exactly one outgoing edge connecting
 This construction converts an undirected graph into a directed graph, and we can prove Menger's theorem using an argument similar to how we proved it for the edge-based case.
 
 \begin{theorem}[Menger's Theorem (vertex)] \index{Menger's theorem}
-    Let $G=(V,E)$ be a graph and let $a,b \in V$ be two \textbf{non-adjacent} distinct vertices. The minimum number of \textbf{vertices} in a $a,b$ separating cut equals the maximum number of \textbf{internally vertex disjoint} $a \leadsto b$ paths in $G$.
+    Let $G=(V,E)$ be a graph and let $s,t \in V$ be two \textbf{non-adjacent} distinct vertices. The minimum number of \textbf{vertices} in a $s,t$ separating cut equals the maximum number of \textbf{internally vertex disjoint} $s \leadsto t$ paths in $G$.
 \end{theorem}
 
 \begin{proof}
@@ -173,6 +173,14 @@ This construction converts an undirected graph into a directed graph, and we can
     (flow $\Rightarrow$ vertex-disjoint path): Let $f$ be a maximum flow in the flow network constructed as shown above. For each negative vertex $v^- \in V'$, if there is a flow into $v^-$, then the value of the flow through $v^-$ must be 1 because $c(v^-,v^+)=1$. This flow must have originated from $s$ and arrived at $t$. Following this unit flow path gives us a path from $s$ to $t$. Since there are $|f|$ many unit flow paths from $s$ to $t$ and that the construction prevents a flow of value more than 1 through vertices other than $s$ and $t$, it follows that there are $|f|$ internally vertex disjoint $s \leadsto t$ paths in the original graph.
 
     (vertex-disjoint path $\Rightarrow$ flow): Let $(S,T)$ be a minimum cut with capacity $k$ in the flow network $G'$ constructed as shown above. We claim that every edge crossing the cut must be of the form $(v^-,v^+)$. Suppose not. Then, we must have an edge $(u,v)$ crossing the cut with infinite capacity. It follows that $c(S,T) = \infty$, which clearly contradicts the minimality of the cut. Finally, we show that the minimum cut $(S,T)$ corresponds to a cut in the original graph $G$. Let $U = \{u \in V \mid u^- \in S,\, u^+ \in T\}$. We have $|U| = c(S,T) = k$. Let $p = sv_1v_2\ldots v_t t$ be an undirected path from $s$ to $t$. We can construct an equivalent directed path $p' = s v_1^- v_1^+ v_2^- \ldots v_t^+ t$ in the flow network $G'$. The directed path $p'$ must contain an edge going from a negative vertex to a positive vertex, which are the edges crossing the cut $(S,T)$ by the claim proved earlier. Removing the edges crossing the cut disconnects $s$ from $t$ in $G'$. Then, by construction of $U$, removing vertices in $U$ will also disconnect $s$ from $t$ in $G$. Hence $U$ is a cut in $G$. Since $k$ is the capacity of the minimum cut, by max flow-min cut, we have $|U| = k = \text{max flow} = |f|$.
+\end{proof}
+
+Finally, we will present an inductive proof of the vertex version of Menger's theorem. This proof does not directly rely on the result of max flow-min cut and offers a different perspective of the theorem. The intuition behinds Menger's theorem is actually quite intuitive. There is a natural relationship between the number of vertices in a cut and the number of vertex-disjoint paths: if there are more number of vertices in a $s,t$ separating cut, then we can always get a new path from $s$ to $t$ going through that additional vertex; and conversely, if there are more vertex-disjoint paths than the number of vertices in the minimum cut, then it must be that the alleged minimum cut is not enough to completely separate $s$ and $t$. The following induction proof formalizes this intuition.
+
+\begin{proof}
+    By induction on the size of the graph.
+
+    Base: 
 \end{proof}
 
 \begin{figure}[htbp]
