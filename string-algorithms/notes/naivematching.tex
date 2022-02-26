@@ -1,0 +1,45 @@
+\newthought{Terminology Confusion}. Before starting the discussion of string matching algorithms, we should note the difference between a \textit{\textbf{substring}} and a \textit{\textbf{subsequence}}. Given a string S, characters in a substring of S must occur contiguously in S; whereas characters in a subse- quence may be interspersed gaps (or indels, as we call them in biology) and/or characters not in the original string.
+
+\section{Exact String Mathching Problem}
+
+Given a text string $T$ and pattern $P$, the goal of the exact string matching problem is to find all occurrences of $P$ in $T$.
+
+\section{The ``Na\"ive'' Algorithm}
+
+\begin{codebox}
+    \Procname{$\proc{Naive-Match}(P,T)$}
+    \li $\id{matches} = [\;]$
+    \li \For $i=1$ \To $|T|-|P|+1$ \Do
+        \li $\id{match} = \const{true}$
+        \li \For $j = 1$ \To $|P|$ \Do
+            \li \If $T[i+j] \neq P[j]$ \Then
+                \li $\id{match} = \const{false}$
+                \li \textbf{break}
+            \End
+        \li \If $\id{match}$ \Then
+            \li $\id{matches}.\proc{Append}(i)$ 
+        \End
+    \End
+    \li \Return $\id{matches}$ 
+\end{codebox}
+
+\begin{marginfigure}
+    \caption{Naive exact matching with $P=abxyabxa$ and $T=xabxyabxyabxz$.}
+    \begin{alignat*}{7}
+        T:\; &x&&a&&b&&x&&y&&abxyabxz \\
+        P:\; &a&&b&&x&&y&&a&&bxa \\
+        & && a&&b&&x&&y&&abxa \\
+        & && && a&&b&&x&&yabxa \\
+        & && && && a&&b&&xyabxa \\
+        & && && && && a &&bxyabxa \\
+        & && && && && && abxyabxa \\
+    \end{alignat*}
+    \label{fig:naive-matching}
+\end{marginfigure}
+
+The na\"ive exact matching algorithm aligns the left end of $P$ with the left end of $T$ and compares the characters of $P$ and $T$ left to right until a mismatch is found, or until it reaches the end of $P$, in which case we report the position of $P$. Then, $P$ is shifted to the right by one place. We repeat this procedure until the right end of $P$ passes the right end of $T$.
+
+\section{Runtime of the Naive Algorithm}
+
+Let $n = |P|$ and $m = |T|$. The worst-case comparisons made by the naive algorithm is $\Theta(nm)$. We have the lower bound $\Omega(nm)$ when
+$P$ and $T$ contains the same repeated characters (e.g. $P = aaa$, $T = aaaaaaaaa$), in which case the algorithm makes $n(m-n+1) \in \Omega(nm)$ comparisons.

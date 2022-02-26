@@ -27,3 +27,9 @@ A fundemental preprocessing is a generalized way to process the pattern $P$ to g
 \begin{definition}
     For every $i > 1$, $r_i$ is the right endpoint of the Z-box that begins at or befor position $i$ (i.e. the closest Z-box to the left). More formally, $r_i$ is the largest value of $j + Z_j - 1$ over all $1 < j \leq i$ such that $Z_j > 0$.
 \end{definition}
+
+\begin{codebox}
+    \Procname{$\proc{Compute-Z}(S)$}
+    \li $n = |S|$
+    \li $Z = \text{empty array of length $n$}$ 
+\end{codebox}

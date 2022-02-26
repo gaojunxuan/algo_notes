@@ -1,4 +1,4 @@
-\documentclass{tufte-book}
+\documentclass[nobib]{tufte-book}
 
 \hypersetup{colorlinks}% uncomment this line if you prefer colored hyperlinks (e.g., for onscreen viewing)
 
@@ -13,8 +13,9 @@
 % They're clones of Bembo and Gill Sans, respectively.
 %\IfFileExists{bergamo.sty}{\usepackage[osf]{bergamo}}{}% Bembo
 %\IfFileExists{chantill.sty}{\usepackage{chantill}}{}% Gill Sans
-
 %\usepackage{microtype}
+
+\usepackage[square,numbers]{natbib}
 
 %%
 % Just some sample text
@@ -70,21 +71,6 @@
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{remark}[theorem]{Remark}
 \newtheorem{example}[theorem]{Example}
-
-%%
-% Some shortcuts for Tufte's book titles.  The lowercase commands will
-% produce the initials of the book title in italics.  The all-caps commands
-% will print out the full title of the book in italics.
-\newcommand{\vdqi}{\textit{VDQI}\xspace}
-\newcommand{\ei}{\textit{EI}\xspace}
-\newcommand{\ve}{\textit{VE}\xspace}
-\newcommand{\be}{\textit{BE}\xspace}
-\newcommand{\VDQI}{\textit{The Visual Display of Quantitative Information}\xspace}
-\newcommand{\EI}{\textit{Envisioning Information}\xspace}
-\newcommand{\VE}{\textit{Visual Explanations}\xspace}
-\newcommand{\BE}{\textit{Beautiful Evidence}\xspace}
-
-\newcommand{\TL}{Tufte-\LaTeX\xspace}
 
 % Prints the month name (e.g., January) and the year (e.g., 2008)
 \newcommand{\monthyear}{%
@@ -227,7 +213,7 @@ under the License.
 
 {\noindent\fontsize{18}{22}\selectfont\itshape
 \nohyphenation
-These notes are primarily based on the book \textbf{Algorithms on Strings, Trees, and Sequences} by \textbf{Dan Gusfield}.
+These notes are primarily based on the book \textbf{Algorithms on Strings, Trees, and Sequences} by \textbf{Dan Gusfield} \cite{gusfield_1997}.
 
 \hfill
 
@@ -259,9 +245,8 @@ These notes are primarily based on the book \textbf{Algorithms on Strings, Trees
 
 \backmatter
 
-\bibliography{sample-handout}
-\bibliographystyle{plainnat}
-
+\bibliographystyle{abbrvnat}
+\bibliography{stringbook}
 
 \printindex
 
