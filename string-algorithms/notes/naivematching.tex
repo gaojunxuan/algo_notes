@@ -1,10 +1,12 @@
+(Gusfield Section 1.1)
+
 \newthought{Terminology Confusion}. Before starting the discussion of string matching algorithms, we should note the difference between a \textit{\textbf{substring}} and a \textit{\textbf{subsequence}}. Given a string S, characters in a substring of S must occur contiguously in S; whereas characters in a subse- quence may be interspersed gaps (or indels, as we call them in biology) and/or characters not in the original string.
 
 \section{Exact String Mathching Problem}
 
 Given a text string $T$ and pattern $P$, the goal of the exact string matching problem is to find all occurrences of $P$ in $T$.
 
-\section{The ``Na\"ive'' Algorithm}
+\section{The ``Na\"ive'' Algorithm} \index{naive exact matching algorithm}
 
 \begin{codebox}
     \Procname{$\proc{Naive-Match}(P,T)$}

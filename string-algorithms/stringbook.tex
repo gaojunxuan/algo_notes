@@ -60,6 +60,10 @@
 \usepackage{amssymb}
 \usepackage{amsthm}
 
+%%
+% For multiple columns typesetting
+\usepackage{multicol}
+
 \setcounter{tocdepth}{0}
 \setcounter{secnumdepth}{0}
 %%
@@ -69,6 +73,7 @@
 \newtheorem{claim}[theorem]{Claim}
 \newtheorem{corollary}[theorem]{Corollary}
 \newtheorem{definition}[theorem]{Definition}
+\newtheorem{rules}[theorem]{Rule}
 \newtheorem{remark}[theorem]{Remark}
 \newtheorem{example}[theorem]{Example}
 
@@ -147,6 +152,9 @@
 \newcommand{\docfilehook}[2]{\texttt{#1}\index{file hooks!#2}\index{#1@\texttt{#1}}}
 \newcommand{\doccounter}[1]{\texttt{#1}\index{#1 counter@\texttt{#1} counter}}
 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
 % Generates the index
 \usepackage{makeidx}
 \makeindex
@@ -212,12 +220,16 @@ under the License.
 ~\vfill
 
 {\noindent\fontsize{18}{22}\selectfont\itshape
-\nohyphenation
 These notes are primarily based on the book \textbf{Algorithms on Strings, Trees, and Sequences} by \textbf{Dan Gusfield} \cite{gusfield_1997}.
 
 \hfill
 
-\noindent Thanks Professor Gusfield for his great book.}
+\noindent Thanks Professor Gusfield for his great book.
+
+\hfill
+
+The part on indexing and compression is based on the book \textbf{Genome-Scale Algorithm Design} \cite{makinen_belazzougui_cunial_tomescu_2015} and Ben Langmead's lectures.
+}
 
 \vfill
 \vfill
@@ -231,7 +243,7 @@ These notes are primarily based on the book \textbf{Algorithms on Strings, Trees
 % Start the main matter (normal chapters)
 \mainmatter
 
-\part{Exact Matching}
+\part{Comparison-Based Exact Matching}
 
 \chapter{Naive Exact Matching}
 \input{notes/naivematching.tex}
@@ -240,13 +252,39 @@ These notes are primarily based on the book \textbf{Algorithms on Strings, Trees
 \input{notes/z-algo.tex}
 
 \chapter{Boyer-Moore}
+\input{notes/boyer-moore.tex}
 
 \chapter{Knuth-Morris-Pratt Algorithm}
+
+\part{Suffix Trees}
+
+\chapter{Suffix Trees}
+\input{notes/suffix-tree/suffix-tree.tex}
+
+\chapter{Constructing Suffix Trees}
+
+\part{Dynamic Programming}
+
+\chapter{Edit Distance}
+
+\part{Compression and Indexing}
+
+\chapter{Entropy and Information}
+
+\chapter{k-mer Index and Suffix Array}
+\input{notes/idx/kmer.tex}
+
+\chapter{Burrows-Wheeler Transform}
+
+\chapter{FM Index}
+
+\chapter{Wavelet Tree}
 
 \backmatter
 
 \bibliographystyle{abbrvnat}
 \bibliography{stringbook}
+\addcontentsline{toc}{chapter}{Bibliography}
 
 \printindex
 
