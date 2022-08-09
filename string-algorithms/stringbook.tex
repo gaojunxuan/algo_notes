@@ -154,6 +154,8 @@
 
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
 
 % Generates the index
 \usepackage{makeidx}
@@ -238,6 +240,25 @@ The part on indexing and compression is based on the book \textbf{Genome-Scale A
 % r.9 introduction
 \cleardoublepage
 
+% \chapter*{Notations}
+
+% \section*{Strings}
+
+% Strings are denoted by $S$. When we need to distinguish the text from the pattern, we use $T$ and $P$, respectively.
+
+% Prefix of a string ending at index $i$ is denoted by $S[\ldots i]$. Similarly, suffix of a string starting at index $i$ is denoted by $S[i \ldots]$. Indicies start at $1$.
+
+% \section*{Sets}
+
+% Natural number: $\N$
+
+% Postive natural numbers: $\N^+$, $0 \not\in \N^+$
+
+% Integers: $\Z$
+
+% Postivie natural numbers from $1$ to $n$: $[n] = \{ i \in \N^+ \mid i \leq n \}$
+
+% Reals: $\R$
 
 %%
 % Start the main matter (normal chapters)
@@ -255,6 +276,17 @@ The part on indexing and compression is based on the book \textbf{Genome-Scale A
 \input{notes/boyer-moore.tex}
 
 \chapter{Knuth-Morris-Pratt Algorithm}
+
+\part{Lower Bounds, Sorting, and Searching}
+
+\chapter{Basic Definitions}
+\input{notes/lb/basicdefs.tex}
+
+\chapter{Lower Bounds for String Sorting}
+\input{notes/lb/lowerbounds.tex}
+
+\chapter{Radix Sort}
+\input{notes/lb/radixsort.tex}
 
 \part{Suffix Trees}
 

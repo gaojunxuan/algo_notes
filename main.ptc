@@ -282,7 +282,11 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {19.1}Proving Optimality}{121}{section.19.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {20}Linear Programming Problems}{123}{chapter.20}%
+\contentsline {section}{\numberline {19.2}Certificate of Optimality}{121}{section.19.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {20}Linear Programming Applications}{123}{chapter.20}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {20.1}Network Flow via LP}{123}{section.20.1}%
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {21}Integer Programming}{125}{chapter.21}%
 \defcounter {refsection}{0}\relax 
@@ -292,31 +296,63 @@
 \ttl@stoptoc {default@6}
 \ttl@starttoc {default@7}
 \defcounter {refsection}{0}\relax 
-\contentsline {part}{\@mypartnumtocformat {VIII}{Randomized Algorithms}}{131}{part.8}%
+\contentsline {chapter}{\numberline {23}Approximation}{131}{chapter.23}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {23.1}Why Approximation?}{131}{section.23.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {23.2}Approximation Ratio}{131}{section.23.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {23.3}Classes of Approximation Schemes}{132}{section.23.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {24}Greedy Approximation Algorithms}{133}{chapter.24}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {24.1}Makespan}{133}{section.24.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {24.1.1}Makespan is NP-Hard}{133}{subsection.24.1.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {24.1.2}Greedy Approximation Algorithm for Makespan}{133}{subsection.24.1.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {24.2}Vertex Cover}{135}{section.24.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {24.3}Greedy Approximation Algorithm for Vertex Cover}{135}{section.24.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {25}Local Search}{137}{chapter.25}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {25.1}Oblivious and Non-Oblivious Local Search}{137}{section.25.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {25.2}Exact Max-k-SAT}{137}{section.25.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {25.3}Local Search Algorithm for Exact Max-k-SAT}{137}{section.25.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {part}{\@mypartnumtocformat {VIII}{Randomized Algorithms}}{139}{part.8}%
 \ttl@stoptoc {default@7}
 \ttl@starttoc {default@8}
 \defcounter {refsection}{0}\relax 
-\contentsline {part}{\@mypartnumtocformat {IX}{Algorithms on Strings}}{133}{part.9}%
+\contentsline {chapter}{\numberline {26}Randomization}{141}{chapter.26}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {26.1}Bounding Probability}{141}{section.26.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {part}{\@mypartnumtocformat {IX}{Algorithms on Strings}}{143}{part.9}%
 \ttl@stoptoc {default@8}
 \ttl@starttoc {default@9}
 \ttl@stoptoc {default@9}
 \ttl@starttoc {default@10}
 \defcounter {refsection}{0}\relax 
-\contentsline {part}{\setlength \fboxsep {0pt}\noindent \colorbox {ocre!40}{\strut \parbox [c][.7cm]{\linewidth }{\Large \sffamily \centering Appendix\hskip 1em\relax \mbox {}}}}{135}{section*.33}%
+\contentsline {part}{\setlength \fboxsep {0pt}\noindent \colorbox {ocre!40}{\strut \parbox [c][.7cm]{\linewidth }{\Large \sffamily \centering Appendix\hskip 1em\relax \mbox {}}}}{145}{section*.33}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\leavevmode {\color {ocre}Axioms \& Theorems}}{137}{appendix*.34}%
+\contentsline {chapter}{\leavevmode {\color {ocre}Axioms \& Theorems}}{147}{appendix*.34}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\leavevmode {\color {ocre}Basic Prerequisite Mathematics}}{141}{appendix*.39}%
+\contentsline {chapter}{\leavevmode {\color {ocre}Basic Prerequisite Mathematics}}{151}{appendix*.39}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\leavevmode {\color {ocre}Proof Templates}}{147}{appendix*.40}%
+\contentsline {chapter}{\leavevmode {\color {ocre}Proof Templates}}{157}{appendix*.40}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\leavevmode {\color {ocre}Index}}{157}{appendix*.41}%
+\contentsline {chapter}{\leavevmode {\color {ocre}Index}}{167}{appendix*.41}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\leavevmode {\color {ocre}Bibliography}}{161}{appendix*.42}%
+\contentsline {chapter}{\leavevmode {\color {ocre}Bibliography}}{171}{appendix*.42}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Courses}{161}{section*.43}%
+\contentsline {section}{Courses}{171}{section*.43}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Books}{162}{section*.44}%
+\contentsline {section}{Books}{172}{section*.44}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Journal Articles}{162}{section*.45}%
+\contentsline {section}{Journal Articles}{172}{section*.45}%
 \contentsfinish 

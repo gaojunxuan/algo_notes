@@ -1,0 +1,41 @@
+\section{Why Approximation?}
+
+As we have seen in the last part, many problems of both theoretical and practical interest turn out to be NP-complete. And it is strongly believed that it is unlikely to have polynomial time algorithms to solve such problems. That's why we are interested in approximation algorithms. Instead of solving the problems exactly, we can approximate the results. In some other cases, we may want to use an approximation algorithm even if a polynomial-time exact algorithm exists for that particular problem.
+
+\section{Approximation Ratio}
+
+The objective of approximation algorithm is to \textit{\textbf{maximize ``profit''}} (in a maximization problem) or \textit{\textbf{minimize ``cost''}} (in a minimization problem). We use the notion of approximation ratio to measure how good or bad an approximation algorithm is.
+
+\begin{definition}[Approximation Ratio] \index{approximation ratio}
+    Given a problem instance $I$, let $\mathrm{ALG}(I)$ be the solution returned by the approximation algorithm and let $\mathrm{OPT}(I)$ be some optimal solution. Then, for a maximization problem, we define the \textit{\textbf{approximation ratio}} as
+    $$
+    \frac{\mathit{Profit}(\mathrm{OPT}(I))}{\mathit{Profit}(\mathrm{ALG}(I))}
+    $$
+    Similarly, for a minimization problem we define the approximation ratio as
+    $$
+    \frac{\mathit{Cost}(\mathrm{ALG}(I))}{\mathit{Cost}(\mathrm{OPT}(I))}
+    $$
+    We also define the asymptotic approximation ratio as
+    $$
+    \lim_{\mathit{Cost}(\mathrm{OPT}(I)) \to \infty}\frac{\mathit{Cost}(\mathrm{ALG}(I))}{\mathit{Cost}(\mathrm{OPT}(I))} \qquad \text{or} \qquad \lim_{\mathit{Profit}(\mathrm{OPT}(I)) \to \infty} \frac{\mathit{Profit}(\mathrm{OPT}(I))}{\mathit{Profit}(\mathrm{ALG}(I))}
+    $$
+\end{definition}
+
+\begin{definition}[c-Approximation]
+    For a minimization problem, we say an algorithm ALG is a $c$-approximation if
+    $$
+    \mathit{Cost}(\mathrm{ALG}(I)) \leq c \cdot \mathit{Cost}(\mathrm{OPT}(I))
+    $$
+    For a maximization, we say ALG is a $c$-approximation if
+    $$
+    \mathit{Profit}(\mathrm{ALG}(I)) \geq \frac{1}{c} \mathit{Profit}(\mathrm{OPT}(I))
+    $$
+\end{definition}
+
+Note that for all approximation algorithms, we should have $c \geq 1$. In the context of a minimization problem, this means the approxmation ratios are always such that $c \geq 1$. In maximization problem, approximation ratios are a fraction of the optimal profit.
+
+\section{Classes of Approximation Schemes} \index{FPTAS} \index{PTAS}
+
+An \textbf{FPTAS} (\textit{\textbf{fully polynomial time approximation scheme}}) is a $(1+\epsilon)$-approximation algorithm using time polynomial in the input size and $1/\epsilon$.
+
+A \textbf{PTAS} (\textit{\textbf{polynomial time approximation scheme}}) is a $(1+\epsilon)$-approximation algorithm using time polynomial in the input size. A PTAS may not be polynomial in terms of $1/\epsilon$.

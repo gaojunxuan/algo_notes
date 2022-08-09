@@ -76,6 +76,7 @@
 \usepackage{mathptmx} % Use the Adobe Times Roman as the default text font together with math symbols from the Symbol, Chancery and Computer Modern fonts
 \DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}
 \DeclareSymbolFont{symbols}{OMS}{cmsy}{m}{n}
+\DeclareSymbolFont{letters}{OML}{cmm}{m}{it}
 \DeclareSymbolFont{largesymbols}{OMX}{cmex}{m}{n}
 \usepackage{microtype} % Slightly tweak font spacing for aesthetics
 \usepackage[utf8]{inputenc} % Required for including letters with accents
@@ -311,7 +312,7 @@
 
 % Defines the theorem text style for each type of theorem to one of the three styles above
 \newcounter{dummy} 
-\numberwithin{dummy}{section}
+\numberwithin{dummy}{chapter}
 \theoremstyle{ocrenumbox}
 \newtheorem{theoremeT}[dummy]{Theorem}
 \newtheorem{problem}{Problem}[chapter]
@@ -320,7 +321,7 @@
 \newtheorem{exampleT}{Example}[chapter]
 \theoremstyle{blacknumbox}
 \newtheorem{vocabulary}{Vocabulary}[chapter]
-\newtheorem{definitionT}{Definition}[section]
+\newtheorem{definitionT}[dummy]{Definition}
 \newtheorem{corollaryT}[dummy]{Corollary}
 \newtheorem{lemmaT}[dummy]{Lemma}
 \theoremstyle{ocrenum}
@@ -328,7 +329,7 @@
 \theoremstyle{pinknumbox}
 \newtheorem{axiomT}[dummy]{Axiom}
 \theoremstyle{greennumbox}
-\newtheorem{ruleT}{Template}[chapter]
+\newtheorem{ruleT}{Template}[dummy]
 
 % A new set of theorem definitions used in appendix only
 \newcounter{appendixcounter}

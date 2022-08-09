@@ -1,0 +1,111 @@
+In this chapter, we will define some basic concepts regarding strings, including some that we have been using informally so far.
+
+\section{Longest Common Prefixes}
+
+An important concept in string algorithms is the \textit{\textbf{longest common prefix}} (LCP) of two strings. It is useful for a variety of reasons: it helps us prove lower bounds, implement string algorithms efficiently, give us a compact representation of the suffix tree, etc.
+
+\begin{definition}[LCP Length]
+    The \textit{\textbf{length of the longest common prefix}} of two strings $A$ and $B$, denoted by $\mathit{lcp}(A,B)$, is the largest integer $\ell \leq \min \{|A|,|B|\}$ such that $A[1\ldots \ell] = B[1 \ldots \ell]$. 
+\end{definition}
+
+We can further extend the definition of LCP length to that between a string and a set of strings.
+
+\begin{definition}
+    For a string $S$ and a set of strings $\mathcal{R}$, define
+    $$
+    \mathit{lcp}(S,\mathcal{R}) = \max\{ \mathit{lcp}(S,T) \mid T \in \mathcal{R} \}
+    $$
+    and the sum of the LCP lengths of strings in $\mathcal{R}$ is defined as
+    $$
+    \sum \mathit{lcp}(\mathcal{R}) = \sum_{S \in \mathcal{R}} \mathit{lcp}(S,\mathcal{R} \setminus \{S\})
+    $$
+\end{definition}
+
+\section{Lexicographic Ordering}
+
+We have used the concept of lexicographic ordering many times before, but we never defined it formally (we just said its the same as dictionary order). With the notion of LCP, we can define lexicographic ordering more formally.
+
+\begin{definition}[Lexicographic Ordering]
+    Let $A$ and $B$ be two strings over some alphabet $\Sigma$ with a total order (alphabetical order) $\leq$. Let $\ell = \mathit{lcp}(A,B)$. We say that $A$ is \textit{\textbf{lexicographically}} smaller than or equal to $B$, denoted $A \preceq_{lex} B$ or simply $A \leq B$ if and only if
+    \begin{enumerate}
+        \item $|A| = \ell$ or
+        \item $|A| > \ell$, $|B| > \ell$, and $A[\ell] < B[\ell]$
+    \end{enumerate}
+\end{definition}
+
+\section{The LCP Array}
+
+Next, we define the LCP array. Here, we define what an LCP array is, without presenting any practical application using the LCP array, or how to construct it efficiently. These topics will be discussed in a later chapter. An LCP array along with a suffix array (again, to be defined in a later chapter) will actually allow us to perform tasks like string searching quite efficiently both in time and the space required.
+
+\begin{definition}[LCP Array]
+    Let $\mathcal{R} = \{S_1,S_2,\ldots,S_n\}$ be a set of strings. Suppose the elements in $\mathcal{R}$ are in increasing lexicographic order, so $S_1 \prec_{lex} S_2 \prec_{lex} \cdots \prec_{lex} S_n$. Then, the \textit{\textbf{LCP array}} of $\mathcal{R}$, denoted by $\mathrm{LCP}_{\mathcal{R}}$ is defined such that
+    \begin{enumerate}
+        \item $\mathrm{LCP}_{\mathcal{R}}[1] = 0$ and
+        \item $\mathrm{LCP}_{\mathcal{R}}[i] = \mathit{lcp}(S_i,S_{i-1})$ for $i \in \N$, $2 \leq i \leq n$.
+    \end{enumerate}
+    Further, we define the sum of the LCP array as
+    $$
+    \sum \mathrm{LCP}_{\mathcal{R}} = \sum_{i \in [n]} \mathrm{LCP}_{\mathcal{R}}[i]
+    $$
+\end{definition}
+
+When it is clear from the context what $\mathcal{R}$ is, we can omit it and simply write $\mathrm{LCP}$ for the LCP array.
+
+The LCP array is often discussed in the context of suffix arrays. \textit{\textbf{Suffix array}}, loosely speaking, is an array of \textbf{indicies} of all suffixes of a given string, sorted by lexicographic order.
+
+For example, consider $S = \texttt{banana\$}$. The suffix array for $S$ and its corresponding LCP array is given below.
+
+$$
+\begin{array}{ccccccccccc}
+    \text{suffix} & = & \texttt{\$} & \texttt{a\$} & \texttt{ana\$} & \texttt{anana\$} & \texttt{banana\$} & \texttt{na\$} & \texttt{nana\$} \\
+    SA & = & 6 & 5 & 3 & 1 & 0 & 4 & 2 \\
+    LCP & = & \text{-} & 0 & 1 & 3 & 0 & 0 & 2
+\end{array}
+$$
+
+where $\sum \text{LCP} = 6$.
+
+\section{Distinguishing Prefix}
+
+Given a string $S$, the longest common prefix between $S$ and a set of strings $\mathcal{R}$ is the longest prefix that $S$ shares with some elements in a set. Similarly, as defined earlier, for some $S \in \mathcal{R}$, $\mathit{lcp}(S,\mathcal{R} \setminus \{S\})$ tells us the length of the longest common prefix between $S$ and other strings in the set $\mathcal{R}$.
+
+We can similarly define the \textit{\textbf{distinguishing prefix}} as the shortest prefix that separates $S$ from other strings in the set.
+
+\begin{definition}[Distinguishing Prefix] \label{def:dist-prefix}
+    For a string $S$ and a set of strings $\mathcal{R}$, the length of the \textit{\textbf{distinguishing prefix}} is the length of the shortest prefix that separates $S$ from other strings in $\mathcal{R}$. More formally,
+    $$
+    \mathit{dp}(S,\mathcal{R}) = \min\{\mathit{lcp}(S,T)+1 \mid T \in \mathcal{R}\}
+    $$
+    and
+    $$
+    \sum \mathit{dp}(\mathcal{R}) = \sum_{S \in \mathcal{R}} \mathit{dp}(S,\mathcal{R}\setminus \{S\})
+    $$
+\end{definition}
+
+Note that if a string $S$ is a prefix of another string $T$, then $\mathit{dp}(S,T) = |S| + 1$. This means that we have to exhaust the entire string $S$ to distinguish it from $T$.
+
+\begin{definition}[Prefix-Free Set]
+    A set of strings $\mathcal{R}$ is \textit{\textbf{prefix free}} if and only if no string in $\mathcal{R}$ is a prefix of another string in $\mathcal{R}$. In other words, $\mathcal{R}$ is prefix free iff
+    $$
+    \mathit{dp}(S,T) \leq \min\{|S|,|T|\}
+    $$
+    for all $S,T \in \mathcal{R}$ such that $S \neq T$.
+\end{definition}
+
+It is easy to turn any set of strings into a prefix-free set by simply adding a null-terminator to the end of every string in the set.
+
+\begin{theorem}
+    Let $\mathcal{R}$ be a set of strings over the alphabet $\Sigma$. Then, for some $\texttt{\$} \not\in \Sigma$ such that $\texttt{\$} < c$ for all $c \in \Sigma$,
+    $$
+    \mathcal{R}' = \{ S \cdot \texttt{\$} \mid S \in \mathcal{R} \}
+    $$
+    is prefix free.
+\end{theorem}
+
+\begin{proof}
+    The proof is straightforward. Since $\texttt{\$} \not\in \Sigma$, it never occurs in any of the original strings. It is appended only to the end of every string. Hence, unless $S = T$, we can distinguish $S$ from $T$ using at most $\min\{|S|,|T|\}$ character comparisons and we can find the difference at the character $\texttt{\$}$, which is guaranteed not to occur within a string body.
+\end{proof}
+
+\begin{lemma}
+    Let $\mathcal{R}$ be a set of prefix-free strings. $\textit{dp}(S,\mathcal{R}\setminus\{S\}) = \textit{lcp}(S,\mathcal{R}\setminus\{S\}) + 1$.
+\end{lemma}

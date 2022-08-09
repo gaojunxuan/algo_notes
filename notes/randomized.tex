@@ -1,0 +1,33 @@
+\section{Bounding Probability}
+
+Union bound:
+$$
+\Prob(A \cup B) \leq \Prob(A) + \Prob(B)
+$$
+
+\begin{proof}
+    $\Prob(A \cup B) = \Prob(A) + \Prob(B) - \Prob(A \cap B) \leq \Prob(A) + \Prob(B)$
+\end{proof}
+
+Chebyshev's inequality: for $k > 0$
+$$
+\Prob(|X-\Expected(X)| \geq a \sigma) \leq \frac{1}{a^2}
+$$
+where $\sigma^2 = \Var(X)$ or equivalently
+$$
+\Prob(|X-\Expected(X)| \geq a) \leq \frac{\Var(X)}{a^2}
+$$
+
+Markov's inequality: for nonnegative random variable $X$ and $a>0$,
+$$
+\Prob(X \geq a) \leq \frac{\Expected(X)}{a}
+$$
+
+Chernoff bound:
+$$
+\Prob(X \geq a) = \Prob(e^{tX} \geq e^{ta}) \leq \frac{\Expected(e^{tX})}{e^{ta}}
+$$
+If $X = \sum_{i=1}^n X_i$ and $\Expected(X) \leq \mu$,
+$$
+\Prob(X \geq (1+\delta)\mu) \leq \left( \frac{e^\delta}{(1+\delta)^{1+\delta}} \right)^{\mu} 
+$$ 

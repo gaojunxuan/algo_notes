@@ -1,0 +1,45 @@
+\section{Oblivious and Non-Oblivious Local Search} \index{Ford-Fulkerson method} \index{gradient descent} \index{oblivious local search} \index{non-oblivious local search}
+
+The idea behind the local search heuristic is to start with a feasible solution and search for a local optimum. In some cases, this approach can actually generate a global optimal solution. The \textit{\textbf{Ford-Fulkerson method}} for max flow is an example of a local search algorithm that yields a globally optimal solution. The issue with local search is that we might get stuck at a bad local optimum. And indeed, in some other cases, local search does not guarantee a global optimal, but even if this is the case, it might still give us a good approximation. A famous example of this approach is the \textit{\textbf{gradient descent}} algorithm, commonly used in machine learning and convex optimization. Gradient descent can be further improved by initializing the starting position randomly, giving us the stochastic gradient descent algorithm.
+
+For optimization problems, we are often given an objective function to optimize (maximize or minimize). We can use local search to incrementally improve our solution with respect to the global optimum of the objective function. This approach is called \textit{\textbf{oblivious local search}}. Alternatively, we might want to optimize a potential function (think this as a surrogate for the actual objective function). This is called \textit{\textbf{non-oblivious local search}}. The Ford-Fulkerson algorithm is an example of a non-oblivious local search algorithm, where we optimize the flow in a residue network as opposed to the original flow network.
+
+\section{Exact Max-k-SAT}
+
+\textbf{Input}: An exact $k$-CNF formula $\phi = C_1 \land C_2 \land \cdots \land C_m$ where each clause $C_i$ has exactly $k$ literals, and a weight $w_i \geq 0$ associated with each clause $C_i$.
+
+\textbf{Output}: A truth assignment $\tau$ maximizing the total weight of clauses satisfied under $\tau$.
+
+Let $W(\tau)$ be the total weight of $\phi$ given the truth assignment $\tau$, which is defined to be the weighted sum of all clauses satisfied by $\tau$. That is, $W(\tau) = \sum \{w_i \mid \text{$C_i$ is satisfied under $\tau$ }\}$. 
+
+\section{Local Search Algorithm for Exact Max-k-SAT}
+
+We define the local neighborhood $N_d(\tau)$ for a truth assignment $\tau$ as
+$$
+N_d(\tau) = \{ \tau' \mid \text{$\tau$ and $\tau'$ differs on at most $d$ variables}\}
+$$
+Naturally, we have the followng local search approximation algorithm.
+
+\begin{codebox}
+    \Procname{$\proc{Local-Search-Approx}(\phi)$}
+    \li $\tau = \text{arbitrary initial assignment}$
+    \li \While $\exists \tau' \in N_d(\tau).\, W(\tau') > W(\tau)$ \Do
+        \li $\tau = \tau'$ 
+\end{codebox}
+
+Let us first analyze the approximation ratio for the case when we fix $d=1$.
+
+\begin{theorem}
+    The local search with $d=1$ gives a $2/3$-approximation to the exact max-2-SAT problem. 
+\end{theorem}
+
+\begin{proof}
+    Let $\tau$ be a local optimum. Further, let
+    \begin{itemize}
+        \item $S_0 =$ set of clauses not satisfied under $\tau$ 
+        \item $S_1 =$ set of clauses from which exactly one literal is true under $\tau$ 
+        \item $S_2 =$ set of clauses from which both literals are true under $\tau$
+        \item $W_0,W_1,W_2$ be the corresponding total weights
+    \end{itemize}
+    We say 
+\end{proof}

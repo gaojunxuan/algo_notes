@@ -100,15 +100,17 @@
 
 \DeclareMathOperator*{\Expected}{\mathbb{E}}
 \DeclareMathOperator*{\Argmin}{\mathrm{argmin}}
+\DeclareMathOperator*{\Argmax}{\mathrm{argmax}}
 % \newcommand{\Expected}{\mathbb{E}}
-\newcommand{\Prob}{\mathrm{Prob}}
+\newcommand{\Prob}{\mathrm{Pr}}
+\newcommand{\Var}{\mathrm{Var}}
 
-\renewcommand{\implies}{\textsc{ implies }}
-\renewcommand{\land}{\textsc{ and }}
-\renewcommand{\lor}{\textsc{ or }}
-\renewcommand{\iff}{\textsc{ iff }}
-\renewcommand{\lnot}{\textsc{not}}
-\newcommand{\lnand}{\textsc{ nand }}
+\renewcommand{\implies}{\textsc{ IMPLIES }}
+\renewcommand{\land}{\textsc{ AND }}
+\renewcommand{\lor}{\textsc{ OR }}
+\renewcommand{\iff}{\textsc{ IFF }}
+\renewcommand{\lnot}{\textsc{NOT}}
+\newcommand{\lnand}{\textsc{ NAND }}
 
 \setlength{\parindent}{0cm}
 
@@ -242,7 +244,8 @@ The cover depicts a dynamic programming matrix used in the edit distance algorit
 \chapter{Duality}
 \input{notes/duality.tex}
 
-\chapter{Linear Programming Problems}
+\chapter{Linear Programming Applications}
+\input{notes/lp-app.tex}
 
 \chapter{Integer Programming}
 
@@ -250,7 +253,19 @@ The cover depicts a dynamic programming matrix used in the edit distance algorit
 
 \part{Approximation Algorithms}
 
+\chapter{Approximation}
+\input{notes/approx.tex}
+
+\chapter{Greedy Approximation Algorithms}
+\input{notes/greedy-approx.tex}
+
+\chapter{Local Search}
+\input{notes/localsearch.tex}
+
 \part{Randomized Algorithms}
+
+\chapter{Randomization}
+\input{notes/randomized.tex}
 
 \part{Algorithms on Strings}
 

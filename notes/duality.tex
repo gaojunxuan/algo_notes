@@ -1,3 +1,54 @@
 \section{Proving Optimality}
 
-Given a maximization linear program, it is easy to show that the optimal objective value has a certain lower bound by providing a feasible solution that achieves the value. However, this is not sufficient for proving the upper bound of the given linear program. A single feasible solution is not enough because the optimal solution is the maximum over all feasible solutions.
+Given a maximization linear program, it is easy to show that the optimal objective value has a certain lower bound by providing a feasible solution that achieves the value. However, this is not sufficient for proving the upper bound of the given linear program. A single feasible solution is not enough because the optimal solution must be the maximum over all feasible solutions.
+
+\section{Certificate of Optimality}
+
+To obtain an upper bound, we can make a linear combination of the inequality constraints. For example, given this linear program
+\begin{alignat*}{3}
+    &\text{Maximize} \quad && x_1 + 6x_2 \\
+    &\text{Subject to} \quad && x_1 &&\leq 200 \\
+                    & &&  x_2 &&\leq 300 \\
+                    & &&  x_1 + x_2 &&\leq 400 \\
+                    & &&  x_1,x_2 &&\geq 0
+\end{alignat*}
+We claim that $(x_1,x_2) = (100, 300)$ is optimal with objective value 1900. If we take the second constraint multiplied by 5 and add it to the third constraint, we have
+$$
+5x_2 + (x_1+x_2) \leq 5 \cdot 300 + 400 = 1900
+$$
+This shows that no feasible solution can beat 1900 -- an upper bound.
+
+More generally, we introduce variables $y_1,y_2,\ldots$ by which we will be multiplying the constraints. Using the previous example, we have
+\begin{alignat*}{3}
+    &\textbf{Multiplier} \quad && \textbf{Inequality} \\
+    & y_1 \quad && x_1 &&\leq 200 \\
+    & y_2 \quad &&  x_2 &&\leq 300 \\
+    & y_3 \quad && x_1 + x_2 &&\leq 400 \\
+\end{alignat*}
+After multiplying the constraints by the factors, we have
+$$
+(y_1+y_3)x_1 + (y_2 + y_3)x_2 \leq 200 y_1 + 300 y_2 + 400 y_3
+$$
+And we want
+\begin{itemize}
+    \item $y_1,y_2,y_3 \geq 0$ because otherwise the direction of inequalities flips, and
+    \item the left-hand side to be an upper bound on the objective $x_1 + 6x_2$.
+\end{itemize}
+
+In this specific example, we want
+\begin{itemize}
+    \item $y_1,y_2,y_3 \geq 0$, and
+    \item $y_1 + y_3 \geq 1$ and $y_2 + y_3 \geq 6$.
+\end{itemize}
+But this is just \textit{\textbf{another linear program}}! Namely,
+\begin{alignat*}{3}
+    &\text{Minimize} \quad && 200y_1 + 300y_2 + 400y_3 \\
+    &\text{Subject to} \quad && y_1 + y_3 &&\geq 1 \\
+                    & &&  y_2 + y_3 &&\geq 6 \\
+                    & &&  y_1,y_2+y_3 &&\geq 0
+\end{alignat*}
+
+\index{dual} \index{primal}
+This linear program is called the \textit{\textbf{dual}}, while the original linear program is called the \textit{\textbf{primal}}.
+
+If we can find a specific optimal solution to the dual program for which the objective function is equal to the primal objective, then we can conclude that the given primal solution is indeed optimal.

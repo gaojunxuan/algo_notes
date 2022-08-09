@@ -32,7 +32,7 @@ Figure \ref{fig:lp-feasible-region} shows a geometric representation of a linear
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.6\linewidth]{lp/lp-feasible-region.pdf}
+    \includegraphics[width=0.5\linewidth]{lp/lp-feasible-region.pdf}
     \caption{A linear programming problem with 2 variables, 4 linear constraints (solid lines), and objective function $x_1+x_2$ (dashed line).}
     \label{fig:lp-feasible-region}
 \end{figure}
@@ -136,6 +136,7 @@ A polytope can be determined by its vertices.
     $$
     \mathrm{conv} \{\mathbf{v}_1,\ldots,\mathbf{v}_n\} = \{ \lambda_1 \mathbf{v}_1 + \cdots + \lambda_n \mathbf{v}_n \mid \forall i \in \{1,\ldots,n\}.\, \lambda_i \geq 0,\; \lambda_1+\cdots+\lambda_n = 1 \}
     $$
+    In general, the convex hull is the smallest polytope containing $\mathbf{v}_1,\ldots,\mathbf{v}_n$.
 \end{definition}
 
 \begin{theorem} \label{thm:convex-hull-polytope}
@@ -164,5 +165,5 @@ An important implication of Theorem \ref{thm:convex-hull-polytope} is that we ca
     $$
     \mathbf{c}^\top \mathbf{x} = \mathbf{c}^\top \lambda_1 \mathbf{v}_1 + \cdots + \mathbf{c}^\top \lambda_n \mathbf{v}_n \leq  \lambda_1 \max_{i=1}^n (\mathbf{c}^\top \mathbf{v}_i) + \cdots + \lambda_n \max_{i=1}^n (\mathbf{c}^\top \mathbf{v}_i) = \max_{i=1}^n (\mathbf{c}^\top \mathbf{v}_i)
     $$
-    Therefore, a maximum of $\mathbf{c}^\top \mathbf{v}_i$ is also a maximum of $\mathbf{c}^\top \mathbf{x}$.
+    Therefore, a maximum of $\mathbf{c}^\top \mathbf{v}_i$ is also a maximum of $\mathbf{c}^\top \mathbf{x}$, a solution to the linear program.
 \end{proof}

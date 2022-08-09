@@ -72,7 +72,7 @@ Assume that prior to calling $\proc{Compute-Opt-DP}(n)$, the intervals are sorte
 \begin{codebox}
     \Procname{$\proc{Compute-Opt-DP}(j)$}
     \li \If $M[j] \isequal \const{nil}$ \Then 
-        \li $M[j] = \max\{\proc{Compute-Opt-DP}(j-1),\; w_j + \proc{Compute-Opt-DP}(\index{pred}[j]) \}$
+        \li $M[j] = \max\{\proc{Compute-Opt-DP}(j-1),\; w_j + \proc{Compute-Opt-DP}(\id{pred}[j]) \}$
     \End
     \li \Return $M[j]$
 \end{codebox}

@@ -1,0 +1,68 @@
+\section{Lower Bounds}
+
+Let $\mathcal{A}$ be a class of algorithms. The \textit{\textbf{worst case complexity of problem}} $P$ in class $\mathcal{A}$ is
+$$
+C(P) = \min\{ C_A \mid \text{$A \in \mathcal{A}$, $A$ solves $P$}\}
+$$
+where $C_A:\; \N \to \N$ is the worst-case complexity of algorithm $A$.
+
+If $\mathcal{A} \subseteq \mathcal{A}'$, a lower bound on the worst-case complexity of $P$ in class $\mathcal{A}'$ is also a lower bound on the worst-case complexity of problem $P$ in class $\mathcal{A}$.
+
+It is easy to get an upper bound on $C(P)$ since we can just give an algorithm in class $\mathcal{A}$ that has certain complexity. To get a lower bound on $C(P)$, we have to somehow show that \textbf{any} algorithm in $\mathcal{A}$ has at least that complexity and no other algorithms in the same class can do better.
+
+Similarly, we define the \textit{\textbf{average case complexity of problem}} $P$ in class $\mathcal{A}$ as
+$$
+C'(P) = \min\{\mathbb{E}[C_A] \mid \text{$A \in \mathcal{A}$, $A$ solves $P$}\}
+$$
+where $\mathbb{E}[C_A]$ is the \textbf{expected complexity} taken over some probability distribution.
+
+\section{Lower Bounds for Comparison-Based Sorting}
+
+A well-known lower bound for comparison-based sorting is $\Omega(n \log n)$. The proof of this lower bound uses the fact that there are $n!$ leaves in a comparison tree and the height of it is at least $\log n! \in \Omega(n \log n)$.
+
+One important thing to note here is that unlike comparing numbers, depending on the size of the alphabet and the length of the strings, comparison two strings may not be a constant-time operation.
+
+We first introduce an average case lower bound for string sorting.
+
+\begin{theorem}
+    Let $\mathcal{A}$ be the class of comparison-based sorting algorithms. Algorithms in class $\mathcal{A}$ sort a set of objects using only pairwise comparisons between the objects. Let $\mathcal{R}$ be a set of $n$ strings over an ordered alphabet $\Sigma$. Sorting $\mathcal{R}$ using algorithms in $\mathcal{A}$ requires $\Omega(n \log n \log_{|\Sigma|} n)$ symbol comparisons in the \textbf{average case} where the average is taken over the initial orders of $\mathcal{R}$.
+\end{theorem}
+
+We first note some important observations. If $|\Sigma|$ is a constant, then the lower bound becomes $\Omega(n \log n \log n)$. The average case complexity is obtained by taking the expected value for all uniformly distributed initial orders of $\mathcal{R}$. Further, we note that $|\Sigma|^k \leq \sqrt{n}$ by definition of $k$.
+
+\begin{proof}
+    Let $k = \lfloor \log_{|\Sigma|}/2 \rfloor$. For any string $\alpha \in \Sigma^k$, let $\mathcal{R}_{\alpha}$ be the set of strings in $\mathcal{R}$ having $\alpha$ as a prefix. Let $n_{\alpha} = |\mathcal{R}_{\alpha}|$.
+
+    Every comparison between two strings in $\mathcal{R}_\alpha$ requires $k$ symbol comparisons \footnote{Note that this is an information theory lower bound because we need at least that many comparisons to gain enough information to determine the orders of elements in $\mathcal{R}_\alpha$}. Meanwhile, any comparison between a string in $\mathcal{R}_\alpha$ and a string not in $\mathcal{R}_\alpha$ does not give any information about the relative order of the strings in $\mathcal{R}_\alpha$.
+
+    Hence, $\mathcal{A}$ needs $\Omega(n_\alpha \log n_\alpha)$ string comparisons (from the general lower bound for sorting) and $\Omega(k n_\alpha \log n_\alpha)$ symbol comparisons to determine the relative order of the strings in $\mathcal{R}_\alpha$.
+
+    The total number of comparisons is $\Omega(\sum_{\alpha \in \Sigma^k} k n_\alpha \log n_\alpha)$ (the sum of comparisons for determine the relative order of $\mathcal{R}_\alpha$ taken over all possible $\alpha \in \Sigma^k$). We can bound this expression as follows
+    $$
+    \begin{aligned}
+        \sum_{\alpha \in \Sigma^k} kn_\alpha \log n_\alpha &\geq k \left( \sum_{\alpha \in \Sigma} n_\alpha \right) \log \left( \frac{\sum_{\alpha \in \Sigma^k} n_\alpha}{|\Sigma|^k} \right) & \text{Jensen's ineq.} \\
+        &\geq k \left( \sum_{\alpha \in \Sigma} (n - |\Sigma|^k) \right) \log \left( \frac{\sum_{\alpha \in \Sigma^k} (n - |\Sigma|^k)}{|\Sigma|^k} \right) \\
+        &\geq k \left( \sum_{\alpha \in \Sigma} (n - \sqrt{n}) \right) \log \left( \frac{\sum_{\alpha \in \Sigma^k} (n - \sqrt{n})}{|\Sigma|^k} \right) \\
+        &\geq k (n - \sqrt{n}) \log (\sqrt{n} - 1) \\
+        &\in \Omega(k n \log n) \\
+        &= \Omega(n \log n \log_{|\Sigma|} n)
+    \end{aligned}
+    $$
+\end{proof}
+
+It is important to note here that the lower bound concerns comparison-based sorting algorithms. Algorithms specialized for string sorting that do not use explicit pairwise character comparison may not conform with this lower bound.
+
+Next, let's consider the worst-case lower bound for comparison-based string sorting.
+
+\begin{theorem}
+    Let $\mathcal{R} = \{S_1,\ldots,S_n\}$ be a set of $n$ strings. Let $\mathcal{A}$ be the class of comparison-based sorting algorithms. Then, sorting $\mathcal{R}$ using algorithms in $\mathcal{A}$ requires $\Omega(\sum \mathrm{LCP}(\mathcal{R}) + n \log n)$ character comparisons \footnote{Recall that $\sum \mathrm{LCP}(\mathcal{R})$ is the sum of the LCP array for $\mathcal{R}$} in the \textbf{worst case}.
+\end{theorem}
+
+\begin{proof}
+    If the first $k$ characters of two strings are the same, then one needs to check at least $k+1$ characters to distinguish the two strings by Definition \ref{def:dist-prefix}. Hence, we need at least $\sum (\mathrm{LCP}(\mathcal{R}) + 1)$ comparisons to distinguish some string $S \in \mathcal{R}$ from other strings. No comparison-based sorting algorithms can correctly sort the strings in $\mathcal{R}$ without checking that many characters \footnote{This can be formalized using a proof by contradiction.}.
+
+    To actually sort the strings, we need to compare and sort at least the distinguishing characters. The general string sorting lower bound $\Omega(n \log n)$ holds here. Therefore, the overall lower bound is $\Omega(\sum \mathrm{LCP}(\mathcal{R}) + n \log n)$.
+\end{proof}
+
+\section{Quicksort}
+

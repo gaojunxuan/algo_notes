@@ -1,0 +1,106 @@
+\section{Makespan}
+
+\textbf{Input}: Given $m$ identical machines, $n$ jobs. Job $j$ requires processing time $t_j$.
+
+\textbf{Output}: Assignment jobs to machines to minimize makespan.
+
+More formally, let $S[i]$ be the set of jobs assigned to machine $i$ in a solution. Each job must run contiguously on one machine, and each machine can process at most one job at a time. We define the load on a machine $i$ as $L_i = \sum_{j \in S[i]}t_j$. The objective is to minimize the maximum load, i.e. $\max_i L_i$.
+
+The makespan is one of the most well-studied problem for approximation and online algorithms. The analyses of the makespan problem and associated approximation algorithms were first done by Graham in the 60s, and Graham's studies on approximation algorithms are considered the first ones that formally studied the worst case performance of approximation algorithms.
+
+\subsection{Makespan is NP-Hard} \index{makespan problem}
+
+By reduction from PARTITION. The PARTITION problem is defined as follows:
+
+Given $A = \{a_1,a_2,\ldots,a_n\}$, is there a partition of $A$ into $A_1 \cup A_2$ such that $\sum_{a_i \in A_1} = \sum_{a_j \in A_2}$. It can be shown that SUBSET-SUM $\leq_p$ PARTITION and hence PARTITION is $\mathsf{NP}$-complete. 
+
+\subsection{Greedy Approximation Algorithm for Makespan} \index{online algorithm}
+
+We will use a greedy approximation algorithm to solve the makespan problem. For the greedy algorithm, we consider the jobs at an arbitrary order and assign each job to the machine with smallest load at the time. This is an example of an \textit{\textbf{online algorithm}} because it looks at jobs as they arrive. The following theorem states that the online greedy algorithm gives a solution that is at most twice as bad.
+
+\begin{theorem}
+    Regardless of the order, greedy gives a 2-approximation.
+\end{theorem}
+
+\begin{proof}
+    Suppose machine $i$ is the bottleneck under greedy so $L=L_i$. Let $j'$ be the last job scheduled on machine $i$ by greedy. Immediately before $j'$ was assigned to $i$, $i$ has the smallest load. Load of the other machines could have only increased from then, so $L_i - t_{j'} \leq L_k$ for all $k$. Take the average over all $k$, $L_i - t_{j'} \leq 1/m \sum_{j} t_j$. Observe that $L_{opt} \geq \Argmax_j t_j$ and $L_{opt} \geq 1/m \sum_{j} t_j$. Then,
+    $$
+    L_i \leq t_{j'} + \frac{1}{m} \sum_{j} t_j \leq L_{opt} + L_{opt} = 2L_{opt}
+    $$
+\end{proof}
+
+The time complexity of this online algorithm is $O(n \log m)$ since we can use a priority queue to keep track of the least loaded machine. The approximation ratio of 2 that we proved earlier is, in fact, not tight. We can show a marginally better approximation ratio as follows.
+
+\begin{corollary}
+    Regardless of the order, greedy gives a $(2-\frac{1}{m})$ approximation. This approximation ratio is tight.
+\end{corollary}
+
+\begin{proof}
+    One can simply average over $k \neq i$ instead of all $k$ and show that the approximation ratio is $(2-\frac{1}{m})$. To show that the ratio is tight, consider $m(m-1)$ jobs of length 1 followed by one job of length $m$. Greedy evenly distributes unit length jobs on all $m$ machines, and assigning the last heavy job, resulting in a makespan of $L = m-1+m = 2m-1$. On the other hand, the optimal makespan $L_{opt} = m$ evenly distributes unit length jobs among $m-1$ machine and puts the single heavy job on the remaining one machine.
+\end{proof}
+
+This input construction resulting in $2m-1$ makespan suggests that it is probably a bad idea to keep the job with the longest processing time until the end, and indeed, we can achieve a better approximation ratio if we consider the job with the longest processing time first.
+
+\index{Graham's longest processing time-first algorithm}
+If we are given all the jobs, we can have an offline algorithm that gives a better approximation. This is the \textit{\textbf{Graham's longest processing time-frist (LPT) algorithm}}. It uses the same greedy approach of assigning jobs to the least loaded machine, but instead of considering jobs in an arbitrary, we consider them in a non-decreasing order of processing time, namely $t_1 \geq t_2 \geq \ldots \geq t_n$.
+
+\begin{theorem}
+    Graham's LPT algorithm gives a $3/2$-approximation. 
+\end{theorem}
+
+\begin{proof}
+    Suppose machine $i$ is the bottleneck and job $j'$ is the last job scheduled on machine $i$. We consider the following two cases:
+
+    Case 1: Machine $i$ has only one job, $j'$. In this case, the greedy solution is optimal because $L = L_i = t_{j'}$ and some machine has to take job $j'$. This gives us an 1-approximation.
+
+    Case 2: Machine $i$ has at least two jobs. Then, there must be more tasks than the number of machines, so $n \geq m+1$. We claim that if there are more than $m$ total jobs, then $L_{opt} \geq 2 t_{m+1}$. To see why, recall that the input is ordered so that the first $m+1$ jobs have processing time of at least $t_{m+1}$ and by the Pigeonhole Principle, the optimal solution has to put at least two of them on the same machine, so the optimal makespan must also be at least as large as the load on that machine. Going back to Case 2, it must be the case that $t_{j'} \leq t_{m+1}$. Then,
+    $$
+    L = L_i = (L_i - t_{j'}) + t_{j'} \leq L_{opt} + \frac{1}{2} L_{opt} = \frac{3}{2}L_{opt}
+    $$
+    Since $t_{j'} \leq t_{m+1} \leq 1/2 L_{opt}$.
+\end{proof}
+
+There is a tighter bound on the approximation ratio proved by Graham.
+
+\begin{theorem}[Graham 1966]
+    Greedy LPT achieves a $(\frac{4}{3} - \frac{1}{3m})$-approximation, and this approximation ratio is tight.
+\end{theorem}
+
+\begin{proof}
+    TODO
+\end{proof}
+
+\section{Vertex Cover}
+
+\textbf{Input}: An undirected graph $V = (V,E)$.
+
+\textbf{Output}: Vertex cover $C$ of minimum cardinality. Recall that $C$ is a vertex cover if every edge has at least one of its two endpoints in $C$.
+
+We have shown that VERTEX-COVER is $\mathsf{NP}$-complete.
+
+\section{Greedy Approximation Algorithm for Vertex Cover}
+
+Naturally, we will consider the greedy approach when trying to come up with an approximation algorithm for the vertex cover problem. To begin with, let's try picking the edges arbitrarily, without any particular ordering.
+
+\begin{codebox}
+    \Procname{$\proc{Approx-Vertex-Cover}(G=(V,E))$}
+    \li $C = \emptyset$
+    \li $E' = E$
+    \li $M = \emptyset$ 
+    \li \While $E' \neq \emptyset$ \Do
+        \li pick $\{u,v\} \in E'$
+        \li $C = C \cup \{u,v\}$ 
+        \li $M = M \cup \{\{u,v\}\}$ 
+        \li \textbf{remove} $\{u,v\}$ from $E'$ 
+        \li \textbf{remove} all edges incident on $u$ or $v$
+\end{codebox}
+
+In addition to the vertex cover $C$, the algorithm also computes $M$, which we call the maximal matching.
+
+\begin{theorem}
+    \proc{Approx-Vertex-Cover} gives a 2-approximation.
+\end{theorem}
+
+\begin{proof}
+    Let $M$ be the maximal matching returned by the greedy approximation algorithm, and let $S$ be the vertex cover returned by greedy. Let $C_{opt}$ be the optimal vertex cover.
+\end{proof}
